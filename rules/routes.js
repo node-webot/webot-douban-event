@@ -10,12 +10,6 @@ var douban = require(pwd + '/lib/douban');
 
 var router = webot.router();
 
-var dialogs = webot.dialogs({
-  dir: __dirname + '/dialogs',
-  files: ['basic', 'gags', 'greetings.js', 'bad', 'flirt', 'emoji']
-});
-router.dialog(dialogs);
-
 router.set('want_city', {
   'parser': function(info, next) {
     info.param = parser.listParam(info.text);
@@ -94,6 +88,12 @@ router.set('more', {
     });
   }
 });
+
+var dialogs = webot.dialogs({
+  dir: __dirname + '/dialogs',
+  files: ['basic', 'gags', 'greetings.js', 'bad', 'flirt', 'emoji']
+});
+router.dialog(dialogs);
 
 router.set('list', {
   'handler': function(info, next) {
