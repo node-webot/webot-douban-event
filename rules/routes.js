@@ -88,13 +88,6 @@ router.set('more', {
     });
   }
 });
-
-var dialogs = webot.dialogs({
-  dir: __dirname + '/dialogs',
-  files: ['basic', 'gags', 'greetings.js', 'bad', 'flirt', 'emoji']
-});
-router.dialog(dialogs);
-
 router.set('list', {
   'handler': function(info, next) {
     var loc = info.param['loc'];
@@ -113,6 +106,12 @@ router.set('list', {
     douban.list(info.param, next);
   }
 });
+
+var dialogs = webot.dialogs({
+  dir: __dirname + '/dialogs',
+  files: ['basic', 'gags', 'greetings.js', 'bad', 'flirt', 'emoji']
+});
+router.dialog(dialogs);
 
 // Special type for location
 router.set('location', function(info, next) {
