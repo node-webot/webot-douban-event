@@ -44,9 +44,24 @@ greetings.push([
   function(info) {
     var d = new Date();
     var h = d.getHours();
+    if (h < 4) return '现在已经很晚了，您怎么还不睡呢？经常熬夜对身体不好呢';
+    if (h < 10) return '这大清早的……你不在东八区么？';
     if (h < 17) return '这不还没到晚上吗？';
     if (h > 20) return '差不多该洗洗睡了哟！早睡有益身体健康';
     return '您也好！要不今晚上去看点戏吧？';
+  }
+]);
+greetings.push([
+  /^(晚安|(good )?night)[啊\!！\.。]*$/i,
+  function(info) {
+    var d = new Date();
+    var h = d.getHours();
+    if (h < 3) return '晚安朋友，期待明天再与你相遇...[月亮]';
+    if (h < 6) return '您睡得实在太晚啦！赶快抓紧时间休息吧！';
+    if (h < 10) return '这大清早的……您是折腾个什么劲儿啊？';
+    if (h < 18) return '这不还没到晚上吗？';
+    if (h > 20) return '好的，做个好梦。期待明天与你再见！';
+    return '睡这么早好浪费时间哦……何不再看会儿书？';
   }
 ]);
 greetings.push([
