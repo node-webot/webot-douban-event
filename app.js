@@ -36,7 +36,9 @@ app.post('/', checkSig, webot.bodyParser(), function(req, res, next) {
   }
 
   robot.reply(info, function(err, ret) {
-    if (err || !ret) {
+    if (err == 404 && info.param && info.param.start) {
+      info.reply = messages['NO_MORE'];
+    } else if (err || !ret) {
       //res.statusCode = (typeof err === 'number' ? err : 500);
       info.reply = ret || messages[String(err)] || messages['503'];
     } else if (ret instanceof Array) {
