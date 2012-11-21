@@ -1,6 +1,6 @@
 var express = require('express');
 var debug = require('debug');
-var log = debug('webot');
+var log = debug('weixin');
 
 var webot = require('weixin-robot');
 var douban = require('./lib/douban');
