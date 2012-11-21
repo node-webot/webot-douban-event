@@ -10,11 +10,12 @@
   "dependencies": {
     "debug": "*",
     "express": ">= 3.0.0beta2",
-    "weixin-robot": ">= 0.0.3",
+    "weixin-robot": ">= 0.0.3-1",
     "memcached": ">= 0.1.4"
   },
   "devDependencies": {
     "prettyjson": "*",
+    "commander": "*",
     "mocha": "*",
     "should": "*",
     "color": "*"
