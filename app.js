@@ -7,7 +7,7 @@ var douban = require('./lib/douban');
 
 webot.set('article props', {
   'pic': 'image_lmobile',
-  'url': 'adapt_url',
+  //'url': 'adapt_url',
   'desc': douban.eventDesc,
 });
 
