@@ -10,15 +10,26 @@ var douban = require(pwd + '/lib/douban');
 
 var router = webot.router();
 
+var cmds = ['search|搜索|s'];
+
 router.set('want_city', {
   'parser': function(info, next) {
     info.param = parser.listParam(info.text);
-    info.param._text = info._text;
+    var _text = info.param._text = info._text;
     var uid = info.param.uid = info.from;
-    var u = user(uid);
+    var u = info.u = user(uid);
+
+    // parse command
+    var lead = _text.split(/\s+/)[0];
+    for (var i = 0, l = cmds.length; i < l; i++) {
+      if (lead.search(cmds[i]) === 0) {
+        info.cmd = cmds[i].split('|')[0];
+      }
+    }
 
     var loc = info.param['loc'];
     if (loc) {
+      info._ori_loc = loc;
       u.setLoc(loc);
       next(null, info);
     } else {
@@ -61,9 +72,9 @@ function obj_equal(a, b){
 }
 router.set('more', {
   'handler': function(info, next) {
-    var is_more = (/还要|更多|还有没有|还有吗|再来|more|下一页/i).test(info.text);
+    var is_more = (/更多|再来|more|下一页/i).test(info.text);
     var uid = info.from;
-    var u = user(uid);
+    var u = info.u || user(uid);
     var waiter = this.waiter;
 
     u.getPrev(function(err, res){
@@ -74,9 +85,10 @@ router.set('more', {
 
       try {
         info.ended = true;
+        // 实际得到的比想要的少，说明没有更多了
         if (res.count > res._len) {
           info.param.start = 1;
-          return next(404);
+          return next('NO_MORE');
         }
         delete res['_wx_act'];
         res.start = res.start || 0;
@@ -89,19 +101,13 @@ router.set('more', {
   }
 });
 router.set('list', {
+  'pattern': function(info) {
+    return !info.param['q'];
+  },
   'handler': function(info, next) {
     var loc = info.param['loc'];
     if (!loc) return next('CITY_404');
 
-    // 如果有搜索关键字
-    if (info.param['type'] && info.param['q']) {
-      info.ended = true;
-      return douban.search(info.param, next);
-    }
-    if (info.param['q']) {
-      next();
-      return;
-    }
     info.ended = true;
     douban.list(info.param, next);
   }
@@ -109,9 +115,32 @@ router.set('list', {
 
 var dialogs = webot.dialogs({
   dir: __dirname + '/dialogs',
-  files: ['basic', 'gags', 'greetings.js', 'bad', 'flirt', 'emoji']
+  files: ['basic', 'gags', 'greetings.js', 'bad', 'lonely', 'flirt', 'emoji', 'short']
 });
 router.dialog(dialogs);
+
+router.set('search', {
+  'pattern': function(info) {
+    return info.param['q'].length < 25;
+  },
+  'handler': function(info, next) {
+    var u = info.u || user(info.from);
+
+    // 如果有搜索关键字
+    if (info._ori_loc || info.cmd === 'search') {
+      info.ended = true;
+      return douban.search(info.param, next);
+    }
+    var q = info.param['q'];
+    u.getProp('stop_search', function(err, res){
+      if (!res) return next(); // will goto ask search
+      if (loc) {
+        return next(null, '很抱歉，我暂时还不太懂你想要的是什么。你可以尝试发送“搜索 xxx”直接查找与xxx相关的活动。');
+      }
+      return next(null, '很抱歉，我暂时不知道你要的到底是什么，你可以尝试使用“[城市名] xxx”找到在该城市与xxx相关的活动。')
+    });
+  }
+});
 
 // Special type for location
 router.set('location', function(info, next) {

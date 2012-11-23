@@ -30,13 +30,16 @@ waiter.set('search', {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
 
-    // save user data
-    this.data(uid, { 'q': q, 'loc': loc_id });
+    var u = info.u;
 
+    var waiter = this;
+
+    // save user data
+    waiter.data(uid, { 'q': q, 'loc': loc_id });
     if (loc_id) {
-      return '要我在' + cities.id2name[loc_id] + '搜索“' + q + '”相关的活动吗？回复“要”或“不要”';
+      return '要我在' + cities.id2name[loc_id] + '搜索“' + q + '”相关的活动吗？请回复“要”或“不要”，回复“永远不要”不再出现此提示';
     } else {
-      this.data(uid, 'search', 'want_city');
+      waiter.data(uid, 'search', 'want_city');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
     }
   },
@@ -46,6 +49,12 @@ waiter.set('search', {
       if (!d['loc'] || !d['q']) return true;
       d['uid'] = uid;
       return douban.search(d, cb);
+    },
+    '永远不要': function(uid, info, cb) {
+      var u = info.u || user(info.from);
+      u.setProp('stop_search', true, function() {
+        return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。你总是可以发送“[城市名] xxx”来直接搜索 xxx 相关的活动。');
+      });
     },
     'N': '好的，你说不要就不要' 
   }
