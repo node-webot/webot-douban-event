@@ -6,7 +6,7 @@ function pad(n) {
 
 var greetings = [];
 greetings.push([
-  /^(早上?好?|(good )?moring)[啊\!！\.。]*$/i,
+  /^(早上?好?|(good )?morning)[啊\!！\.。]*$/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
@@ -36,6 +36,7 @@ greetings.push([
     var d = new Date();
     var h = d.getHours();
     if (h < 12) return '这太阳还在东边呢，说下午有点早吧...';
+    if (h > 18) return '现在，应该是问“晚上好”了吧？...您老师没教你么？';
     return '[太阳]你好呀，今天心情怎么样？';
   }
 ]);

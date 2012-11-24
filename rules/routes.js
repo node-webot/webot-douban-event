@@ -14,18 +14,19 @@ var cmds = ['search|搜索|s'];
 
 router.set('want_city', {
   'parser': function(info, next) {
-    info.param = parser.listParam(info.text);
-    var _text = info.param._text = info._text;
-    var uid = info.param.uid = info.from;
-    var u = info.u = user(uid);
+    var _text = info._text;
 
     // parse command
     var lead = _text.split(/\s+/)[0];
     for (var i = 0, l = cmds.length; i < l; i++) {
       if (lead.search(cmds[i]) === 0) {
-        info.cmd = cmds[i].split('|')[0];
+        info.cmd = _text.cmd = cmds[i].split('|')[0];
       }
     }
+    info.param = parser.listParam(info.text);
+    info.param._text = _text;
+    var uid = info.param.uid = info.from;
+    var u = info.u = user(uid);
 
     var loc = info.param['loc'];
     if (loc) {
@@ -119,6 +120,12 @@ var dialogs = webot.dialogs({
 });
 router.dialog(dialogs);
 
+var unknown_replies = [
+  '唉，实在听不懂你在说什么耶...',
+  '实在抱歉，暂时不知道您说这话是什么意思..',
+  '不太明白你要表达个什么意思... 我智力很有限的！',
+  '你刚才说的我没听太懂，但我还在努力学习中，以后说不定就懂了哦~'
+]
 router.set('search', {
   'pattern': function(info) {
     return info.param['q'] && info.param['q'].length < 25;
@@ -132,12 +139,10 @@ router.set('search', {
       return douban.search(info.param, next);
     }
     var q = info.param['q'];
+    var loc = info.param['loc'];
     u.getProp('stop_search', function(err, res){
       if (!res) return next(); // will goto ask search
-      if (loc) {
-        return next(null, '很抱歉，我暂时还不太懂你想要的是什么。你可以尝试发送“搜索 xxx”直接查找与xxx相关的活动。');
-      }
-      return next(null, '很抱歉，我暂时不知道你要的到底是什么，你可以尝试使用“[城市名] xxx”找到在该城市与xxx相关的活动。')
+      return next(null, unknown_replies.sample(1)[0]);
     });
   }
 });
