@@ -43,3 +43,20 @@
 寂寞
 一个人过真的有点困难，所以其实我也会寂寞…… or
 唉，也许出门走走会好一点吧？到<a href="http://www.douban.com/location/">我们的网站</a>上去看看有什么活动？
+
+我不高兴
+Tha's so sad... What happended to you? or
+是谁惹到你了呢？or
+我很想和你继续对话……可我怕等你说了你为什么不高兴，我就又听不懂了。
+
+哎呀
+Oops... or
+So what? or
+I guess that's it..
+
+码农
+对于这种生物，我也是无话可说...
+
+/^豆瓣同城$/
+嘻嘻，你叫我啊？or
+我们的网址是 http://www.douban.com/location/

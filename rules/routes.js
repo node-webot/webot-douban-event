@@ -46,12 +46,12 @@ router.set('want_city', {
     var u = user(uid);
 
     // is waiting for user to reply a city name
-    var want_city = this.waiter.reserve(uid) === 'search' && this.waiter.data(uid, 'search') === 'want_city';
+    var want_city = this.waiter.data(uid, 'search') === 'want_city';
     var loc = info.param['loc'];
 
     if (want_city && loc) {
       u.setLoc(loc);
-      this.waiter.pass(uid);
+      this.waiter.pass(uid, 'search');
       var q = this.waiter.data(uid, 'q');
       if (q) {
         info.param['q'] = q;
@@ -121,7 +121,7 @@ router.dialog(dialogs);
 
 router.set('search', {
   'pattern': function(info) {
-    return info.param['q'].length < 25;
+    return info.param['q'] && info.param['q'].length < 25;
   },
   'handler': function(info, next) {
     var u = info.u || user(info.from);
@@ -164,5 +164,6 @@ router.set('location', function(info, next) {
     return douban.nearby(info.param, next);
   });
 });
+
 
 module.exports = router;

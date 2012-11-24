@@ -20,6 +20,21 @@ waiter.set('who_create', {
   }
 });
 
+waiter.set('search_cmd', {
+  pattern: /^(搜索?|search|s)$/,
+  'tip': '你想搜什么？',
+  'replies': function(uid, info, cb) {
+    var u = info.u || user(info.from);
+    var waiter = this;
+    u.getLoc(function(err, loc) {
+      if (loc) return douban.search({ loc: loc, q: info.text }, cb);
+      waiter.data(uid, 'q', info.text);
+      waiter.data(uid, 'search', 'want_city');
+      return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
+    });
+  }
+});
+
 waiter.set('search', {
   'pattern': function(info) {
     info.param = info.param || {};
@@ -59,5 +74,4 @@ waiter.set('search', {
     'N': '好的，你说不要就不要' 
   }
 });
-
 module.exports = waiter;
