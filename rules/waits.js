@@ -58,7 +58,8 @@ waiter.set('search', {
     // save user data
     waiter.data(uid, { 'q': q, 'loc': loc_id });
     if (loc_id) {
-      return '要我在' + cities.id2name[loc_id] + '搜索“' + q + '”相关的活动吗？请回复“要”或“不要”，回复“永远不要”不再出现此提示';
+      return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
+      '”相关的活动吗？\n请回复“要”或“不要”，回复“永远不要”不再出现此提示，回复“要要，切客闹”总是尝试搜索';
     } else {
       waiter.data(uid, 'search', 'want_city');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
@@ -73,8 +74,14 @@ waiter.set('search', {
     },
     '永远不要': function(uid, info, cb) {
       var u = info.u || user(info.from);
-      u.setProp('stop_search', true, function() {
+      u.setProp('stop_search', 1, function() {
         return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
+      });
+    },
+    '要要，切客闹': function(uid, info, cb) {
+      var u = info.u || user(info.from);
+      u.setProp('stop_search', 2, function() {
+        return cb(null, '好的，今后我听不懂你的话时将总是尝试为你搜索相关活动。你可以回复“别闹了”取消此设置。');
       });
     },
     'N': '好的，你说不要就不要' 
@@ -83,15 +90,15 @@ waiter.set('search', {
 waiter.set('city_weather', {
   'tip': '要查询天气，我需要先知道你在哪个城市',
   'replies': function(uid, info, cb) {
+    weather(info.text, function(err, res) {
+      if (err || ! res) return cb(err);
+      return cb(null, res);
+    });
     process.nextTick(function() {
       var param = parser.listParam(info.text);
       if (param['loc']) {
         user(info.from).setLoc(param['loc']);
       }
-    });
-    weather(info.text, function(err, res) {
-      if (err || ! res) return cb(err);
-      return cb(null, res);
     });
   }
 });

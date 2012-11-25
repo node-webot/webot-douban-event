@@ -22,11 +22,27 @@ module.exports = {
       info.ended = true;
       return douban.search(info.param, next);
     }
+
     var q = info.param['q'];
     var loc = info.param['loc'];
     u.getProp('stop_search', function(err, res){
-      if (!res) return next(); // will goto ask search
-      return next(null, unknown_replies.sample(1)[0]);
+      if (!res) {
+        if (info.cmd === 'stop_search') return next(null, '好好好... 都听你的...');
+        return next(); // will goto ask search
+      }
+      if (info.cmd === 'stop_search') {
+        // 别闹了
+        u.delProp('stop_search', function() {
+          info.ended = true;
+          return next(null, '好的，有关自动搜索的设定已重置');
+        });
+      } else if (res == 2) {
+        // 总是自动搜索
+        info.ended = true;
+        return douban.search(info.param, next);
+      } else {
+        return next(null, unknown_replies.sample(1)[0]);
+      }
     });
   }
 };

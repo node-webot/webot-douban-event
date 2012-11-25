@@ -4,7 +4,7 @@ var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
 var parser = require(pwd + '/lib/parser');
 
-var cmds = ['search|搜索|s'];
+var cmds = ['search|搜索|s', 'stop_search|别闹了'];
 
 module.exports = {
   'parser': function(info, next) {
