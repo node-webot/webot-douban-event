@@ -1,6 +1,9 @@
 var pwd = process.cwd();
 var webot = require('weixin-robot');
 
+var data = require(pwd + '/data');
+var cities = data.cities;
+
 var douban = require(pwd + '/lib/douban');
 var user = require(pwd + '/lib/user');
 
