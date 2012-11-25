@@ -7,6 +7,7 @@ var unknown_replies = [
   '唉，实在听不懂你在说什么耶...',
   '实在抱歉，暂时不知道您说这话是什么意思..',
   '不太明白你要表达个什么意思... 我智力很有限的！',
+  'Remember, you can always type "search xxx" to search for events related to xxx',
   '你刚才说的我没听太懂，但我还在努力学习中，以后说不定就懂了哦~'
 ]
 module.exports = {

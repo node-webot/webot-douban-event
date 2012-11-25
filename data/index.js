@@ -28,7 +28,7 @@ module.exports = {
 		"commonweal": "公益",
 		"travel": "旅行|旅游",
 		"sports": "运动|体育",
-		"drama": "戏剧|舞台剧",
+		"drama": "戏剧|舞台剧|话剧",
 		"music": "音乐|演出",
 		"exhibition": "展览",
 		"party": "聚会|约会"
