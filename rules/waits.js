@@ -59,7 +59,7 @@ waiter.set('search', {
     waiter.data(uid, { 'q': q, 'loc': loc_id });
     if (loc_id) {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
-      '”相关的活动吗？\n请回复“要”或“不要”，回复“永远不要”不再出现此提示，回复“要要，切克闹”总是尝试搜索';
+      '”相关的活动吗？\n请回复“要”或“不要”，回复“要要，切克闹”总是尝试搜索';
     } else {
       waiter.data(uid, 'search', 'want_city');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
