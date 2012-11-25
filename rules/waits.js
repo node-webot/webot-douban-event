@@ -1,5 +1,6 @@
 var pwd = process.cwd();
 var data = require(pwd + '/data');
+var parser = require(pwd + '/lib/parser');
 var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
 
@@ -26,12 +27,16 @@ waiter.set('search_cmd', {
   'replies': function(uid, info, cb) {
     var u = info.u || user(info.from);
     var waiter = this;
-    u.getLoc(function(err, loc) {
+    var next = function(err, loc) {
       if (loc) return douban.search({ loc: loc, q: info.text }, cb);
       waiter.data(uid, 'q', info.text);
       waiter.data(uid, 'search', 'want_city');
       return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
-    });
+    };
+    info.param = info.param || parser.listParam(info.text);
+    var loc = info.param['loc'];
+    if (loc) return true;
+    u.getLoc(next);
   }
 });
 

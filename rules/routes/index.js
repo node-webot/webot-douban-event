@@ -16,7 +16,7 @@ var router = webot.router();
 
 router.set('list', {
   'pattern': function(info) {
-    return !info.param['q'];
+    return !info.param['q'] && !info.cmd;
   },
   'handler': function(info, next) {
     var loc = info.param['loc'];
