@@ -3,6 +3,7 @@ var data = require(pwd + '/data');
 var parser = require(pwd + '/lib/parser');
 var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
+var weather = require(pwd + '/lib/weather');
 
 var cities = data.cities;
 
@@ -77,6 +78,21 @@ waiter.set('search', {
       });
     },
     'N': '好的，你说不要就不要' 
+  }
+});
+waiter.set('city_weather', {
+  'tip': '要查询天气，我需要先知道你在哪个城市',
+  'replies': function(uid, info, cb) {
+    process.nextTick(function() {
+      var param = parser.listParam(info.text);
+      if (param['loc']) {
+        user(info.from).setLoc(param['loc']);
+      }
+    });
+    weather(info.text, function(err, res) {
+      if (err || ! res) return cb(err);
+      return cb(null, res);
+    });
   }
 });
 module.exports = waiter;
