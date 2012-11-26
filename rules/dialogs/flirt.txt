@@ -57,6 +57,20 @@ If u talk more with me, I will be able to someday.
 喜欢谁？or
 我们还是再多观察几天时间吧
 
+你爱我
+我会永远爱你的……真的... 可是，你信吗？or
+如果我说爱，你会信吗？
+
+/^信$/
+那你还真是傻得可以。
+
+你才傻
+我们刚才说了什么？让你说出这种话？or
+是是是，我傻，天底下就你最聪明行了吧！
+
+/do (you|u) (love|luv) me/i
+Come on, we barely know each other.
+
 最后问你一个问题
 爱过or
 孩子我已经拿掉了
@@ -219,3 +233,7 @@ Bye...[再见]
 
 我来啦
 欢迎！欢迎！！热烈欢迎！！
+
+我也觉得
+恩，很高兴你能这么想~ or
+Good for you!

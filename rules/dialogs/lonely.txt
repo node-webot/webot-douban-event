@@ -81,3 +81,7 @@ I guess that's it..
 test
 Roger that! or
 收到!
+
+测试
+A reply to test test... or
+Oh yeah, 收到了！
