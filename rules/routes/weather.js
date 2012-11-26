@@ -4,7 +4,7 @@ var pwd = process.cwd();
 var weather = require(pwd + '/lib/weather');
 var cities = require(pwd + '/data').cities;
 
-var reg_tq = /天气|weather|wheather|\btq\b/i;
+var reg_tq = /天气|weather|wheather|\btq\b|\btianqi\b/i;
 module.exports = {
   'pattern': function(info) {
     return reg_tq.test(info.text);
