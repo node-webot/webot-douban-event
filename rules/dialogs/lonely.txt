@@ -78,10 +78,13 @@ I guess that's it..
 么么哒
 [亲亲]
 
-test
+/test/i
 Roger that! or
 收到!
 
 测试
 A reply to test test... or
 Oh yeah, 收到了！
+
+要求人工服务
+好的，正在为你转接中，请稍等...

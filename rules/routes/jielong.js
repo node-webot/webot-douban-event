@@ -10,7 +10,8 @@ module.exports = {
   'handler': function(info) {
     var lastChar = info.text[info.text.length - 1]; 
     if (lastChar in chengyu.index) {
-      return chengyu.index[lastChar].sample(1)[0];
+      var ret = chengyu.index[lastChar].sample(1)[0];
+      return this.waiter.reserve(info.from, 'jielong', ret);
     }
     return '[大哭]你赢了.. 我接不上这个成语... 换下一个试试吧';
   }

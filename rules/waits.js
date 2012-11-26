@@ -111,4 +111,20 @@ waiter.set('city_weather', {
     });
   }
 });
+
+var chengyu = require(pwd + '/data').chengyu;
+waiter.set('jielong', {
+  'tip': function(uid, q) {
+    this.data(uid, 'jielong', q);
+    return q;
+  },
+  'replies': {
+    '((什么|啥)意思|解释|释义)': function(uid, info, cb) {
+      var q = this.data(uid, 'jielong');
+      var ret = q && chengyu.explain[q];
+      if (ret) return cb(null, '【' + q + '】' + ret);
+      return cb(null, '我也不知道是什么意思呢...');
+    }
+  }
+});
 module.exports = waiter;
