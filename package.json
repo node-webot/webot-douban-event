@@ -11,7 +11,7 @@
     "debug": "*",
     "iconv": ">= 1.2.4",
     "express": ">= 3.0.0beta2",
-    "weixin-robot": ">= 0.0.3-6",
+    "weixin-robot": ">= 0.0.3-7",
     "memcached": ">= 0.1.4"
   },
   "devDependencies": {
