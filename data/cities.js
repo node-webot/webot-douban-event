@@ -19,1840 +19,3524 @@ var cities = [{
 	"name": "成都|榕城|cd|chengdu"
 },
 {
-	"id": "118159",
-	"name": "南京|nanjing"
+	"name": "南京|nanjing",
+	"id": "118159"
 },
 {
-	"id": "118172",
-	"name": "杭州|hangzhou"
+	"name": "杭州|hangzhou",
+	"id": "118172"
 },
 {
-	"id": "118254",
-	"name": "武汉|wuhan"
+	"name": "武汉|wuhan",
+	"id": "118254"
 },
 {
-	"id": "108309",
-	"name": "重庆|chongqing"
+	"name": "重庆|chongqing",
+	"id": "108309"
 },
 {
-	"id": "108289",
-	"name": "天津|tianjin"
+	"name": "长沙|changsha",
+	"id": "118267"
 },
 {
-	"id": "118371",
-	"name": "西安|xian"
+	"name": "天津|tianjin",
+	"id": "108289"
 },
 {
-	"id": "118267",
-	"name": "长沙|changsha"
+	"name": "西安|xian",
+	"id": "118371"
 },
 {
-	"id": "118201",
-	"name": "厦门|xiamen"
+	"name": "厦门|xiamen",
+	"id": "118201"
 },
 {
-	"id": "118221",
-	"name": "青岛|tsingtao|qingdao"
+	"name": "青岛|qingdao",
+	"id": "118221"
 },
 {
-	"id": "118163",
-	"name": "苏州|suzhou"
+	"name": "沈阳|shenyang",
+	"id": "118123"
 },
 {
-	"id": "118123",
-	"name": "沈阳|shenyang"
+	"name": "郑州|zhengzhou",
+	"id": "118237"
 },
 {
-	"id": "118237",
-	"name": "郑州|zhenzhou"
+	"name": "济南|jinan",
+	"id": "118220"
 },
 {
-	"id": "118220",
-	"name": "济南|jinan"
+	"name": "苏州|suzhou",
+	"id": "118163"
 },
 {
-	"id": "118124",
-	"name": "大连|dalian"
+	"name": "大连|dalian",
+	"id": "118124"
 },
 {
-	"id": "118183",
-	"name": "合肥|hefei"
+	"name": "合肥|hefei",
+	"id": "118183"
 },
 {
-	"id": "118200",
-	"name": "福州|fuzhou"
+	"name": "哈尔滨|haerbin",
+	"id": "118146"
 },
 {
-	"id": "118348",
-	"name": "昆明|kunming"
+	"name": "长春|changchun",
+	"id": "118137"
 },
 {
-	"id": "118173",
-	"name": "宁波|ningbo"
+	"name": "昆明|kunming",
+	"id": "118348"
 },
 {
-	"id": "118146",
-	"name": "哈尔滨|harbing"
+	"name": "宁波|ningbo",
+	"id": "118173"
 },
 {
-	"id": "118137",
-	"name": "长春|changchun"
+	"name": "福州|fuzhou",
+	"id": "118200"
 },
 {
-	"id": "108090",
-	"name": "香港|hongkong|Hong Kong|hk"
+	"name": "香港|hongkong",
+	"id": "108090"
 },
 {
-	"id": "118209",
-	"name": "南昌|nanchang"
+	"name": "南昌|nanchang",
+	"id": "118209"
 },
 {
-	"id": "118160",
-	"name": "无锡|wuxi"
+	"name": "无锡|wuxi",
+	"id": "118160"
 },
 {
-	"id": "118088",
-	"name": "石家庄|shijiazhuang"
+	"name": "石家庄|shijiazhuang",
+	"id": "118088"
 },
 {
-	"id": "118174",
-	"name": "温州|wenzhou"
+	"name": "南宁|nanning",
+	"id": "118302"
 },
 {
-	"id": "118297",
-	"name": "东莞|dongguan"
+	"name": "温州|wenzhou",
+	"id": "118174"
 },
 {
-	"id": "118302",
-	"name": "南宁|nanning"
+	"name": "佛山|foshan",
+	"id": "118286"
 },
 {
-	"id": "118099",
-	"name": "太原|taiyuan"
+	"name": "东莞|dongguan",
+	"id": "118297"
 },
 {
-	"id": "118316",
-	"name": "海口|haikou"
+	"name": "太原|taiyuan",
+	"id": "118099"
 },
 {
-	"id": "118339",
-	"name": "贵阳|guiyang"
+	"name": "兰州|lanzhou",
+	"id": "118381"
 },
 {
-	"id": "118286",
-	"name": "佛山|foshan"
+	"name": "珠海|zhuhai",
+	"id": "118283"
 },
 {
-	"id": "118283",
-	"name": "珠海|zhuhai"
+	"name": "海口|haikou",
+	"id": "118316"
 },
 {
-	"id": "118381",
-	"name": "兰州|lanzhou"
+	"name": "贵阳|guiyang",
+	"id": "118339"
 },
 {
-	"id": "128183",
-	"name": "London|伦敦"
+	"name": "常州|changzhou",
+	"id": "118162"
 },
 {
-	"id": "118226",
-	"name": "烟台|yantai"
+	"name": "乌鲁木齐|wulumuqi",
+	"id": "118408"
 },
 {
-	"id": "118204",
-	"name": "泉州|quanzhou"
+	"name": "拉萨|lasa",
+	"id": "118364"
 },
 {
-	"id": "118403",
-	"name": "银川|yinchuan"
+	"name": "烟台|yantai",
+	"id": "118226"
 },
 {
-	"id": "118162",
-	"name": "常州|changzhou"
+	"name": "银川|yinchuan",
+	"id": "118403"
 },
 {
-	"id": "118304",
-	"name": "桂林|guilin"
+	"name": "London|london",
+	"id": "128183"
 },
 {
-	"id": "118408",
-	"name": "乌鲁木齐|urmuqi"
+	"name": "泉州|quanzhou",
+	"id": "118204"
 },
 {
-	"id": "128166",
-	"name": "Paris|巴黎"
+	"name": "扬州|yangzhou",
+	"id": "118168"
 },
 {
-	"id": "118161",
-	"name": "徐州|xuzhou"
+	"name": "徐州|xuzhou",
+	"id": "118161"
 },
 {
-	"id": "118298",
-	"name": "中山|zhongshan"
+	"name": "大理|dali",
+	"id": "118360"
 },
 {
-	"id": "118364",
-	"name": "拉萨|lasha"
+	"name": "桂林|guilin",
+	"id": "118304"
 },
 {
-	"id": "118168",
-	"name": "扬州|yangzhou"
+	"name": "Paris|paris",
+	"id": "128166"
 },
 {
-	"id": "119088",
-	"name": "台北|taipei"
+	"name": "呼和浩特|huhehaote",
+	"id": "118111"
 },
 {
-	"id": "118164",
-	"name": "南通|nantong"
+	"name": "西宁|xining",
+	"id": "118395"
 },
 {
-	"id": "118395",
-	"name": "西宁|xining"
+	"name": "三亚|sanya",
+	"id": "118317"
 },
 {
-	"id": "118284",
-	"name": "汕头|shantou"
+	"name": "汕头|shantou",
+	"id": "118284"
 },
 {
-	"id": "108231",
-	"name": "Singapore|新加坡"
+	"name": "南通|nantong",
+	"id": "118164"
 },
 {
-	"id": "128096",
-	"name": "Sydney|悉尼"
+	"name": "金华|jinhua",
+	"id": "118178"
 },
 {
-	"id": "118360",
-	"name": "大理|dali"
+	"name": "中山|zhongshan",
+	"id": "118298"
 },
 {
-	"id": "118153",
-	"name": "牡丹江|mudanjiang"
+	"name": "牡丹江|mudanjiang",
+	"id": "118153"
 },
 {
-	"id": "118317",
-	"name": "三亚|sanya"
+	"name": "惠州|huizhou",
+	"id": "118291"
 },
 {
-	"id": "118291",
-	"name": "惠州|huizhou"
+	"name": "宜昌|yichang",
+	"id": "118259"
 },
 {
-	"id": "118111",
-	"name": "呼和浩特"
+	"name": "景德镇|jingdezhen",
+	"id": "118210"
 },
 {
-	"id": "118303",
-	"name": "柳州"
+	"name": "台北|taibei",
+	"id": "119088"
 },
 {
-	"id": "118177",
-	"name": "绍兴"
+	"name": "Singapore|singapore",
+	"id": "108231"
 },
 {
-	"id": "118259",
-	"name": "宜昌"
+	"name": "包头|baotou",
+	"id": "118112"
 },
 {
-	"id": "108091",
-	"name": "澳门|macao"
+	"name": "嘉兴|jiaxing",
+	"id": "118175"
 },
 {
-	"id": "118225",
-	"name": "潍坊"
+	"name": "洛阳|luoyang",
+	"id": "118239"
 },
 {
-	"id": "118175",
-	"name": "嘉兴"
+	"name": "台州",
+	"id": "118181"
 },
 {
-	"id": "118178",
-	"name": "金华"
+	"name": "唐山|tangshan",
+	"id": "118089"
 },
 {
-	"id": "128136",
-	"name": "Toronto|多伦多"
+	"name": "澳门|aomen",
+	"id": "108091"
 },
 {
-	"id": "118184",
-	"name": "芜湖"
+	"name": "绍兴|shaoxing",
+	"id": "118177"
 },
 {
-	"id": "118181",
-	"name": "台州"
+	"name": "赣州|ganzhou",
+	"id": "118215"
 },
 {
-	"id": "128400",
-	"name": "San Francisco/Bay Area|湾区|旧金山"
+	"name": "丽江|lijiang",
+	"id": "118353"
 },
 {
-	"id": "118210",
-	"name": "景德镇"
+	"name": "淄博|zibo",
+	"id": "118222"
 },
 {
-	"id": "118112",
-	"name": "包头"
+	"name": "Philadelphia|philadelphia",
+	"id": "128401"
 },
 {
-	"id": "118239",
-	"name": "洛阳"
+	"name": "Tōkyō|tky",
+	"id": "128260"
 },
 {
-	"id": "118215",
-	"name": "赣州"
+	"name": "Seoul (Sŏul)|seoulsul",
+	"id": "128363"
 },
 {
-	"id": "128396",
-	"name": "New York City|纽约"
+	"name": "临沂|linyi",
+	"id": "118232"
 },
 {
-	"id": "128398",
-	"name": "Chicago|芝加哥"
+	"name": "东营|dongying",
+	"id": "118224"
 },
 {
-	"id": "128363",
-	"name": "Seoul (Sŏul)|首尔|汉城"
+	"name": "柳州|liuzhou",
+	"id": "118303"
 },
 {
-	"id": "118222",
-	"name": "淄博"
+	"name": "大庆|daqing",
+	"id": "118151"
 },
 {
-	"id": "118090",
-	"name": "秦皇岛"
+	"name": "芜湖|wuhu",
+	"id": "118184"
 },
 {
-	"id": "118176",
-	"name": "湖州"
+	"name": "Toronto|toronto",
+	"id": "128136"
 },
 {
-	"id": "128260",
-	"name": "Tōkyō|东京|Tokyo"
+	"name": "Sydney|sydney",
+	"id": "128096"
 },
 {
-	"id": "118091",
-	"name": "邯郸"
+	"name": "潍坊|weifang",
+	"id": "118225"
 },
 {
-	"id": "128401",
-	"name": "Philadelphia|费城"
+	"name": "Los Angeles|losangeles",
+	"id": "128397"
 },
 {
-	"id": "118151",
-	"name": "大庆"
+	"name": "湖州|huzhou",
+	"id": "118176"
 },
 {
-	"id": "118089",
-	"name": "唐山"
+	"name": "New York City|newyorkcity",
+	"id": "128396"
 },
 {
-	"id": "118232",
-	"name": "临沂"
+	"name": "Chicago|chicago",
+	"id": "128398"
 },
 {
-	"id": "128397",
-	"name": "Los Angeles|洛杉矶"
+	"name": "萍乡|pingxiang",
+	"id": "118211"
 },
 {
-	"id": "118224",
-	"name": "东营"
+	"name": "邯郸|handan",
+	"id": "118091"
 },
 {
-	"id": "128097",
-	"name": "Melbourne|墨尔本"
+	"name": "张家界|zhangjiajie",
+	"id": "118274"
 },
 {
-	"id": "118211",
-	"name": "萍乡"
+	"name": "San Francisco/Bay Area|sanfranciscobayarea",
+	"id": "128400"
 },
 {
-	"id": "118130",
-	"name": "营口"
+	"name": "秦皇岛|qinhuangdao",
+	"id": "118090"
 },
 {
-	"id": "128138",
-	"name": "Vancouver|温哥华"
+	"name": "蚌埠|bangbu",
+	"id": "118185"
 },
 {
-	"id": "118353",
-	"name": "丽江"
+	"name": "漳州|zhangzhou",
+	"id": "118205"
 },
 {
-	"id": "118097",
-	"name": "廊坊"
+	"name": "新乡|xinxiang",
+	"id": "118243"
 },
 {
-	"id": "118227",
-	"name": "威海"
+	"name": "Vancouver|vancouver",
+	"id": "128138"
 },
 {
-	"id": "118229",
-	"name": "泰安"
+	"name": "吉林|jilin",
+	"id": "129059"
 },
 {
-	"id": "118288",
-	"name": "湛江"
+	"name": "江门|jiangmen",
+	"id": "118287"
 },
 {
-	"id": "118251",
-	"name": "信阳"
+	"name": "信阳|xinyang",
+	"id": "118251"
 },
 {
-	"id": "118273",
-	"name": "常德"
+	"name": "承德|chengde",
+	"id": "118095"
 },
 {
-	"id": "128172",
-	"name": "Berlin|柏林"
+	"name": "沧州|cangzhou",
+	"id": "118096"
 },
 {
-	"id": "118243",
-	"name": "新乡"
+	"name": "常德|changde",
+	"id": "118273"
 },
 {
-	"id": "118290",
-	"name": "肇庆"
+	"name": "廊坊|langfang",
+	"id": "118097"
 },
 {
-	"id": "129059",
-	"name": "吉林"
+	"name": "昆山|kunshan",
+	"id": "131411"
 },
 {
-	"id": "118274",
-	"name": "张家界"
+	"name": "威海|weihai",
+	"id": "118227"
 },
 {
-	"id": "128188",
-	"name": "Liverpool|利物浦"
+	"name": "Melbourne|melbourne",
+	"id": "128097"
 },
 {
-	"id": "118179",
-	"name": "衢州"
+	"name": "Liverpool|liverpool",
+	"id": "128188"
 },
 {
-	"id": "118165",
-	"name": "连云港"
+	"name": "湘潭|xiangtan",
+	"id": "118269"
 },
 {
-	"id": "118219",
-	"name": "上饶"
+	"name": "日照|rizhao",
+	"id": "118230"
 },
 {
-	"id": "128399",
-	"name": "Washington, D.C|华盛顿"
+	"name": "开封|kaifeng",
+	"id": "118238"
 },
 {
-	"id": "118280",
-	"name": "湘西"
+	"name": "济宁|jining",
+	"id": "118228"
 },
 {
-	"id": "118095",
-	"name": "承德"
+	"name": "朝阳|chaoyang",
+	"id": "118135"
 },
 {
-	"id": "118205",
-	"name": "漳州"
+	"name": "衢州|quzhou",
+	"id": "118179"
 },
 {
-	"id": "118245",
-	"name": "濮阳"
+	"name": "Berlin|berlin",
+	"id": "128172"
 },
 {
-	"id": "118287",
-	"name": "江门"
+	"name": "九江|jiujiang",
+	"id": "118212"
 },
 {
-	"id": "128257",
-	"name": "Roma|罗马"
+	"name": "湛江|zhanjiang",
+	"id": "118288"
 },
 {
-	"id": "118230",
-	"name": "日照"
+	"name": "Krung Thep|krungthep",
+	"id": "128380"
 },
 {
-	"id": "118216",
-	"name": "吉安"
+	"name": "肇庆|zhaoqing",
+	"id": "118290"
 },
 {
-	"id": "118218",
-	"name": "抚州"
+	"name": "延安|yanan",
+	"id": "118376"
 },
 {
-	"id": "118257",
-	"name": "十堰"
+	"name": "上饶|shangrao",
+	"id": "118219"
 },
 {
-	"id": "118277",
-	"name": "永州"
+	"name": "娄底|loudi",
+	"id": "118279"
 },
 {
-	"id": "118093",
-	"name": "保定"
+	"name": "湘西|xiangxi",
+	"id": "118280"
 },
 {
-	"id": "118203",
-	"name": "三明"
+	"name": "西双版纳|xishuangbanna",
+	"id": "118358"
 },
 {
-	"id": "118279",
-	"name": "娄底"
+	"name": "Barcelona|barcelona",
+	"id": "128370"
 },
 {
-	"id": "118323",
-	"name": "绵阳"
+	"name": "泰州|taizhou",
+	"id": "118170"
 },
 {
-	"id": "118238",
-	"name": "开封"
+	"name": "马鞍山|maanshan",
+	"id": "118187"
 },
 {
-	"id": "118327",
-	"name": "乐山"
+	"name": "泰安|taian",
+	"id": "118229"
 },
 {
-	"id": "118169",
-	"name": "镇江"
+	"name": "榆林",
+	"id": "118378"
 },
 {
-	"id": "118185",
-	"name": "蚌埠"
+	"name": "三明|sanming",
+	"id": "118203"
 },
 {
-	"id": "118269",
-	"name": "湘潭"
+	"name": "抚顺|fushun",
+	"id": "118126"
 },
 {
-	"id": "118228",
-	"name": "济宁"
+	"name": "阜阳|fuyang",
+	"id": "118193"
 },
 {
-	"id": "118103",
-	"name": "长治"
+	"name": "衡阳|hengyang",
+	"id": "118270"
 },
 {
-	"id": "118196",
-	"name": "六安"
+	"name": "营口|yingkou",
+	"id": "118130"
 },
 {
-	"id": "118212",
-	"name": "九江"
+	"name": "枣庄|zaozhuang",
+	"id": "118223"
 },
 {
-	"id": "118271",
-	"name": "邵阳"
+	"name": "平顶山|pingdingshan",
+	"id": "118240"
 },
 {
-	"id": "118310",
-	"name": "玉林"
+	"name": "邢台|xingtai",
+	"id": "118092"
 },
 {
-	"id": "118197",
-	"name": "亳州"
+	"name": "株洲|zhuzhou",
+	"id": "118268"
 },
 {
-	"id": "118272",
-	"name": "岳阳"
+	"name": "邵阳|shaoyang",
+	"id": "118271"
 },
 {
-	"id": "118135",
-	"name": "朝阳"
+	"name": "抚州",
+	"id": "118218"
 },
 {
-	"id": "118136",
-	"name": "葫芦岛"
+	"name": "连云港|lianyungang",
+	"id": "118165"
 },
 {
-	"id": "118376",
-	"name": "延安"
+	"name": "保定|baoding",
+	"id": "118093"
 },
 {
-	"id": "118256",
-	"name": "襄樊"
+	"name": "安阳|anyang",
+	"id": "118244"
 },
 {
-	"id": "118276",
-	"name": "郴州"
+	"name": "Seattle|seattle",
+	"id": "128409"
 },
 {
-	"id": "128416",
-	"name": "Pittsburgh|匹兹堡"
+	"name": "Roma|roma",
+	"id": "128257"
 },
 {
-	"id": "128473",
-	"name": "Kyoto|京都"
+	"name": "聊城|liaocheng",
+	"id": "118234"
 },
 {
-	"id": "118092",
-	"name": "邢台"
+	"name": "Ōsaka|saka",
+	"id": "128261"
 },
 {
-	"id": "118235",
-	"name": "滨州"
+	"name": "乐山|leshan",
+	"id": "118327"
 },
 {
-	"id": "118258",
-	"name": "荆州"
+	"name": "濮阳|puyang",
+	"id": "118245"
 },
 {
-	"id": "118236",
-	"name": "菏泽"
+	"name": "鞍山|anshan",
+	"id": "118125"
 },
 {
-	"id": "131456",
-	"name": "Toulouse"
+	"name": "茂名|maoming",
+	"id": "118289"
 },
 {
-	"id": "118094",
-	"name": "张家口"
+	"name": "亳州|bozhou",
+	"id": "118197"
 },
 {
-	"id": "118167",
-	"name": "盐城"
+	"name": "葫芦岛|huludao",
+	"id": "118136"
 },
 {
-	"id": "128402",
-	"name": "Dallas|达拉斯"
+	"name": "荆州|jingzhou",
+	"id": "118258"
 },
 {
-	"id": "131409",
-	"name": "杨凌"
+	"name": "盐城|yancheng",
+	"id": "118167"
 },
 {
-	"id": "118096",
-	"name": "沧州"
+	"name": "Dallas|dallas",
+	"id": "128402"
 },
 {
-	"id": "118223",
-	"name": "枣庄"
+	"name": "恩施|enshi",
+	"id": "118266"
 },
 {
-	"id": "118357",
-	"name": "红河"
+	"name": "韶关|shaoguan",
+	"id": "118285"
 },
 {
-	"id": "128370",
-	"name": "Barcelona|巴塞罗那"
+	"name": "Zürich|zrich",
+	"id": "128376"
 },
 {
-	"id": "131411",
-	"name": "昆山"
+	"name": "Milano|milano",
+	"id": "128256"
 },
 {
-	"id": "118170",
-	"name": "泰州"
+	"name": "Wien|wien",
+	"id": "128101"
 },
 {
-	"id": "118187",
-	"name": "马鞍山"
+	"name": "Trondheim|trondheim",
+	"id": "128491"
 },
 {
-	"id": "118266",
-	"name": "恩施"
+	"name": "吉安|jian",
+	"id": "118216"
 },
 {
-	"id": "118358",
-	"name": "西双版纳"
+	"name": "Glasgow|glasgow",
+	"id": "128187"
 },
 {
-	"id": "118191",
-	"name": "黄山"
+	"name": "Stuttgart|stuttgart",
+	"id": "128173"
 },
 {
-	"id": "118244",
-	"name": "安阳"
+	"name": "Kyoto|kyoto",
+	"id": "128473"
 },
 {
-	"id": "128409",
-	"name": "Seattle|西雅图"
+	"name": "Venice|venice",
+	"id": "131463"
 },
 {
-	"id": "128101",
-	"name": "Wien"
+	"name": "淮安|huaian",
+	"id": "118166"
 },
 {
-	"id": "128167",
-	"name": "Marseille"
+	"name": "Abidjan|abidjan",
+	"id": "128154"
 },
 {
-	"id": "128185",
-	"name": "Manchester|曼切斯特|曼彻斯特"
+	"name": "丹东|dandong",
+	"id": "118128"
 },
 {
-	"id": "128323",
-	"name": "Lima|利马|利玛"
+	"name": "玉林|yulin",
+	"id": "118310"
 },
 {
-	"id": "128491",
-	"name": "Trondheim"
+	"name": "滨州|binzhou",
+	"id": "118235"
 },
 {
-	"id": "118289",
-	"name": "茂名"
+	"name": "晋中|jinzhong",
+	"id": "118106"
 },
 {
-	"id": "118340",
-	"name": "六盘水"
+	"name": "Washington, D.C|washingtondc",
+	"id": "128399"
 },
 {
-	"id": "128186",
-	"name": "Leeds|利兹"
+	"name": "镇江|zhenjiang",
+	"id": "118169"
 },
 {
-	"id": "118106",
-	"name": "晋中"
+	"name": "Auckland|auckland",
+	"id": "128302"
 },
 {
-	"id": "128169",
-	"name": "Lille"
+	"name": "Cambridge|cambridge",
+	"id": "128482"
 },
 {
-	"id": "128187",
-	"name": "Glasgow|格拉斯哥"
+	"name": "Phoenix|phoenix",
+	"id": "128408"
 },
 {
-	"id": "118255",
-	"name": "黄石"
+	"name": "Marseille|marseille",
+	"id": "128167"
 },
 {
-	"id": "119089",
-	"name": "高雄"
+	"name": "Manchester|manchester",
+	"id": "128185"
 },
 {
-	"id": "118217",
-	"name": "宜春"
+	"name": "Edinburgh|edinburgh",
+	"id": "128463"
 },
 {
-	"id": "118343",
-	"name": "铜仁"
+	"name": "梅州|meizhou",
+	"id": "118292"
 },
 {
-	"id": "128261",
-	"name": "Ōsaka"
+	"name": "阳江|yangjiang",
+	"id": "118295"
 },
 {
-	"id": "118234",
-	"name": "聊城"
+	"name": "莆田|putian",
+	"id": "118202"
 },
 {
-	"id": "119091",
-	"name": "台中"
+	"name": "遂宁|suining",
+	"id": "118325"
 },
 {
-	"id": "128137",
-	"name": "Montréal"
+	"name": "Nottingham|nottingham",
+	"id": "131430"
 },
 {
-	"id": "128173",
-	"name": "Stuttgart"
+	"name": "Düsseldorf|dsseldorf",
+	"id": "128179"
 },
 {
-	"id": "118278",
-	"name": "怀化"
+	"name": "北海|beihai",
+	"id": "118306"
 },
 {
-	"id": "118322",
-	"name": "德阳"
+	"name": "六安|liuan",
+	"id": "118196"
 },
 {
-	"id": "118346",
-	"name": "黔东南"
+	"name": "Lima|lima",
+	"id": "128323"
 },
 {
-	"id": "118166",
-	"name": "淮安"
+	"name": "十堰|shiyan",
+	"id": "118257"
 },
 {
-	"id": "128424",
-	"name": "Columbus"
+	"name": "怀化|huaihua",
+	"id": "118278"
 },
 {
-	"id": "118145",
-	"name": "延边"
+	"name": "Pittsburgh|pittsburgh",
+	"id": "128416"
 },
 {
-	"id": "118260",
-	"name": "荆门"
+	"name": "台中|taizhong",
+	"id": "119091"
 },
 {
-	"id": "118325",
-	"name": "遂宁"
+	"name": "孝感|xiaogan",
+	"id": "118262"
 },
 {
-	"id": "118385",
-	"name": "嘉峪关"
+	"name": "南平|nanping",
+	"id": "118206"
 },
 {
-	"id": "128154",
-	"name": "Abidjan"
+	"name": "滁州|chuzhou",
+	"id": "118192"
 },
 {
-	"id": "131430",
-	"name": "Nottingham"
+	"name": "锦州|jinzhou",
+	"id": "118129"
 },
 {
-	"id": "131463",
-	"name": "Venice"
+	"name": "大同|datong",
+	"id": "118100"
 },
 {
-	"id": "118118",
-	"name": "巴彦淖尔"
+	"name": "德阳|deyang",
+	"id": "118322"
 },
 {
-	"id": "128177",
-	"name": "Köln"
+	"name": "丽水|lishui",
+	"id": "118182"
 },
 {
-	"id": "128369",
-	"name": "Madrid"
+	"name": "荆门|jingmen",
+	"id": "118260"
 },
 {
-	"id": "118206",
-	"name": "南平"
+	"name": "揭阳|jieyang",
+	"id": "118300"
 },
 {
-	"id": "128338",
-	"name": "Jekaterinburg (Sverdlovsk)"
+	"name": "宁德|ningde",
+	"id": "118208"
 },
 {
-	"id": "118330",
-	"name": "广安"
+	"name": "衡水|hengshui",
+	"id": "118098"
 },
 {
-	"id": "128179",
-	"name": "Düsseldorf"
+	"name": "Lille|lille",
+	"id": "128169"
 },
 {
-	"id": "118125",
-	"name": "鞍山"
+	"name": "高雄|gaoxiong",
+	"id": "119089"
 },
 {
-	"id": "118208",
-	"name": "宁德"
+	"name": "舟山|zhoushan",
+	"id": "118180"
 },
 {
-	"id": "128180",
-	"name": "Nürnberg"
+	"name": "菏泽|heze",
+	"id": "118236"
 },
 {
-	"id": "128482",
-	"name": "Cambridge"
+	"name": "Köln|kln",
+	"id": "128177"
 },
 {
-	"id": "118126",
-	"name": "抚顺"
+	"name": "南充|nanchong",
+	"id": "118328"
 },
 {
-	"id": "118268",
-	"name": "株洲"
+	"name": "Jekaterinburg (Sverdlovsk)|jekaterinburgsverdlovsk",
+	"id": "128338"
 },
 {
-	"id": "118285",
-	"name": "韶关"
+	"name": "Nürnberg|nrnberg",
+	"id": "128180"
 },
 {
-	"id": "128302",
-	"name": "Auckland"
+	"name": "Houston|houston",
+	"id": "128406"
 },
 {
-	"id": "128407",
-	"name": "Atlanta"
+	"name": "中卫|zhongwei",
+	"id": "118407"
 },
 {
-	"id": "131414",
-	"name": "吴江"
+	"name": "Montréal|montral",
+	"id": "128137"
 },
 {
-	"id": "118100",
-	"name": "^大同"
+	"name": "曲靖|qujing",
+	"id": "118349"
 },
 {
-	"id": "118128",
-	"name": "丹东"
+	"name": "Columbus|columbus",
+	"id": "128424"
 },
 {
-	"id": "118193",
-	"name": "阜阳"
+	"name": "红河|honghe",
+	"id": "118357"
 },
 {
-	"id": "118407",
-	"name": "中卫"
+	"name": "Madrid|madrid",
+	"id": "128369"
 },
 {
-	"id": "128376",
-	"name": "Zürich"
+	"name": "铜陵|tongling",
+	"id": "118189"
 },
 {
-	"id": "128408",
-	"name": "Phoenix"
+	"name": "广安|guangan",
+	"id": "118330"
 },
 {
-	"id": "118102",
-	"name": "阳泉"
+	"name": "Córdoba|crdoba",
+	"id": "128093"
 },
 {
-	"id": "118270",
-	"name": "衡阳"
+	"name": "Al-Qāhirah|alqhirah",
+	"id": "128161"
 },
 {
-	"id": "118338",
-	"name": "凉山"
+	"name": "Baghdād|baghdd",
+	"id": "128251"
 },
 {
-	"id": "128256",
-	"name": "Milano"
+	"name": "Rotterdam|rotterdam",
+	"id": "128301"
 },
 {
-	"id": "128463",
-	"name": "Edinburgh"
+	"name": "Volgograd|volgograd",
+	"id": "128340"
 },
 {
-	"id": "118250",
-	"name": "商丘"
+	"name": "Sevilla|sevilla",
+	"id": "128372"
 },
 {
-	"id": "118370",
-	"name": "林芝"
+	"name": "Thanh Pho Ho Chi Minh|thanhphohochiminh",
+	"id": "128456"
 },
 {
-	"id": "118414",
-	"name": "喀什"
+	"name": "彰化县|zhanghuaxian",
+	"id": "128481"
 },
 {
-	"id": "128344",
-	"name": "Kazan'"
+	"name": "Karlskrona|karlskrona",
+	"id": "128508"
 },
 {
-	"id": "128382",
-	"name": "İstanbul"
+	"name": "Padova|padova",
+	"id": "131412"
 },
 {
-	"id": "128410",
-	"name": "Minneapolis"
+	"name": "Reykjavík|reykjavk",
+	"id": "131441"
 },
 {
-	"id": "128465",
-	"name": "仙桃"
+	"name": "Maynooth|maynooth",
+	"id": "131475"
 },
 {
-	"id": "128518",
-	"name": "Rennes"
+	"name": "迪庆|diqing",
+	"id": "118363"
 },
 {
-	"id": "131420",
-	"name": "Stratford-on-Avon"
+	"name": "Rosario|rosario",
+	"id": "128094"
 },
 {
-	"id": "131448",
-	"name": "Iowa City"
+	"name": "Al-Iskandarīyah|aliskandaryah",
+	"id": "128162"
 },
 {
-	"id": "131478",
-	"name": "Regensburg"
+	"name": "Hannover|hannover",
+	"id": "128181"
 },
 {
-	"id": "118104",
-	"name": "晋城"
+	"name": "Dublin (Baile Átha Cliath)|dublinbailethacliath",
+	"id": "128254"
 },
 {
-	"id": "118131",
-	"name": "阜新"
+	"name": "Čel'abinsk|elabinsk",
+	"id": "128341"
 },
 {
-	"id": "118214",
-	"name": "鹰潭"
+	"name": "Stockholm|stockholm",
+	"id": "128375"
 },
 {
-	"id": "118419",
-	"name": "伊犁"
+	"name": "Atlanta|atlanta",
+	"id": "128407"
 },
 {
-	"id": "128106",
-	"name": "Minsk"
+	"name": "Ha Noi|hanoi",
+	"id": "128457"
 },
 {
-	"id": "128168",
-	"name": "Lyon"
+	"name": "Jönköping|jnkping",
+	"id": "128509"
 },
 {
-	"id": "128258",
-	"name": "Napoli"
+	"name": "Weimar|weimar",
+	"id": "131442"
 },
 {
-	"id": "128324",
-	"name": "Manila"
+	"name": "Genève|geneve",
+	"id": "131476"
 },
 {
-	"id": "128345",
-	"name": "Saratov"
+	"name": "Helsinki (Helsingfors)|helsinkihelsingfors",
+	"id": "128165"
 },
 {
-	"id": "128389",
-	"name": "Kyyiv"
+	"name": "Tel Aviv-Yafo|telavivyafo",
+	"id": "128255"
 },
 {
-	"id": "128411",
-	"name": "San Diego"
+	"name": "P'yŏngyang|pyngyang",
+	"id": "128310"
 },
 {
-	"id": "128468",
-	"name": "Oslo"
+	"name": "Rostov-na-Donu|rostovnadonu",
+	"id": "128342"
 },
 {
-	"id": "128492",
-	"name": "Pisa"
+	"name": "Göteborg|gteborg",
+	"id": "128483"
 },
 {
-	"id": "128932",
-	"name": "锡林郭勒盟"
+	"name": "Тамбов|tambob",
+	"id": "128510"
 },
 {
-	"id": "131421",
-	"name": "Leicester"
+	"name": "Siena|siena",
+	"id": "131415"
 },
 {
-	"id": "131449",
-	"name": "Iceland"
+	"name": "Växjö|vxj",
+	"id": "131443"
 },
 {
-	"id": "131479",
-	"name": "Goettingen"
+	"name": "Regensburg|regensburg",
+	"id": "131478"
 },
 {
-	"id": "118198",
-	"name": "池州"
+	"name": "宿州",
+	"id": "118194"
 },
 {
-	"id": "118231",
-	"name": "莱芜"
+	"name": "商丘|shangqiu",
+	"id": "118250"
 },
 {
-	"id": "118341",
-	"name": "遵义"
+	"name": "甘孜|ganzi",
+	"id": "118337"
 },
 {
-	"id": "118374",
-	"name": "咸阳"
+	"name": "林芝|linzhi",
+	"id": "118370"
 },
 {
-	"id": "128107",
-	"name": "Bruxelles (Brussel)"
+	"name": "Birmingham|birmingham",
+	"id": "128184"
 },
 {
-	"id": "128259",
-	"name": "Torino"
+	"name": "Namp'o|nampo",
+	"id": "128311"
 },
 {
-	"id": "128325",
-	"name": "Cebu"
+	"name": "Omsk|omsk",
+	"id": "128343"
 },
 {
-	"id": "128346",
-	"name": "Ufa"
+	"name": "San'ā'|san",
+	"id": "128459"
 },
 {
-	"id": "128394",
-	"name": "Dubayy"
+	"name": "Bristol|bristol",
+	"id": "128484"
 },
 {
-	"id": "128412",
-	"name": "Cleveland"
+	"name": "Aix-en-Provence|aixenprovence",
+	"id": "128511"
 },
 {
-	"id": "128469",
-	"name": "Waterloo"
+	"name": "Coventry|coventry",
+	"id": "131419"
 },
 {
-	"id": "128494",
-	"name": "Bremen"
+	"name": "Goettingen|goettingen",
+	"id": "131479"
 },
 {
-	"id": "131422",
-	"name": "Nancy"
+	"name": "鹰潭|yingtan",
+	"id": "118214"
 },
 {
-	"id": "131450",
-	"name": "Eindhoven"
+	"name": "克拉玛依|kelamayi",
+	"id": "118409"
 },
 {
-	"id": "131481",
-	"name": "Bordeaux"
+	"name": "Kazan'|kazan",
+	"id": "128344"
 },
 {
-	"id": "118107",
-	"name": "运城"
+	"name": "İstanbul|istanbul",
+	"id": "128382"
 },
 {
-	"id": "118199",
-	"name": "宣城"
+	"name": "Minneapolis|minneapolis",
+	"id": "128410"
 },
 {
-	"id": "118342",
-	"name": "安顺"
+	"name": "Newcastle|newcastle",
+	"id": "128487"
 },
 {
-	"id": "128111",
-	"name": "São Paulo"
+	"name": "Dijon|dijon",
+	"id": "128513"
 },
 {
-	"id": "128171",
-	"name": "Ruhr"
+	"name": "Stratford-on-Avon|stratfordonavon",
+	"id": "131420"
 },
 {
-	"id": "128326",
-	"name": "Davao"
+	"name": "Iceland",
+	"id": "131449"
 },
 {
-	"id": "128347",
-	"name": "Perm'"
+	"name": "Bordeaux|bordeaux",
+	"id": "131481"
 },
 {
-	"id": "128413",
-	"name": "St. Louis"
+	"name": "Minsk|minsk",
+	"id": "128106"
 },
 {
-	"id": "128471",
-	"name": "Umeå"
+	"name": "Lyon|lyon",
+	"id": "128168"
 },
 {
-	"id": "128496",
-	"name": "石河子"
+	"name": "Leeds|leeds",
+	"id": "128186"
 },
 {
-	"id": "131393",
-	"name": "Oxford"
+	"name": "Napoli|napoli",
+	"id": "128258"
 },
 {
-	"id": "131423",
-	"name": "Belfast"
+	"name": "Manila|manila",
+	"id": "128324"
 },
 {
-	"id": "131451",
-	"name": "Basel"
+	"name": "Saratov|saratov",
+	"id": "128345"
 },
 {
-	"id": "131487",
-	"name": "Linköping"
+	"name": "Kyyiv|kyyiv",
+	"id": "128389"
 },
 {
-	"id": "118110",
-	"name": "吕梁"
+	"name": "San Diego|sandiego",
+	"id": "128411"
 },
 {
-	"id": "118233",
-	"name": "德州"
+	"name": "Rennes|rennes",
+	"id": "128518"
 },
 {
-	"id": "118292",
-	"name": "梅州"
+	"name": "Leicester",
+	"id": "131421"
 },
 {
-	"id": "118320",
-	"name": "攀枝花"
+	"name": "Eindhoven|eindhoven",
+	"id": "131450"
 },
 {
-	"id": "118378",
-	"name": "榆林"
+	"name": "Linköping",
+	"id": "131487"
 },
 {
-	"id": "119090",
-	"name": "基隆"
+	"name": "Bruxelles (Brussel)|bruxellesbrussel",
+	"id": "128107"
 },
 {
-	"id": "128189",
-	"name": "Sheffield"
+	"name": "Torino|torino",
+	"id": "128259"
 },
 {
-	"id": "128328",
-	"name": "Warszawa"
+	"name": "Cebu|cebu",
+	"id": "128325"
 },
 {
-	"id": "128348",
-	"name": "Krasnojarsk"
+	"name": "Ufa|ufa",
+	"id": "128346"
 },
 {
-	"id": "128414",
-	"name": "Denver"
+	"name": "Dubayy|dubayy",
+	"id": "128394"
 },
 {
-	"id": "128472",
-	"name": "Paderborn"
+	"name": "Oslo|oslo",
+	"id": "128468"
 },
 {
-	"id": "128497",
-	"name": "Lausanne"
+	"name": "Pisa|pisa",
+	"id": "128492"
 },
 {
-	"id": "131401",
-	"name": "Strasbourg"
+	"name": "Nancy|nancy",
+	"id": "131422"
 },
 {
-	"id": "131425",
-	"name": "Grenoble"
+	"name": "Basel|basel",
+	"id": "131451"
 },
 {
-	"id": "131452",
-	"name": "Southampton"
+	"name": "Clermont-Ferrand|clermontferrand",
+	"id": "131490"
 },
 {
-	"id": "131490",
-	"name": "Clermont-Ferrand"
+	"name": "阳泉|yangquan",
+	"id": "118102"
 },
 {
-	"id": "118139",
-	"name": "四平"
+	"name": "襄樊|xiangfan",
+	"id": "118256"
 },
 {
-	"id": "118180",
-	"name": "舟山"
+	"name": "São Paulo|sopaulo",
+	"id": "128111"
 },
 {
-	"id": "118294",
-	"name": "河源"
+	"name": "Ruhr|ruhr",
+	"id": "128171"
 },
 {
-	"id": "118321",
-	"name": "泸州"
+	"name": "Davao|davao",
+	"id": "128326"
 },
 {
-	"id": "118344",
-	"name": "毕节"
+	"name": "Perm'|perm",
+	"id": "128347"
 },
 {
-	"id": "118379",
-	"name": "安康"
+	"name": "St. Louis|stlouis",
+	"id": "128413"
 },
 {
-	"id": "128190",
-	"name": "Newcastle upon Tyne"
+	"name": "Bremen|bremen",
+	"id": "128494"
 },
 {
-	"id": "128262",
-	"name": "Nagoya"
+	"name": "Belfast|belfast",
+	"id": "131423"
 },
 {
-	"id": "128330",
-	"name": "Lisboa"
+	"name": "Southampton|southampton",
+	"id": "131452"
 },
 {
-	"id": "128349",
-	"name": "Ar-Riyād"
+	"name": "Lancashire|lancashire",
+	"id": "131494"
 },
 {
-	"id": "128499",
-	"name": "Firenze"
+	"name": "Sheffield|sheffield",
+	"id": "128189"
 },
 {
-	"id": "131402",
-	"name": "Bologna"
+	"name": "Warszawa|warszawa",
+	"id": "128328"
 },
 {
-	"id": "131426",
-	"name": "Tübingen"
+	"name": "Krasnojarsk|krasnojarsk",
+	"id": "128348"
 },
 {
-	"id": "131454",
-	"name": "Cardiff"
+	"name": "Denver|denver",
+	"id": "128414"
 },
 {
-	"id": "131494",
-	"name": "Lancashire"
+	"name": "Umeå|ume",
+	"id": "128471"
 },
 {
-	"id": "118142",
-	"name": "白山"
+	"name": "石河子|shihezi",
+	"id": "128496"
 },
 {
-	"id": "118202",
-	"name": "莆田"
+	"name": "Oxford|oxford",
+	"id": "131393"
 },
 {
-	"id": "118295",
-	"name": "阳江"
+	"name": "Grenoble|grenoble",
+	"id": "131425"
 },
 {
-	"id": "119092",
-	"name": "台南"
+	"name": "Cardiff|cardiff",
+	"id": "131454"
 },
 {
-	"id": "128174",
-	"name": "Hamburg"
+	"name": "Riga|riga",
+	"id": "131496"
 },
 {
-	"id": "128191",
-	"name": "Athínai"
+	"name": "清远|qingyuan",
+	"id": "118296"
 },
 {
-	"id": "128275",
-	"name": "Almaty"
+	"name": "基隆|jilong",
+	"id": "119090"
 },
 {
-	"id": "128334",
-	"name": "Moskva"
+	"name": "Newcastle upon Tyne|newcastleupontyne",
+	"id": "128190"
 },
 {
-	"id": "128358",
-	"name": "Johannesburg"
+	"name": "Nagoya|nagoya",
+	"id": "128262"
 },
 {
-	"id": "128423",
-	"name": "Indianapolis"
+	"name": "Lisboa|lisboa",
+	"id": "128330"
 },
 {
-	"id": "128475",
-	"name": "屏東"
+	"name": "Ar-Riyād|arriyd",
+	"id": "128349"
 },
 {
-	"id": "128500",
-	"name": "Bielefeld"
+	"name": "Paderborn|paderborn",
+	"id": "128472"
 },
 {
-	"id": "131403",
-	"name": "Dresden"
+	"name": "Lausanne|lausanne",
+	"id": "128497"
 },
 {
-	"id": "131427",
-	"name": "Newzealand"
+	"name": "Strasbourg|strasbourg",
+	"id": "131401"
 },
 {
-	"id": "131455",
-	"name": "kobe"
+	"name": "Tübingen|tbingen",
+	"id": "131426"
 },
 {
-	"id": "131496",
-	"name": "Riga"
+	"name": "Toulouse|toulouse",
+	"id": "131456"
 },
 {
-	"id": "118115",
-	"name": "通辽"
+	"name": "绵阳|mianyang",
+	"id": "118323"
 },
 {
-	"id": "118144",
-	"name": "白城"
+	"name": "Hamburg|hamburg",
+	"id": "128174"
 },
 {
-	"id": "118182",
-	"name": "丽水"
+	"name": "Athínai|athnai",
+	"id": "128191"
 },
 {
-	"id": "118296",
-	"name": "清远"
+	"name": "Almaty|almaty",
+	"id": "128275"
 },
 {
-	"id": "118382",
-	"name": "金昌"
+	"name": "Moskva|moskva",
+	"id": "128334"
 },
 {
-	"id": "119093",
-	"name": "新竹"
+	"name": "Johannesburg|johannesburg",
+	"id": "128358"
 },
 {
-	"id": "128142",
-	"name": "Santiago"
+	"name": "Indianapolis|indianapolis",
+	"id": "128423"
 },
 {
-	"id": "128175",
-	"name": "München"
+	"name": "Firenze|firenze",
+	"id": "128499"
 },
 {
-	"id": "128196",
-	"name": "Mumbai"
+	"name": "Bologna|bologna",
+	"id": "131402"
 },
 {
-	"id": "128281",
-	"name": "Kuala Lumpur"
+	"name": "Newzealand|newzealand",
+	"id": "131427"
 },
 {
-	"id": "128335",
-	"name": "Sankt-Peterburg (Leningrad)"
+	"name": "Bath|bath",
+	"id": "131501"
 },
 {
-	"id": "128360",
-	"name": "Cape Town (Kaapstad)"
+	"name": "白城|baicheng",
+	"id": "118144"
 },
 {
-	"id": "128476",
-	"name": "桃园县"
+	"name": "台南|tainan",
+	"id": "119092"
 },
 {
-	"id": "128501",
-	"name": "Ávila"
+	"name": "Santiago|santiago",
+	"id": "128142"
 },
 {
-	"id": "131404",
-	"name": "Genova"
+	"name": "München|mnchen",
+	"id": "128175"
 },
 {
-	"id": "131429",
-	"name": "York"
+	"name": "Mumbai|mumbai",
+	"id": "128196"
 },
 {
-	"id": "131501",
-	"name": "Bath"
+	"name": "Kuala Lumpur|kualalumpur",
+	"id": "128281"
 },
 {
-	"id": "118116",
-	"name": "鄂尔多斯"
+	"name": "Sankt-Peterburg (Leningrad)|sanktpeterburgleningrad",
+	"id": "128335"
 },
 {
-	"id": "118349",
-	"name": "曲靖"
+	"name": "Cape Town (Kaapstad)|capetownkaapstad",
+	"id": "128360"
 },
 {
-	"id": "119094",
-	"name": "嘉義"
+	"name": "屏東|pingdong",
+	"id": "128475"
 },
 {
-	"id": "128176",
-	"name": "Frankfurt (am Main)"
+	"name": "Bielefeld|bielefeld",
+	"id": "128500"
 },
 {
-	"id": "128197",
-	"name": "Delhi"
+	"name": "Dresden|dresden",
+	"id": "131403"
 },
 {
-	"id": "128284",
-	"name": "Ciudad de México"
+	"name": "York|york",
+	"id": "131429"
 },
 {
-	"id": "128336",
-	"name": "Nižnij Novgorod (Gor'kij)"
+	"name": "Charlottesville|charlottesville",
+	"id": "131502"
 },
 {
-	"id": "128434",
-	"name": "Raleigh"
+	"name": "新竹|xinzhu",
+	"id": "119093"
 },
 {
-	"id": "128477",
-	"name": "云林县"
+	"name": "Frankfurt (am Main)|frankfurtammain",
+	"id": "128176"
 },
 {
-	"id": "128504",
-	"name": "Lund"
+	"name": "Delhi|delhi",
+	"id": "128197"
 },
 {
-	"id": "131408",
-	"name": "Leipzig"
+	"name": "Ciudad de México|ciudaddemxico",
+	"id": "128284"
 },
 {
-	"id": "131502",
-	"name": "Charlottesville"
+	"name": "Nižnij Novgorod (Gor'kij)|ninijnovgorodgorkij",
+	"id": "128336"
 },
 {
-	"id": "118262",
-	"name": "孝感"
+	"name": "Milwaukee|milwaukee",
+	"id": "128425"
 },
 {
-	"id": "118393",
-	"name": "临夏"
+	"name": "桃园县|taoyuanxian",
+	"id": "128476"
 },
 {
-	"id": "128088",
-	"name": "Kābol"
+	"name": "Ávila|vila",
+	"id": "128501"
 },
 {
-	"id": "128155",
-	"name": "La Habana"
+	"name": "Genova|genova",
+	"id": "131404"
 },
 {
-	"id": "128198",
-	"name": "Kolkata"
+	"name": "Witzenhausen|Witzenhausen",
+	"id": "131467"
 },
 {
-	"id": "128294",
-	"name": "Casablanca (Dar-el-Beida)"
+	"name": "DenHaag|denhaag",
+	"id": "131507"
 },
 {
-	"id": "128337",
-	"name": "Novosibirsk"
+	"name": "嘉義|jiayi",
+	"id": "119094"
 },
 {
-	"id": "128441",
-	"name": "Oklahoma City"
+	"name": "La Habana|lahabana",
+	"id": "128155"
 },
 {
-	"id": "128478",
-	"name": "花莲县"
+	"name": "Casablanca (Dar-el-Beida)|casablancadarelbeida",
+	"id": "128294"
 },
 {
-	"id": "128506",
-	"name": "Gävle"
+	"name": "Novosibirsk|novosibirsk",
+	"id": "128337"
 },
 {
-	"id": "131431",
-	"name": "Dessau"
+	"name": "Raleigh|raleigh",
+	"id": "128434"
 },
 {
-	"id": "131464",
-	"name": "Kiel"
+	"name": "云林县|yunlinxian",
+	"id": "128477"
 },
 {
-	"id": "131507",
-	"name": "DenHaag"
+	"name": "Lund|lund",
+	"id": "128504"
 },
 {
-	"id": "118147",
-	"name": "齐齐哈尔"
+	"name": "Leipzig|leipzig",
+	"id": "131408"
 },
 {
-	"id": "118264",
-	"name": "咸宁"
+	"name": "Dessau|dessau",
+	"id": "131431"
 },
 {
-	"id": "118300",
-	"name": "揭阳"
+	"name": "Granada|granada",
+	"id": "131468"
 },
 {
-	"id": "118328",
-	"name": "南充"
+	"name": "Kābol|kbol",
+	"id": "128088"
 },
 {
-	"id": "128092",
-	"name": "Buenos Aires"
+	"name": "Praha|praha",
+	"id": "128156"
 },
 {
-	"id": "128156",
-	"name": "Praha"
+	"name": "Mannheim|mannheim",
+	"id": "128178"
 },
 {
-	"id": "128178",
-	"name": "Mannheim"
+	"name": "Jakarta|jakarta",
+	"id": "128238"
 },
 {
-	"id": "128238",
-	"name": "Jakarta"
+	"name": "Kāthmāndau|kthmndau",
+	"id": "128299"
 },
 {
-	"id": "128299",
-	"name": "Kāthmāndau"
+	"name": "Detroit|detroit",
+	"id": "128403"
 },
 {
-	"id": "128403",
-	"name": "Detroit"
+	"name": "花莲县|hualianxian",
+	"id": "128478"
 },
 {
-	"id": "128444",
-	"name": "Birmingham"
+	"name": "Gävle|gvle",
+	"id": "128506"
 },
 {
-	"id": "128480",
-	"name": "宜兰县"
+	"name": "Karlsruhe|karlsruhe",
+	"id": "131432"
 },
 {
-	"id": "128507",
-	"name": "Uppsala"
+	"name": "Galway|galway",
+	"id": "131472"
 },
 {
-	"id": "131432",
-	"name": "Karlsruhe"
+	"name": "宜宾|yibin",
+	"id": "118329"
 },
 {
-	"id": "131467",
-	"name": "Witzenhausen"
+	"name": "Buenos Aires|buenosaires",
+	"id": "128092"
 },
 {
-	"id": "131514",
-	"name": "太仓"
+	"name": "København|kbenhavn",
+	"id": "128157"
 },
 {
-	"id": "118148",
-	"name": "鸡西"
+	"name": "Amsterdam|amsterdam",
+	"id": "128300"
 },
 {
-	"id": "118207",
-	"name": "龙岩"
+	"name": "Samara (Kujbyšev)|samarakujbyev",
+	"id": "128339"
 },
 {
-	"id": "118240",
-	"name": "平顶山"
+	"name": "València|valncia",
+	"id": "128371"
 },
 {
-	"id": "118301",
-	"name": "云浮"
+	"name": "Boston|boston",
+	"id": "128404"
 },
 {
-	"id": "118399",
-	"name": "海南"
+	"name": "Birmingham",
+	"id": "128444"
 },
 {
-	"id": "128093",
-	"name": "Córdoba"
+	"name": "宜兰县|yilanxian",
+	"id": "128480"
 },
 {
-	"id": "128157",
-	"name": "København"
+	"name": "Uppsala|uppsala",
+	"id": "128507"
 },
 {
-	"id": "128239",
-	"name": "Bandung"
+	"name": "Osnabrück|osnabrck",
+	"id": "131434"
 },
 {
-	"id": "128300",
-	"name": "Amsterdam"
+	"name": "Cork|cork",
+	"id": "131473"
 },
 {
-	"id": "128339",
-	"name": "Samara (Kujbyšev)"
+	"name": "吴江|wujiang",
+	"id": "131414"
 },
 {
-	"id": "128371",
-	"name": "València"
+	"name": "南阳|nanyang",
+	"id": "118249"
 },
 {
-	"id": "128404",
-	"name": "Boston"
+	"name": "黑河|heihe",
+	"id": "118156"
 },
 {
-	"id": "128456",
-	"name": "Thanh Pho Ho Chi Minh"
+	"name": "莱芜|laiwu",
+	"id": "118231"
 },
 {
-	"id": "128481",
-	"name": "彰化县"
+	"name": "阜新|fuxin",
+	"id": "118131"
 },
 {
-	"id": "128508",
-	"name": "Karlskrona"
+	"name": "黄石|huangshi",
+	"id": "118255"
 },
 {
-	"id": "131412",
-	"name": "Padova"
+	"name": "永州|yongzhou",
+	"id": "118277"
 },
 {
-	"id": "131434",
-	"name": "Osnabrück"
+	"name": "嘉峪关|jiayuguan",
+	"id": "118385"
 },
 {
-	"id": "131468",
-	"name": "Granada"
+	"name": "延边|yanbian",
+	"id": "118145"
 },
 {
-	"id": "118098",
-	"name": "衡水"
+	"name": "张家口|zhangjiakou",
+	"id": "118094"
 },
 {
-	"id": "118150",
-	"name": "双鸭山"
+	"name": "双鸭山|shuangyashan",
+	"id": "118150"
 },
 {
-	"id": "118171",
-	"name": "宿迁"
+	"name": "德宏|dehong",
+	"id": "118361"
 },
 {
-	"id": "118241",
-	"name": "焦作"
+	"name": "眉山|meishan",
+	"id": "118332"
 },
 {
-	"id": "118332",
-	"name": "眉山"
+	"name": "吴忠|wuzhong",
+	"id": "118405"
 },
 {
-	"id": "118359",
-	"name": "楚雄"
+	"name": "Hai Phong|haiphong",
+	"id": "128458"
 },
 {
-	"id": "128094",
-	"name": "Rosario"
+	"name": "喀什|kashen",
+	"id": "118414"
 },
 {
-	"id": "128161",
-	"name": "Al-Qāhirah"
+	"name": "仙桃|xiantao",
+	"id": "128465"
 },
 {
-	"id": "128251",
-	"name": "Baghdād"
+	"name": "遵义|zunyi",
+	"id": "118341"
 },
 {
-	"id": "128301",
-	"name": "Rotterdam"
+	"name": "锡林郭勒盟|xilinguolemeng",
+	"id": "128932"
 },
 {
-	"id": "128340",
-	"name": "Volgograd"
+	"name": "宜春|yichun",
+	"id": "118217"
 },
 {
-	"id": "128372",
-	"name": "Sevilla"
+	"name": "泸州|luzhou",
+	"id": "118321"
 },
 {
-	"id": "128406",
-	"name": "Houston"
+	"name": "黔东南|qiandongnan",
+	"id": "118346"
 },
 {
-	"id": "128457",
-	"name": "Ha Noi"
+	"name": "晋城|jincheng",
+	"id": "118104"
 },
 {
-	"id": "128509",
-	"name": "Jönköping"
+	"name": "安康|ankang",
+	"id": "118379"
 },
 {
-	"id": "131413",
-	"name": "常熟"
+	"name": "四平|siping",
+	"id": "118139"
 },
 {
-	"id": "131441",
-	"name": "Reykjavík"
+	"name": "吕梁|lvliang",
+	"id": "118110"
 },
 {
-	"id": "131472",
-	"name": "Galway"
+	"name": "潮州|chaozhou",
+	"id": "118299"
 },
 {
-	"id": "118192",
-	"name": "滁州"
+	"name": "咸宁|xianning",
+	"id": "118264"
 },
 {
-	"id": "118336",
-	"name": "阿坝"
+	"name": "齐齐哈尔|qiqihaer",
+	"id": "118147"
 },
 {
-	"id": "118405",
-	"name": "吴忠"
+	"name": "龙岩|longyan",
+	"id": "118207"
 },
 {
-	"id": "128162",
-	"name": "Al-Iskandarīyah"
+	"name": "楚雄|chuxiong",
+	"id": "118359"
 },
 {
-	"id": "128181",
-	"name": "Hannover"
+	"name": "杨凌|yangling",
+	"id": "131409"
 },
 {
-	"id": "128254",
-	"name": "Dublin (Baile Átha Cliath)"
+	"name": "宝鸡|baoji",
+	"id": "118373"
 },
 {
-	"id": "128341",
-	"name": "Čel'abinsk"
+	"name": "铜仁|tongren",
+	"id": "118343"
 },
 {
-	"id": "128375",
-	"name": "Stockholm"
+	"name": "Waterloo|waterloo",
+	"id": "128469"
 },
 {
-	"id": "128458",
-	"name": "Hai Phong"
+	"name": "长治|changzhi",
+	"id": "118103"
 },
 {
-	"id": "128483",
-	"name": "Göteborg"
+	"name": "太仓",
+	"id": "131514"
 },
 {
-	"id": "128510",
-	"name": "Тамбов"
+	"name": "巴彦淖尔|bayannaoer",
+	"id": "118118"
 },
 {
-	"id": "131442",
-	"name": "Weimar"
+	"name": "宿迁|suqian",
+	"id": "118171"
 },
 {
-	"id": "131473",
-	"name": "Cork"
+	"name": "许昌|xuchang",
+	"id": "118246"
 },
 {
-	"id": "118337",
-	"name": "甘孜"
+	"name": "岳阳|yueyang",
+	"id": "118272"
 },
 {
-	"id": "118363",
-	"name": "迪庆"
+	"name": "凉山|liangshan",
+	"id": "118338"
 },
 {
-	"id": "128165",
-	"name": "Helsinki (Helsingfors)"
+	"name": "咸阳|xianyang",
+	"id": "118374"
 },
 {
-	"id": "128255",
-	"name": "Tel Aviv-Yafo"
+	"name": "Knoxville|knoxville",
+	"id": "131499"
 },
 {
-	"id": "128310",
-	"name": "P'yŏngyang"
+	"name": "内江|neijiang",
+	"id": "118326"
 },
 {
-	"id": "128342",
-	"name": "Rostov-na-Donu"
+	"name": "鸡西|jixi",
+	"id": "118148"
 },
 {
-	"id": "128459",
-	"name": "San'ā'"
+	"name": "攀枝花|panzhihua",
+	"id": "118320"
 },
 {
-	"id": "128484",
-	"name": "Bristol"
+	"name": "平凉|pingliang",
+	"id": "118388"
 },
 {
-	"id": "128511",
-	"name": "Aix-en-Provence"
+	"name": "海南",
+	"id": "118399"
 },
 {
-	"id": "131415",
-	"name": "Siena"
+	"name": "阿坝|aba",
+	"id": "118336"
 },
 {
-	"id": "131443",
-	"name": "Växjö"
+	"name": "Leicester|leicester",
+	"id": "131447"
 },
 {
-	"id": "131475",
-	"name": "Maynooth"
+	"name": "池州|chizhou",
+	"id": "118198"
 },
 {
-	"id": "118129",
-	"name": "锦州"
+	"name": "伊犁|yili",
+	"id": "118419"
 },
 {
-	"id": "118156",
-	"name": "黑河"
+	"name": "Cleveland|cleveland",
+	"id": "128412"
 },
 {
-	"id": "118194",
-	"name": "宿州"
+	"name": "郴州|chenzhou",
+	"id": "118276"
 },
 {
-	"id": "118306",
-	"name": "北海"
+	"name": "Kiel|kiel",
+	"id": "131464"
 },
 {
-	"id": "128098",
-	"name": "Brisbane"
+	"name": "临夏|linxia",
+	"id": "118393"
 },
 {
-	"id": "128184",
-	"name": "Birmingham"
+	"name": "Kolkata|kolkata",
+	"id": "128198"
 },
 {
-	"id": "128311",
-	"name": "Namp'o"
+	"name": "云浮|yunfu",
+	"id": "118301"
 },
 {
-	"id": "128343",
-	"name": "Omsk"
+	"name": "Oklahoma City|oklahomacity",
+	"id": "128441"
 },
 {
-	"id": "128380",
-	"name": "Krung Thep"
+	"name": "Bandung|bandung",
+	"id": "128239"
 },
 {
-	"id": "128487",
-	"name": "Newcastle"
+	"name": "七台河|qitaihe",
+	"id": "118155"
 },
 {
-	"id": "128513",
-	"name": "Dijon"
+	"name": "甘南|gannan",
+	"id": "118394"
 },
 {
-	"id": "131419",
-	"name": "Coventry"
+	"name": "Kitakyūshū|kitakysh",
+	"id": "128266"
 },
 {
-	"id": "131447",
-	"name": "Leicester"
+	"name": "Gaziantep|gaziantep",
+	"id": "128387"
 },
 {
-	"id": "131476",
-	"name": "Genève"
+	"name": "Meerut|meerut",
+	"id": "128219"
+},
+{
+	"name": "Goiânia|goinia",
+	"id": "128122"
+},
+{
+	"name": "阿拉善|alashan",
+	"id": "118121"
+},
+{
+	"name": "定西|dingxi",
+	"id": "118391"
+},
+{
+	"name": "陇南|longnan",
+	"id": "118392"
+},
+{
+	"name": "Katowice|katowice",
+	"id": "128327"
+},
+{
+	"name": "和田|hetian",
+	"id": "118412"
+},
+{
+	"name": "钦州|qinzhou",
+	"id": "118308"
+},
+{
+	"name": "Mbuji-Mayi|mbujimayi",
+	"id": "128151"
+},
+{
+	"name": "昭通|zhaotong",
+	"id": "118352"
+},
+{
+	"name": "Toluca|toluca",
+	"id": "128291"
+},
+{
+	"name": "Florida state|floridastate",
+	"id": "131483"
+},
+{
+	"name": "Lubumbashi|lubumbashi",
+	"id": "128150"
+},
+{
+	"name": "汉中|hanzhong",
+	"id": "118377"
+},
+{
+	"name": "Bamako|bamako",
+	"id": "128283"
+},
+{
+	"name": "Virginia Beach|virginiabeach",
+	"id": "128427"
+},
+{
+	"name": "雅安|yaan",
+	"id": "118333"
+},
+{
+	"name": "Brisbane|brisbane",
+	"id": "128098"
+},
+{
+	"name": "Penang|penang",
+	"id": "131500"
+},
+{
+	"name": "Edmonton|edmonton",
+	"id": "128141"
+},
+{
+	"name": "通辽|tongliao",
+	"id": "118115"
+},
+{
+	"name": "Halab|halab",
+	"id": "128378"
+},
+{
+	"name": "保亭|baoting",
+	"id": "131492"
+},
+{
+	"name": "塔城|tacheng",
+	"id": "118420"
+},
+{
+	"name": "汕尾|shanwei",
+	"id": "118293"
+},
+{
+	"name": "Amritsar|amritsar",
+	"id": "128227"
+},
+{
+	"name": "商洛|shangluo",
+	"id": "118380"
+},
+{
+	"name": "Curitiba|curitiba",
+	"id": "128119"
+},
+{
+	"name": "梧州|wuzhou",
+	"id": "118305"
+},
+{
+	"name": "贺州|hezhou",
+	"id": "118312"
+},
+{
+	"name": "运城|yuncheng",
+	"id": "118107"
+},
+{
+	"name": "Toshkent (Taškent)|toshkenttakent",
+	"id": "128450"
+},
+{
+	"name": "Ulsan|ulsan",
+	"id": "128368"
+},
+{
+	"name": "Odesa|odesa",
+	"id": "128393"
+},
+{
+	"name": "Ibadan|ibadan",
+	"id": "128306"
+},
+{
+	"name": "石嘴山|shizuishan",
+	"id": "118404"
+},
+{
+	"name": "Rabat|rabat",
+	"id": "128295"
+},
+{
+	"name": "Rochester|rochester",
+	"id": "128446"
+},
+{
+	"name": "临沧|lincang",
+	"id": "118355"
+},
+{
+	"name": "Shizuoka|shizuoka",
+	"id": "128273"
+},
+{
+	"name": "Las Vegas|lasvegas",
+	"id": "128426"
+},
+{
+	"name": "怒江|nujiang",
+	"id": "118362"
+},
+{
+	"name": "Harare (Salisbury)|hararesalisbury",
+	"id": "128461"
+},
+{
+	"name": "盘锦|panjin",
+	"id": "118133"
+},
+{
+	"name": "阿勒泰|aletai",
+	"id": "118421"
+},
+{
+	"name": "金昌|jinchang",
+	"id": "118382"
+},
+{
+	"name": "London (Canada)|londoncanada",
+	"id": "128470"
+},
+{
+	"name": "Richmond|richmond",
+	"id": "128442"
+},
+{
+	"name": "Providence|providence",
+	"id": "128428"
+},
+{
+	"name": "Maceió|macei",
+	"id": "128128"
+},
+{
+	"name": "Yangon|yangon",
+	"id": "128298"
+},
+{
+	"name": "新余|xinyu",
+	"id": "118213"
+},
+{
+	"name": "Tabrīz|tabrz",
+	"id": "128249"
+},
+{
+	"name": "安顺|anshun",
+	"id": "118342"
+},
+{
+	"name": "Luanda|luanda",
+	"id": "128091"
+},
+{
+	"name": "图木舒克|tumushuke",
+	"id": "131386"
+},
+{
+	"name": "Natal|natal",
+	"id": "128127"
+},
+{
+	"name": "驻马店|zhumadian",
+	"id": "118253"
+},
+{
+	"name": "Bhopāl|bhopl",
+	"id": "128212"
+},
+{
+	"name": "Al-Kuwayt|alkuwayt",
+	"id": "128277"
+},
+{
+	"name": "固原|guyuan",
+	"id": "118406"
+},
+{
+	"name": "海安|haian",
+	"id": "128505"
+},
+{
+	"name": "Memphis|memphis",
+	"id": "128437"
+},
+{
+	"name": "儋州|danzhou",
+	"id": "131433"
+},
+{
+	"name": "河池|hechi",
+	"id": "118313"
+},
+{
+	"name": "乌兰察布|wulanchabu",
+	"id": "118119"
+},
+{
+	"name": "Nāgpur|ngpur",
+	"id": "128208"
+},
+{
+	"name": "San Luis Potosí|sanluispotos",
+	"id": "128293"
+},
+{
+	"name": "Yerevan|yerevan",
+	"id": "128095"
+},
+{
+	"name": "克孜勒苏|kezilesu",
+	"id": "118415"
+},
+{
+	"name": "Bursa|bursa",
+	"id": "128385"
+},
+{
+	"name": "Kochi (Cochin)|kochicochin",
+	"id": "128216"
+},
+{
+	"name": "Surabaya|surabaya",
+	"id": "128240"
+},
+{
+	"name": "Himeji|himeji",
+	"id": "128269"
+},
+{
+	"name": "文昌|wenchang",
+	"id": "131497"
+},
+{
+	"name": "哈密|hami",
+	"id": "118411"
+},
+{
+	"name": "益阳|yiyang",
+	"id": "118275"
+},
+{
+	"name": "Gdańsk|gdansk",
+	"id": "131470"
+},
+{
+	"name": "通化|tonghua",
+	"id": "118141"
+},
+{
+	"name": "Hartford|hartford",
+	"id": "128440"
+},
+{
+	"name": "本溪|benxi",
+	"id": "118127"
+},
+{
+	"name": "Dhaka|dhaka",
+	"id": "128103"
+},
+{
+	"name": "开平|kaiping",
+	"id": "128493"
+},
+{
+	"name": "Managua|managua",
+	"id": "128303"
+},
+{
+	"name": "Gwangju (Kwangju)|gwangjukwangju",
+	"id": "128367"
+},
+{
+	"name": "黄冈|huanggang",
+	"id": "118263"
+},
+{
+	"name": "'Ammān|ammn",
+	"id": "128274"
+},
+{
+	"name": "佳木斯|jiamusi",
+	"id": "118154"
+},
+{
+	"name": "Indore|indore",
+	"id": "128210"
+},
+{
+	"name": "Tallahassee|tallahassee",
+	"id": "131484"
+},
+{
+	"name": "辽源|liaoyuan",
+	"id": "118140"
+},
+{
+	"name": "Nāshik|nshik",
+	"id": "128218"
+},
+{
+	"name": "资阳|ziyang",
+	"id": "118335"
+},
+{
+	"name": "Accra|accra",
+	"id": "128182"
+},
+{
+	"name": "Monterrey|monterrey",
+	"id": "128286"
+},
+{
+	"name": "Cartagena|cartagena",
+	"id": "128148"
+},
+{
+	"name": "Rio de Janeiro|riodejaneiro",
+	"id": "128112"
+},
+{
+	"name": "Newark|newark",
+	"id": "131506"
+},
+{
+	"name": "海西|haixi",
+	"id": "118402"
+},
+{
+	"name": "Er-Roseires|erroseires",
+	"id": "131489"
+},
+{
+	"name": "Bogotá (Santa Fe de)|bogotsantafede",
+	"id": "128143"
+},
+{
+	"name": "Maastricht|maastricht",
+	"id": "131513"
+},
+{
+	"name": "Bakı|bak",
+	"id": "128102"
+},
+{
+	"name": "Phnum Pénh|phnumpnh",
+	"id": "128133"
+},
+{
+	"name": "Maracaibo|maracaibo",
+	"id": "128452"
+},
+{
+	"name": "黄南|huangnan",
+	"id": "118398"
+},
+{
+	"name": "酒泉|jiuquan",
+	"id": "118389"
+},
+{
+	"name": "Srīnagar|srnagar",
+	"id": "128231"
+},
+{
+	"name": "自贡|zigong",
+	"id": "118319"
+},
+{
+	"name": "Port Harcourt|portharcourt",
+	"id": "128309"
+},
+{
+	"name": "Porto|porto",
+	"id": "128331"
+},
+{
+	"name": "Kinshasa|kinshasa",
+	"id": "128149"
+},
+{
+	"name": "Miami|miami",
+	"id": "128405"
+},
+{
+	"name": "济源|jiyuan",
+	"id": "128517"
+},
+{
+	"name": "Donets'k|donetsk",
+	"id": "128390"
+},
+{
+	"name": "Mashhad|mashhad",
+	"id": "128247"
+},
+{
+	"name": "Dimashq|dimashq",
+	"id": "128377"
+},
+{
+	"name": "广元|guangyuan",
+	"id": "118324"
+},
+{
+	"name": "阿拉善盟|alashanmeng",
+	"id": "128945"
+},
+{
+	"name": "João Pessoa|joopessoa",
+	"id": "128130"
+},
+{
+	"name": "İzmir|izmir",
+	"id": "128384"
+},
+{
+	"name": "巢湖|chaohu",
+	"id": "118195"
+},
+{
+	"name": "Solāpur (Sholāpur)|solpursholpur",
+	"id": "128235"
+},
+{
+	"name": "Guadalajara|guadalajara",
+	"id": "128285"
+},
+{
+	"name": "兴安盟|xinganmeng",
+	"id": "128925"
+},
+{
+	"name": "León|len",
+	"id": "128290"
+},
+{
+	"name": "Yaoundé|yaound",
+	"id": "128135"
+},
+{
+	"name": "Palembang|palembang",
+	"id": "128242"
+},
+{
+	"name": "St.John's",
+	"id": "131471"
+},
+{
+	"name": "毕节|bijie",
+	"id": "118344"
+},
+{
+	"name": "Sūrat|srat",
+	"id": "128204"
+},
+{
+	"name": "Lucknow|lucknow",
+	"id": "128207"
+},
+{
+	"name": "玉树|yushu",
+	"id": "118401"
+},
+{
+	"name": "Iowa City|iowacity",
+	"id": "131448"
+},
+{
+	"name": "Kharkiv|kharkiv",
+	"id": "128391"
+},
+{
+	"name": "Daejeon (Taejŏn)|daejeontaejn",
+	"id": "128366"
+},
+{
+	"name": "Buffalo|buffalo",
+	"id": "128429"
+},
+{
+	"name": "达州|dazhou",
+	"id": "118331"
+},
+{
+	"name": "漯河|luohe",
+	"id": "118247"
+},
+{
+	"name": "Montevideo|montevideo",
+	"id": "128395"
+},
+{
+	"name": "Wahran|wahran",
+	"id": "128090"
+},
+{
+	"name": "Adelaide|adelaide",
+	"id": "128100"
+},
+{
+	"name": "Ciudad Juárez|ciudadjurez",
+	"id": "128289"
+},
+{
+	"name": "Asansol|asansol",
+	"id": "128221"
+},
+{
+	"name": "琼海|qionghai",
+	"id": "131407"
+},
+{
+	"name": "呼伦贝尔|hulunbeier",
+	"id": "118117"
+},
+{
+	"name": "Brazzaville|brazzaville",
+	"id": "128152"
+},
+{
+	"name": "Patna|patna",
+	"id": "128209"
+},
+{
+	"name": "kobe|kobe",
+	"id": "131455"
+},
+{
+	"name": "Tūnis|tnis",
+	"id": "128381"
+},
+{
+	"name": "Ghazzah|ghazzah",
+	"id": "128320"
+},
+{
+	"name": "Al-Mawsil|almawsil",
+	"id": "128252"
+},
+{
+	"name": "Bangalore|bangalore",
+	"id": "128200"
+},
+{
+	"name": "吐鲁番|tulufan",
+	"id": "118410"
+},
+{
+	"name": "LINCOLN|lincoln",
+	"id": "131405"
+},
+{
+	"name": "朔州|shuozhou",
+	"id": "118105"
+},
+{
+	"name": "Ouagadougou|ouagadougou",
+	"id": "128132"
+},
+{
+	"name": "Podgorica|podgorica",
+	"id": "128516"
+},
+{
+	"name": "Sendai|sendai",
+	"id": "128267"
+},
+{
+	"name": "阿拉尔|alaer",
+	"id": "131385"
+},
+{
+	"name": "鄂尔多斯|eerduosi",
+	"id": "118116"
+},
+{
+	"name": "Freiburg|freiburg",
+	"id": "131503"
+},
+{
+	"name": "Nairobi|nairobi",
+	"id": "128276"
+},
+{
+	"name": "海东|haidong",
+	"id": "118396"
+},
+{
+	"name": "Rāwalpindi|rwalpindi",
+	"id": "128315"
+},
+{
+	"name": "Madurai|madurai",
+	"id": "128222"
+},
+{
+	"name": "伊春",
+	"id": "118152"
+},
+{
+	"name": "大宁|daning",
+	"id": "118101"
+},
+{
+	"name": "Kaduna|kaduna",
+	"id": "128307"
+},
+{
+	"name": "庆阳|qingyang",
+	"id": "118390"
+},
+{
+	"name": "赤峰|chifeng",
+	"id": "118114"
+},
+{
+	"name": "Allahābād|allahbd",
+	"id": "128228"
+},
+{
+	"name": "Belo Horizonte|belohorizonte",
+	"id": "128113"
+},
+{
+	"name": "Tsukuba|tsukuba",
+	"id": "131439"
+},
+{
+	"name": "Lubbock|lubbock",
+	"id": "128498"
+},
+{
+	"name": "San Salvador|sansalvador",
+	"id": "128163"
+},
+{
+	"name": "Cali|cali",
+	"id": "128145"
+},
+{
+	"name": "Multān|multn",
+	"id": "128318"
+},
+{
+	"name": "天门|tianmen",
+	"id": "128464"
+},
+{
+	"name": "阿克苏|akesu",
+	"id": "118413"
+},
+{
+	"name": "Grand Rapids|grandrapids",
+	"id": "128439"
+},
+{
+	"name": "Johor Baharu|johorbaharu",
+	"id": "128282"
+},
+{
+	"name": "Guayaquil|guayaquil",
+	"id": "128159"
+},
+{
+	"name": "Maracay|maracay",
+	"id": "128454"
+},
+{
+	"name": "大兴安岭|daxinganling",
+	"id": "118158"
+},
+{
+	"name": "思茅|simao",
+	"id": "118354"
+},
+{
+	"name": "Puebla|puebla",
+	"id": "128287"
+},
+{
+	"name": "Antwerpen (Anvers)|antwerpenanvers",
+	"id": "128108"
+},
+{
+	"name": "Esfahān|esfahn",
+	"id": "128248"
+},
+{
+	"name": "Tbilisi|tbilisi",
+	"id": "128170"
+},
+{
+	"name": "铁岭|tieling",
+	"id": "118134"
+},
+{
+	"name": "São Luís|solus",
+	"id": "128126"
+},
+{
+	"name": "Sapporo|sapporo",
+	"id": "128263"
+},
+{
+	"name": "Santos|santos",
+	"id": "128124"
+},
+{
+	"name": "防城港|fangchenggang",
+	"id": "118307"
+},
+{
+	"name": "潜江|qianjiang",
+	"id": "128466"
+},
+{
+	"name": "Nashville/Davidson|nashvilledavidson",
+	"id": "128433"
+},
+{
+	"name": "Sacramento|sacramento",
+	"id": "128419"
+},
+{
+	"name": "Peshāwar|peshwar",
+	"id": "128319"
+},
+{
+	"name": "Campinas|campinas",
+	"id": "128120"
+},
+{
+	"name": "Ann Arbor|annarbor",
+	"id": "131498"
+},
+{
+	"name": "Jaipur|jaipur",
+	"id": "128206"
+},
+{
+	"name": "Port-au-Prince|portauprince",
+	"id": "128194"
+},
+{
+	"name": "Pune|pune",
+	"id": "128203"
+},
+{
+	"name": "Chittagong|chittagong",
+	"id": "128104"
+},
+{
+	"name": "Gwalior|gwalior",
+	"id": "128236"
+},
+{
+	"name": "Makkah|makkah",
+	"id": "128352"
+},
+{
+	"name": "Bhilai (Bhilai Nagar)|bhilaibhilainagar",
+	"id": "128232"
+},
+{
+	"name": "Chandīgarh|chandgarh",
+	"id": "128230"
+},
+{
+	"name": "Benin City|benincity",
+	"id": "128308"
+},
+{
+	"name": "Kānpur|knpur",
+	"id": "128205"
+},
+{
+	"name": "海北|haibei",
+	"id": "118397"
+},
+{
+	"name": "Canberra|canberra",
+	"id": "128488"
+},
+{
+	"name": "普洱|puer",
+	"id": "130880"
+},
+{
+	"name": "Ad-Dammām|addammm",
+	"id": "128351"
+},
+{
+	"name": "山南|shannan",
+	"id": "118367"
+},
+{
+	"name": "Perth|perth",
+	"id": "128099"
+},
+{
+	"name": "渭南|weinan",
+	"id": "118375"
+},
+{
+	"name": "San Juan|sanjuan",
+	"id": "128332"
+},
+{
+	"name": "Jackson|jackson",
+	"id": "131453"
+},
+{
+	"name": "Caracas|caracas",
+	"id": "128451"
+},
+{
+	"name": "Dhanbād|dhanbd",
+	"id": "128225"
+},
+{
+	"name": "Okayama|okayama",
+	"id": "128268"
+},
+{
+	"name": "Kumamoto|kumamoto",
+	"id": "128272"
+},
+{
+	"name": "Laramie|laramie",
+	"id": "131398"
+},
+{
+	"name": "Beograd|beograd",
+	"id": "128355"
+},
+{
+	"name": "Āgra|gra",
+	"id": "128215"
+},
+{
+	"name": "博尔塔拉州|boertalazhou",
+	"id": "131313"
+},
+{
+	"name": "Lincoln",
+	"id": "131406"
+},
+{
+	"name": "Vitória|vitria",
+	"id": "128125"
+},
+{
+	"name": "神农架林区|shennongjialinqu",
+	"id": "130143"
+},
+{
+	"name": "Rājkot|rjkot",
+	"id": "128226"
+},
+{
+	"name": "Jodhpur|jodhpur",
+	"id": "128237"
+},
+{
+	"name": "Łódź|d",
+	"id": "128329"
+},
+{
+	"name": "New Orleans|neworleans",
+	"id": "128436"
+},
+{
+	"name": "Dnipropetrovs'k|dnipropetrovsk",
+	"id": "128392"
+},
+{
+	"name": "武威|wuwei",
+	"id": "118386"
+},
+{
+	"name": "Naha|naha",
+	"id": "128270"
+},
+{
+	"name": "Chiang Rai|chiangrai",
+	"id": "131510"
+},
+{
+	"name": "淮北|huaibei",
+	"id": "118188"
+},
+{
+	"name": "Busan (Pusan)|busanpusan",
+	"id": "128364"
+},
+{
+	"name": "Pretoria|pretoria",
+	"id": "128361"
+},
+{
+	"name": "百色|baise",
+	"id": "118311"
+},
+{
+	"name": "Kano|kano",
+	"id": "128305"
+},
+{
+	"name": "德宏景颇族|dehongjingpozu",
+	"id": "130945"
+},
+{
+	"name": "德州|dezhou",
+	"id": "118233"
+},
+{
+	"name": "果洛|guoluo",
+	"id": "118400"
+},
+{
+	"name": "Brasília|braslia",
+	"id": "128116"
+},
+{
+	"name": "焦作|jiaozuo",
+	"id": "118241"
+},
+{
+	"name": "南投县|nantou",
+	"id": "128479"
+},
+{
+	"name": "Fredericton|fredericton",
+	"id": "131504"
+},
+{
+	"name": "文山|wenshan",
+	"id": "118356"
+},
+{
+	"name": "Ludhiāna|ludhina",
+	"id": "128214"
+},
+{
+	"name": "Charlotte|charlotte",
+	"id": "128431"
+},
+{
+	"name": "Semarang|semarang",
+	"id": "128243"
+},
+{
+	"name": "winnipeg|winnipeg",
+	"id": "131399"
+},
+{
+	"name": "铜川|tongchuan",
+	"id": "118372"
+},
+{
+	"name": "Salt Lake City|saltlakecity",
+	"id": "128430"
+},
+{
+	"name": "周口|zhoukou",
+	"id": "118252"
+},
+{
+	"name": "保山|baoshan",
+	"id": "118351"
+},
+{
+	"name": "Nuneaton|nuneaton",
+	"id": "131418"
+},
+{
+	"name": "Wellington|wellington",
+	"id": "131428"
+},
+{
+	"name": "Hiroshima|hiroshima",
+	"id": "128265"
+},
+{
+	"name": "白山|baishan",
+	"id": "118142"
+},
+{
+	"name": "Al-Madīnah|almadnah",
+	"id": "128353"
+},
+{
+	"name": "宣城|xuancheng",
+	"id": "118199"
+},
+{
+	"name": "昌吉|changji",
+	"id": "118417"
+},
+{
+	"name": "Adis Abeba|adisabeba",
+	"id": "128164"
+},
+{
+	"name": "天水|tianshui",
+	"id": "118384"
+},
+{
+	"name": "Al-Khartūm|alkhartm",
+	"id": "128374"
+},
+{
+	"name": "Port Elizabeth|portelizabeth",
+	"id": "128362"
+},
+{
+	"name": "河源|heyuan",
+	"id": "118294"
+},
+{
+	"name": "Chiba|chiba",
+	"id": "131488"
+},
+{
+	"name": "Jeonju|jeonju",
+	"id": "131438"
+},
+{
+	"name": "Valencia|valencia",
+	"id": "128453"
+},
+{
+	"name": "Muqdisho|muqdisho",
+	"id": "128357"
+},
+{
+	"name": "Luxemburg City|luxemburgcity",
+	"id": "131459"
+},
+{
+	"name": "Bucaramanga|bucaramanga",
+	"id": "128147"
+},
+{
+	"name": "Ujungpandang|ujungpandang",
+	"id": "128244"
+},
+{
+	"name": "Kanazawa|kanazawa",
+	"id": "131512"
+},
+{
+	"name": "Budapest|budapest",
+	"id": "128195"
+},
+{
+	"name": "Salvador",
+	"id": "128117"
+},
+{
+	"name": "Barquisimeto|barquisimeto",
+	"id": "128455"
+},
+{
+	"name": "Belém|belm",
+	"id": "128121"
+},
+{
+	"name": "Kansas City|kansascity",
+	"id": "128420"
+},
+{
+	"name": "Bucureşti|bucureti",
+	"id": "128333"
+},
+{
+	"name": "La Paz|lapaz",
+	"id": "128109"
+},
+{
+	"name": "Tijuana|tijuana",
+	"id": "128288"
+},
+{
+	"name": "鹤岗|hegang",
+	"id": "118149"
+},
+{
+	"name": "Fès|fs",
+	"id": "128296"
+},
+{
+	"name": "Halifax|halifax",
+	"id": "131491"
+},
+{
+	"name": "辽阳|liaoyang",
+	"id": "118132"
+},
+{
+	"name": "绥化|suihua",
+	"id": "118157"
+},
+{
+	"name": "Lagos|lagos",
+	"id": "128304"
+},
+{
+	"name": "Colombo|colombo",
+	"id": "128373"
+},
+{
+	"name": "Yokohama|yokohama",
+	"id": "128485"
+},
+{
+	"name": "Portland|portland",
+	"id": "128418"
+},
+{
+	"name": "常熟|changshu",
+	"id": "131413"
+},
+{
+	"name": "Vadodara (Baroda)|vadodarabaroda",
+	"id": "128211"
+},
+{
+	"name": "巴音郭楞|bayinguoleng",
+	"id": "118416"
+},
+{
+	"name": "淮南|huainan",
+	"id": "118186"
+},
+{
+	"name": "Fortaleza|fortaleza",
+	"id": "128118"
+},
+{
+	"name": "Shambajinagar (Aurangābād)|shambajinagaraurangbd",
+	"id": "128233"
+},
+{
+	"name": "Shīrāz|shrz",
+	"id": "128250"
+},
+{
+	"name": "随州|suizhou",
+	"id": "118265"
+},
+{
+	"name": "忻州|xinzhou",
+	"id": "118108"
+},
+{
+	"name": "Antananarivo (Tananarive)|antananarivotananarive",
+	"id": "128280"
+},
+{
+	"name": "Victoria|victoria",
+	"id": "131486"
+},
+{
+	"name": "Khulna|khulna",
+	"id": "128105"
+},
+{
+	"name": "博尔塔拉|boertala",
+	"id": "118418"
+},
+{
+	"name": "Kusatsu|kusatsu",
+	"id": "128489"
+},
+{
+	"name": "Jeddah|jeddah",
+	"id": "128350"
+},
+{
+	"name": "Fukuoka|fukuoka",
+	"id": "128264"
+},
+{
+	"name": "Barranquilla|barranquilla",
+	"id": "128146"
+},
+{
+	"name": "Kampala|kampala",
+	"id": "128388"
+},
+{
+	"name": "Chennai|chennai",
+	"id": "128199"
+},
+{
+	"name": "Christchurch|christchurch",
+	"id": "131435"
+},
+{
+	"name": "Dar es Salaam|daressalaam",
+	"id": "128379"
+},
+{
+	"name": "Vārānasi|vrnasi",
+	"id": "128220"
+},
+{
+	"name": "Faisalabad (Lyallpur)|faisalabadlyallpur",
+	"id": "128314"
+},
+{
+	"name": "Cincinnati|cincinnati",
+	"id": "128417"
+},
+{
+	"name": "Guelph|guelph",
+	"id": "131480"
+},
+{
+	"name": "崇左|chongzuo",
+	"id": "118315"
+},
+{
+	"name": "Fresno|fresno",
+	"id": "128447"
+},
+{
+	"name": "黔西南|qianxinan",
+	"id": "118345"
+},
+{
+	"name": "Louisville|louisville",
+	"id": "128435"
+},
+{
+	"name": "来宾|laibin",
+	"id": "118314"
+},
+{
+	"name": "松原|songyuan",
+	"id": "118143"
+},
+{
+	"name": "鹤壁|hebi",
+	"id": "118242"
+},
+{
+	"name": "Chiang Mai|chiangmai",
+	"id": "131509"
+},
+{
+	"name": "Ithaca|ithaca",
+	"id": "131477"
+},
+{
+	"name": "Douala|douala",
+	"id": "128134"
+},
+{
+	"name": "Conakry|conakry",
+	"id": "128193"
+},
+{
+	"name": "黔南|qiannan",
+	"id": "118347"
+},
+{
+	"name": "Rānchi|rnchi",
+	"id": "128234"
+},
+{
+	"name": "Sofija|sofija",
+	"id": "128131"
+},
+{
+	"name": "Tarābulus|tarbulus",
+	"id": "128279"
+},
+{
+	"name": "Gainesville|gainesville",
+	"id": "131511"
+},
+{
+	"name": "阿里|ali",
+	"id": "118369"
+},
+{
+	"name": "Fargo|fargo",
+	"id": "128512"
+},
+{
+	"name": "Ciudad de Panamá|ciudaddepanam",
+	"id": "128321"
+},
+{
+	"name": "白银|baiyin",
+	"id": "118383"
+},
+{
+	"name": "Coimbatore|coimbatore",
+	"id": "128213"
+},
+{
+	"name": "鄂州|ezhou",
+	"id": "118261"
+},
+{
+	"name": "巴中|bazhong",
+	"id": "118334"
+},
+{
+	"name": "乌海|wuhai",
+	"id": "118113"
+},
+{
+	"name": "玉溪|yuxi",
+	"id": "118350"
+},
+{
+	"name": "六盘水|liupanshui",
+	"id": "118340"
+},
+{
+	"name": "临汾|linfen",
+	"id": "118109"
+},
+{
+	"name": "安庆|anqing",
+	"id": "118190"
+},
+{
+	"name": "那曲|naqu",
+	"id": "118365"
+},
+{
+	"name": "贵港|guigang",
+	"id": "118309"
+},
+{
+	"name": "黄山|huangshan",
+	"id": "118191"
+},
+{
+	"name": "克孜勒苏柯尔克孜|kezilesukeerkezi",
+	"id": "131336"
+},
+{
+	"name": "兴安|xingan",
+	"id": "118122"
+},
+{
+	"name": "日喀则|rikaze",
+	"id": "118368"
+},
+{
+	"name": "张家港|zhangjiagang",
+	"id": "131482"
+},
+{
+	"name": "张掖|zhangye",
+	"id": "118387"
+},
+{
+	"name": "昌都|changdou",
+	"id": "118366"
+},
+{
+	"name": "三门峡|sanmenxia",
+	"id": "118248"
+},
+{
+	"name": "锡林郭勒|xilinguole",
+	"id": "118120"
+},
+{
+	"name": "巴音郭楞州|bayinguolengzhou",
+	"id": "131317"
+},
+{
+	"name": "Albuquerque|albuquerque",
+	"id": "128495"
+},
+{
+	"name": "Syracuse|syracuse",
+	"id": "128474"
+},
+{
+	"name": "Freetown|freetown",
+	"id": "128356"
+},
+{
+	"name": "San José|sanjos",
+	"id": "128153"
+},
+{
+	"name": "Hamamatsu|hamamatsu",
+	"id": "128271"
+},
+{
+	"name": "Albany|albany",
+	"id": "128448"
+},
+{
+	"name": "Hyderābād",
+	"id": "128317"
+},
+{
+	"name": "Asunción|asuncin",
+	"id": "128322"
+},
+{
+	"name": "Santo Domingo (de Guzman)|santodomingodeguzman",
+	"id": "128158"
+},
+{
+	"name": "Medellín|medelln",
+	"id": "128144"
+},
+{
+	"name": "Lusaka|lusaka",
+	"id": "128460"
+},
+{
+	"name": "Manaus|manaus",
+	"id": "128123"
+},
+{
+	"name": "Tanjungkarang (Bandar Lampung)|tanjungkarangbandarlampung",
+	"id": "128245"
+},
+{
+	"name": "Daegu (Taegu)|daegutaegu",
+	"id": "128365"
+},
+{
+	"name": "Bayrūt|bayrt",
+	"id": "128278"
+},
+{
+	"name": "Greenville|greenville",
+	"id": "128445"
+},
+{
+	"name": "Visākhpatnam (Vishākhpatnam)|viskhpatnamvishkhpatnam",
+	"id": "128217"
+},
+{
+	"name": "Adana|adana",
+	"id": "128386"
+},
+{
+	"name": "Calgary|calgary",
+	"id": "128140"
+},
+{
+	"name": "Recife|recife",
+	"id": "128115"
+},
+{
+	"name": "Durban|durban",
+	"id": "128359"
+},
+{
+	"name": "Dayton|dayton",
+	"id": "128449"
+},
+{
+	"name": "Ahmadābād|ahmadbd",
+	"id": "128202"
+},
+{
+	"name": "Santa Cruz|santacruz",
+	"id": "128110"
+},
+{
+	"name": "Chemnitz|chemnitz",
+	"id": "131508"
+},
+{
+	"name": "Torreón|torren",
+	"id": "128292"
+},
+{
+	"name": "Little Rock|littlerock",
+	"id": "128490"
+},
+{
+	"name": "Joinville|joinville",
+	"id": "128129"
+},
+{
+	"name": "San Antonio|sanantonio",
+	"id": "128422"
+},
+{
+	"name": "Austin|austin",
+	"id": "128432"
+},
+{
+	"name": "Greensboro|greensboro",
+	"id": "128443"
+},
+{
+	"name": "Al-Basrah|albasrah",
+	"id": "128253"
+},
+{
+	"name": "Lahore|lahore",
+	"id": "128313"
+},
+{
+	"name": "Ottawa|ottawa",
+	"id": "128139"
+},
+{
+	"name": "Magdeburg|magdeburg",
+	"id": "131516"
+},
+{
+	"name": "Kagoshima|kagoshima",
+	"id": "131465"
+},
+{
+	"name": "Gujrānwāla|gujrnwla",
+	"id": "128316"
+},
+{
+	"name": "Lancaster|lancaster",
+	"id": "131493"
+},
+{
+	"name": "Kanagawa|kanagawa",
+	"id": "128486"
+},
+{
+	"name": "Maputo|maputo",
+	"id": "128297"
+},
+{
+	"name": "Porto Alegre|portoalegre",
+	"id": "128114"
+},
+{
+	"name": "El Djazaïr|eldjazar",
+	"id": "128089"
+},
+{
+	"name": "Jabalpur|jabalpur",
+	"id": "128223"
+},
+{
+	"name": "Ankara|ankara",
+	"id": "128383"
+},
+{
+	"name": "Eugene|eugene",
+	"id": "131397"
+},
+{
+	"name": "Jacksonville|jacksonville",
+	"id": "128438"
+},
+{
+	"name": "Medan|medan",
+	"id": "128241"
+},
+{
+	"name": "Omaha|omaha",
+	"id": "131400"
+},
+{
+	"name": "Dakar|dakar",
+	"id": "128354"
+},
+{
+	"name": "Orlando|orlando",
+	"id": "128421"
+},
+{
+	"name": "Karāchi|karchi",
+	"id": "128312"
+},
+{
+	"name": "Tehrān|tehrn",
+	"id": "128246"
+},
+{
+	"name": "Kildare|kildare",
+	"id": "131474"
+},
+{
+	"name": "Baltimore|baltimore",
+	"id": "131444"
+},
+{
+	"name": "Quito|quito",
+	"id": "128160"
+},
+{
+	"name": "New Haven|newhaven",
+	"id": "131515"
+},
+{
+	"name": "Tampa|tampa",
+	"id": "128415"
+},
+{
+	"name": "Jamshedpur|jamshedpur",
+	"id": "128224"
+},
+{
+	"name": "Vijayawāda|vijayawda",
+	"id": "128229"
+},
+{
+	"name": "Ciudad de Guatemala|ciudaddeguatemala",
+	"id": "128192"
 }];
 
 cities.name2id = {};
