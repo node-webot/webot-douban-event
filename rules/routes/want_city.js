@@ -8,7 +8,7 @@ var cmds = ['search|搜索|s', 'stop_search|别闹了'];
 
 module.exports = {
   'parser': function(info, next) {
-    var _text = info._text;
+    var _text = info.text;
 
     // parse command
     var lead = _text.split(/\s+/)[0];
