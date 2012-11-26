@@ -19,14 +19,14 @@ module.exports = exports = {
   //"1802": "影展",
   //"1803": "影院活动",
   "all": "所有",
-  "salon": "讲座|沙龙",
+  "salon": "讲座|沙龙|salon",
   "others": "其他",
-  "film": "电影|观影",
+  "film": "电影|观影|movie",
   "commonweal": "公益",
   "travel": "旅行|旅游",
-  "sports": "运动|体育",
-  "drama": "戏剧|舞台剧|话剧",
-  "music": "音乐|演出",
-  "exhibition": "展览",
-  "party": "聚会|约会"
+  "sports": "运动|体育|sport",
+  "drama": "戏剧|舞台剧|话剧|drama",
+  "music": "音乐|演出|music",
+  "exhibition": "展览|exhibition",
+  "party": "聚会|约会|date|美女|小妞"
 };
