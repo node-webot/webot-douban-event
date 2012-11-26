@@ -82,6 +82,9 @@ Good for you!
 /^嘿嘿+/
 [亲亲]
 
+/^嘻+/
+[呲牙]... 乐！使劲乐！您使劲乐！
+
 /还要|更多|还有没有|还有吗|再来|more|下一页/i
 你还想要什么东西？or
 什么东西还可以有更多？我怎么不知道……
@@ -171,3 +174,11 @@ Hey, dude! What's up, man!
 
 /^永远要要?$/
 都说了，必须切客闹！
+
+谢谢
+不客气[微笑] or
+为大家服务是我的使命！
+
+/thank you/i
+You're welcome. or
+Nah... you don't have to say that.
