@@ -33,6 +33,7 @@ var dialogs = webot.dialogs({
 });
 router.dialog(dialogs);
 router.set('weather', require('./weather'));
+router.set('jielong', require('./jielong'));
 router.set('search', require('./search'));
 
 module.exports = router;
