@@ -1,10 +1,11 @@
 var pwd = process.cwd();
 var chengyu = require(pwd + '/data').chengyu;
 
+var reg_punc = /[。\.\s…\!]/g;
 // 成语接龙
 module.exports = {
   'pattern': function(info) {
-    return info.text && (info.text in chengyu.explain);
+    return info.text && (info.text.replace(reg_punc, '') in chengyu.explain);
   },
   'handler': function(info) {
     var lastChar = info.text[info.text.length - 1]; 
