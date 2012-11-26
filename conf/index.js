@@ -6,6 +6,9 @@ module.exports = {
   },
   memcached: {
     hosts: '127.0.0.1:11211',
+    options: {
+      retries: 2
+    }
   },
   amap: 'fbc5912fdde546936f84e5935cb3110744fb390a',
   mixpanel: 'keyboardcat',
