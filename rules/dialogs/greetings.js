@@ -8,7 +8,7 @@ var greetings = [];
 greetings.push([
   /^\w$/, function(info) {
     var code = info.text.charCodeAt(0);
-    return String.fromCharCode(code++);
+    return String.fromCharCode(code+1);
 }]);
 greetings.push([
   /^(早上?好?|(good )?morning)[啊\!！\.。]*$/i,
