@@ -28,6 +28,13 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
   res.type('xml');
 
   function end() {
+    if (info.is_zht) {
+      fanjian.zhs2zht(info.reply, function(ret) {
+        info.reply = ret || info.reply;
+        res.send(webot.makeMessage(info));
+      });
+      return;
+    }
     res.send(webot.makeMessage(info));
   }
 
