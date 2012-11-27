@@ -1,6 +1,6 @@
 var cities = [{
 	"id": "108288",
-	"name": "北京|bj|帝都|和你一样|北平|beijing"
+	"name": "北京|\bbj\b|帝都|和你一样|北平|beijing"
 },
 {
 	"id": "108296",
@@ -16,7 +16,7 @@ var cities = [{
 },
 {
 	"id": "118318",
-	"name": "成都|榕城|cd|chengdu"
+	"name": "成都|榕城|\bcd\b|chengdu"
 },
 {
 	"name": "南京|nanjing",
@@ -3549,6 +3549,7 @@ cities.forEach(function(item) {
 		cities.name2id[n] = _id;
 	});
 	cities.id2name[_id] = item['name'].split('|')[0];
+  item['name'] = new RegExp(item['name'], 'i');
 });
 
 module.exports = cities;

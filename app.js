@@ -4,6 +4,7 @@ var log = debug('weixin');
 
 var webot = require('weixin-robot');
 var douban = require('./lib/douban');
+var fanjian = require('./lib/fanjian');
 
 webot.set('article props', {
   'pic': 'image_lmobile',
@@ -21,7 +22,7 @@ app.enable('trust proxy');
 var checkSig = webot.checkSig(conf.weixin);
 
 app.get('/', checkSig);
-app.post('/', checkSig, webot.bodyParser(), function(req, res, next) {
+app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, res, next) {
   var info = req.wx_data;
 
   res.type('xml');
