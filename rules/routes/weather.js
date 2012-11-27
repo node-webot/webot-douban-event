@@ -11,7 +11,8 @@ module.exports = {
   },
   'parser': function(info) {
     var t = info.param['q'];
-    info.param['q'] = t.replace(reg_tq, '');
+    info.param['q'] = t.replace(reg_tq, '')
+    .replace(/如何|怎么?样|[？\?\.。]|好不/g, '');
     return info;
   },
   'handler': function(info, next) {

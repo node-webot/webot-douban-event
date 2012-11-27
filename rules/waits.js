@@ -68,7 +68,7 @@ waiter.set('search', {
     waiter.data(uid, { 'q': q, 'loc': loc_id });
     if (loc_id) {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
-      '”相关的活动吗？请回复“要”或“不要”，回复“要要，切克闹”总是尝试搜索';
+      '”相关的活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
       waiter.data(uid, 'search', 'want_city');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
@@ -87,10 +87,10 @@ waiter.set('search', {
         return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
       });
     },
-    '要要[，,]?切[克客]闹': function(uid, info, cb) {
+    '要要要': function(uid, info, cb) {
       var u = info.u || user(info.from);
       u.setProp('stop_search', 2, function() {
-        return cb(null, '好的，今后我听不懂你的话时将总是尝试为你搜索相关活动。你可以回复“别闹了”取消此设置。');
+        return cb(null, '切克闹！今后我听不懂你的话时将总是尝试为你搜索相关活动。你可以回复“别闹了”取消此设置。');
       });
     },
     'N': '好的，你说不要就不要' 
