@@ -17,7 +17,7 @@ module.exports = function(info, next) {
     var loc_id;
     for (var i = 0, l = cities.length; i < l; i++) {
       var item = cities[i];
-      if (city.indexOf(item['name'].split('|')[0]) === 0) {
+      if (city.search(item['name']) === 0) {
         loc_id = item['id'];
       }
     }
