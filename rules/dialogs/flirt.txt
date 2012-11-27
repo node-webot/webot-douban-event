@@ -19,7 +19,7 @@
 我不是人类，我是人，机器人。or
 我是你无法理解的物种。
 
-can you speak english?
+/can you speak english/i
 Of course........ not... or
 someday, maybe.
 If u talk more with me, I will be able to someday.
@@ -290,3 +290,7 @@ OK. 那我也不逼你了，这事儿就这么算了吧。
 
 喂.*伙计
 Hey, dude! What's up, man!
+
+睡不着
+来，我们一起来数羔羊~ 1, 2, 3, 4... or
+真可怜，我也必须得一宿不睡呢
