@@ -6,6 +6,11 @@ function pad(n) {
 
 var greetings = [];
 greetings.push([
+  /^\d$/, function(info) {
+    var num = parseInt(info.text, 10);
+    return num + 1;
+}]);
+greetings.push([
   /^\w$/, function(info) {
     var code = info.text.charCodeAt(0);
     return String.fromCharCode(code+1);
