@@ -2783,7 +2783,6 @@ var cities = [{
 	"id": "128237"
 },
 {
-{
 	"name": "New Orleans|neworleans",
 	"id": "128436"
 },
