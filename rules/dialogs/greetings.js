@@ -91,4 +91,17 @@ greetings.push([
     return t;
   }
 ]);
+greetings.push([
+  /(这个?(时间|点)|这么晚)了/,
+  function(info) {
+    var d = new Date();
+    var h = d.getHours();
+    if (h < 4) return '是呀，干这活儿就是有点辛苦呢';
+    if (h < 13) return '你搞笑吧，太阳都还在东边呢~';
+    if (h < 18) return '不是吧，太阳都还没落山呢...';
+    if (h < 20) return '现在正是一天中的黄金事件呀！';
+    if (h < 23) return '开玩笑，才11点不到好么...';
+    return t;
+  }
+]);
 module.exports = greetings;

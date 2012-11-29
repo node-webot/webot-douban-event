@@ -140,7 +140,7 @@ So what!
 繁体
 恩，当你的消息里面有繁体字时，我就会用繁体回复你。我是不是很聪明呀？嘻嘻...[呲牙]
 
-/^(python|google|facebook|node[\s\.]*js|ruby|v2ex|java[\s]*(script)?|html|css|linux)/i
+/^(python|google|facebook|node[\s\.]*js|ruby|v2ex|java[\s]*(script)?|html|css|linux|github|git\b|bug\b)/i
 你们这些死宅程序员，请走开好吗？or
 怎么一天到晚关心技术，去看点演出什么的好吗？or
 哎呀哎呀，看着这些东西就头大。我是热爱文艺生活的豆瓣同城君好吗？
@@ -152,3 +152,13 @@ So what!
 #满意
 很高兴你能满意。or
 这么满意的话，就给我捐款吧！我的支付宝帐号是 jackoko.cn@gmail.com 。
+
+笑我
+别人笑我太疯癫，我笑他们看不穿~ or
+哎呀，怎么敢笑您呢~ 您是谁啊，你是........谁啊?
+
+/你.*坏了/
+你他妈尽说些我听不懂的，我能不坏么？
+
+就闹
+亲，真的别闹了，我这人比较容易激动，一激动就坏事
