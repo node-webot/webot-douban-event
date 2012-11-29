@@ -6,9 +6,9 @@ function pad(n) {
 
 var greetings = [];
 greetings.push([
-  /^\d$/, function(info) {
+  /^\d+$/, function(info) {
     var num = parseInt(info.text, 10);
-    return '' + num + 1;
+    return '' + (num + 1);
 }]);
 greetings.push([
   /^\w$/, function(info) {
