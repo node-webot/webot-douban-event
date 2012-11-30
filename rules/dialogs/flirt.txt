@@ -29,8 +29,11 @@
 
 /can you speak english/i
 Of course........ not... or
-someday, maybe.
+someday, maybe. or
 If u talk more with me, I will be able to someday.
+
+/awesome/g
+Great! Glad you think so.
 
 怎么这么长
 还要再粗再大再伟岸一点吗？不管你要不要，我都做不到...
