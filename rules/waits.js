@@ -21,7 +21,7 @@ waiter.set('who_create1', {
 
 waiter.set('who_create2', {
   pattern: function(info) {
-    var reg = /(什么人|谁|哪位.*)(给|为|帮)?你?(设置|做|配置|制造|制作|设计|创造|生产?)(了|的)?/;
+    var reg = /(什么人|谁|哪位.*|哪个.*)(给|为|帮)?你?(设置|做|配置|制造|制作|设计|写|创造|生产?)(了|的)?/;
     return reg.test(info.text) && info.text.replace(reg, '').indexOf('你') === 0;
   },
   tip: '一个很猥琐的程序员，要我把他的微信号告诉你吗？',
