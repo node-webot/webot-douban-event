@@ -12,14 +12,16 @@ module.exports = {
   'parser': function(info) {
     var t = info.param['q'];
     info.param['q'] = t.replace(reg_tq, '')
-    .replace(/如何|怎么?样|[？\?\.。]|好不/g, '');
+    .replace(/如何|怎么?样|[？\?\.。]|好不/g, '')
+    .replace(/.天/, '')
+    .replace(/[啊呀哇]/g, '');
     return info;
   },
   'handler': function(info, next) {
     var loc = info.param && info.param.loc;
     var loc_name = loc && cities.id2name[loc] || info.param && info.param['q'];
+    if (loc_name === '阿') loc_name = '';
     if (!loc_name) {
-      console.log(loc_name);
       return next(null, this.waiter.reserve(info.from, 'city_weather'));
     }
     weather(loc_name, function(err, res) {
