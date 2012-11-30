@@ -81,7 +81,7 @@ waiter.set('search', {
       d['uid'] = uid;
       return douban.search(d, cb);
     },
-    '永远不要': function(uid, info, cb) {
+    '永远不要|(不要){2,}': function(uid, info, cb) {
       var u = info.u || user(info.from);
       u.setProp('stop_search', 1, function() {
         return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
