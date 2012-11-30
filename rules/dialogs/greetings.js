@@ -76,7 +76,7 @@ greetings.push([
   }
 ]);
 greetings.push([
-  /^((现在|当前|北京)(时刻|时间)|报时|现在几点了?|time)$/,
+  /(现在|当前|北京)(时刻|时间|几点)|报时|几点了|^(time|时间)$/,
   function(info) {
     var d = new Date();
     var h = d.getHours();
