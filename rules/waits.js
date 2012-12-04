@@ -10,6 +10,34 @@ var cities = data.cities;
 var webot = require('weixin-robot');
 var waiter = webot.waiter();
 
+waiter.set('lonely', {
+  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|交友|约会|小妞/g,
+  tip: function(uid, info) {
+    var q = info.param['q'] || info.text;
+    var loc_id = info.param['loc'];
+    var u = info.u;
+    var waiter = this;
+    waiter.data(uid, { 'type': 'party', 'loc': loc_id });
+    if (loc_id) {
+      return '看来你比较寂寞，让我帮你在' + cities.id2name[loc_id] + '找一下聚会类的活动吧？';
+    } else {
+      waiter.data(uid, 'want_city', 'lonely');
+      return '看样子你很寂寞呀？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
+    }
+  },
+  replies: {
+    Y: function(uid, info, cb) {
+      var u = info.u || user(uid);
+      u.getLoc(function(err, loc) {
+        douban.list({
+          loc: loc,
+          type: 'party'
+        }, cb);
+      });
+    },
+    N: '好的，你说不要就不要'
+  }
+});
 waiter.set('who_create1', {
   pattern: /你是.+做的/,
   tip: '我其实是一个很猥琐的程序员做的，要我把他的微信号告诉你吗？',
@@ -18,7 +46,6 @@ waiter.set('who_create1', {
     'N': '可惜了啊，其实他还长得蛮帅的' 
   }
 });
-
 waiter.set('who_create2', {
   pattern: function(info) {
     var reg = /(什么人|谁|哪位.*|哪个.*)(给|为|帮)?你?(设置|做|配置|制造|制作|设计|写|创造|生产?)(了|的)?/;
@@ -30,7 +57,6 @@ waiter.set('who_create2', {
     'N': '可惜了啊，其实他还长得蛮帅的' 
   }
 });
-
 waiter.set('search_cmd', {
   pattern: /^(搜索?|search|s)$/,
   'tip': '你想搜什么？',
@@ -40,7 +66,7 @@ waiter.set('search_cmd', {
     var next = function(err, loc) {
       if (loc) return douban.search({ loc: loc, q: info.text }, cb);
       waiter.data(uid, 'q', info.text);
-      waiter.data(uid, 'search', 'want_city');
+      waiter.data(uid, 'want_city', 'search_cmd');
       return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
     };
     info.param = info.param || parser.listParam(info.text);
@@ -49,7 +75,6 @@ waiter.set('search_cmd', {
     u.getLoc(next);
   }
 });
-
 waiter.set('search', {
   'pattern': function(info) {
     info.param = info.param || {};
@@ -70,7 +95,7 @@ waiter.set('search', {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
       '”相关的活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
-      waiter.data(uid, 'search', 'want_city');
+      waiter.data(uid, 'want_city', 'search');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
     }
   },

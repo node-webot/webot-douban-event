@@ -41,14 +41,19 @@ module.exports = {
     var u = user(uid);
 
     // is waiting for user to reply a city name
-    var want_city = this.waiter.data(uid, 'search') === 'want_city';
+    var want_city = this.waiter.data(uid, 'want_city');
     var loc = info.param['loc'];
 
     if (want_city && loc) {
       u.setLoc(loc);
-      this.waiter.pass(uid, 'search');
+      this.waiter.pass(uid, want_city);
       var q = this.waiter.data(uid, 'q');
-      if (q) {
+      var type = this.waiter.data(uid, 'type');
+      if (type && !q) {
+        info.ended = true;
+        return douban.list({ loc: loc, type: type }, next);
+      } else if (q) {
+        //info.param['type'] = type;
         info.param['q'] = q;
         info.ended = true;
         return douban.search(info.param, next);
