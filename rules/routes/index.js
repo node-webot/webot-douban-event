@@ -5,7 +5,6 @@ var data = require(pwd + '/data');
 var cities = data.cities;
 
 var user = require(pwd + '/lib/user');
-var parser = require(pwd + '/lib/parser');
 var douban = require(pwd + '/lib/douban');
 
 var router = webot.router();
