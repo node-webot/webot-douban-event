@@ -1,6 +1,7 @@
 var express = require('express');
 var debug = require('debug');
 var log = debug('weixin');
+var error = debug('weixin:error');
 
 var webot = require('weixin-robot');
 var douban = require('./lib/douban');
@@ -10,6 +11,13 @@ webot.set('article props', {
   'pic': 'image_lmobile',
   'url': 'alt',
   'desc': douban.eventDesc,
+});
+
+process.on('uncaughtException', function (err) {
+  error('Caught exception: ' + err);
+  if ('trace' in err) {
+    err.trace();
+  }
 });
 
 var robot = webot.robot(require('./rules/routes'), require('./rules/waits'));
