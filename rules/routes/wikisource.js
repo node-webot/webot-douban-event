@@ -74,12 +74,11 @@ module.exports = {
       }
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
-      if (cont.length > 560) {
-        cont = cont.slice(0, 560) + '....\n\n原文太长了，' + wikilink + '有全文';
+      if (cont.length > 520) {
+        cont = cont.slice(0, 520) + '....\n\n原文太长了，' + wikilink + '有全文';
       } else {
         cont += '\n\n----来自' + wikilink;
       }
-      info.ended = true;
       next(null, cont);
     });
   }
