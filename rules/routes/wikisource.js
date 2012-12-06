@@ -75,8 +75,8 @@ module.exports = {
       }
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
-      if (cont.length > 800) {
-        cont = cont.slice(0, 700) + '....\n\n原文太长了，' + wikilink + '有全文';
+      if (cont.length > 580) {
+        cont = cont.slice(0, 580) + '....\n\n原文太长了，' + wikilink + '有全文';
       } else {
         cont += '\n\n----来自' + wikilink;
       }
