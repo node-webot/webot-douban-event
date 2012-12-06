@@ -23,8 +23,19 @@ module.exports = {
     if (/^.诗$/.test(kw)) {
       return next(null, '发送“背诵 [诗歌名]”，我就能试一下背诵这首诗');
     }
-    var url = 'https://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
     var waiter = this.waiter;
+
+    kw = kw.trim();
+    var tmp = kw.split(/[\s\.]+/);
+    console.log(tmp);
+    if (tmp.length === 2) {
+      kw = tmp[0] + '_(' + tmp[1] + ')';
+    } else {
+      // wiki supported format
+      kw = kw.replace('（', '(').replace('）', ')').replace(/[\s\_]*\(/, '_(');
+    }
+
+    var url = 'https://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
     request(url, {
       printable: 'yes',
       headers: {
