@@ -50,11 +50,11 @@ module.exports = {
       cont = cont.replace(/<[^<]+>/g, '');
       cont = cont.replace('消歧义页', '');
       cont = cont.replace(/&#160;/g, '');
-      cont = cont.replace(/[\n]{3,}/g, '\n\n');
+      cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
       cont = cont.trim();
 
       if (cont.indexOf(qiyi) !== -1) {
-        cont = cont.replace(/[\n]{3,}/g, '\n\n');
+        cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
         cont = cont.replace(qiyi, '');
         cont += '\n\n请输入完整标题';
         waiter.reserve(info.from, 'wikisource');
