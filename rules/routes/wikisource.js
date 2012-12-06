@@ -54,8 +54,8 @@ module.exports = {
       cont = cont.trim();
 
       if (cont.indexOf(qiyi) !== -1) {
-        cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
         cont = cont.replace(qiyi, '');
+        cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
         cont += '\n\n请输入完整标题';
         waiter.reserve(info.from, 'wikisource');
       }
