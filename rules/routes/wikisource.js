@@ -41,10 +41,12 @@ module.exports = {
 
       if (!cont) return next(null, '你要我背的东西我不太会诶……换首大家都知道的诗吧！');
 
-      cont = cont.replace(/<br[\s\/]*>/g, '\n');
-      cont = cont.replace(/<\/p>/g, '\n\n');
+      cont = cont.replace(/<br[\s\/]*>/g, '');
+      cont = cont.replace(/<\/p>/g, '\n');
       cont = cont.replace(/<[^<]+>/g, '');
+      cont = cont.replace(/&#160;/g, '');
       cont = cont.replace(/[\n]{3,}/g, '\n\n');
+      cont = cont.trim();
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
       if (cont.length > 300) {
