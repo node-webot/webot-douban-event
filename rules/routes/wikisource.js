@@ -7,6 +7,8 @@ var reg_recite = /^(背|念|吟|唱)(诵|一?(遍|下|首|曲)|首|\s)[\s《“�
 
 var reg_content = /<!-- bodycontent -->([\s\S]+?)<!-- \/bodycontent -->/;
 
+var qiyi = "這是一個消歧義頁——使用相同或相近標題，而主題不同的條目列表。如果您是通過某個内部鏈接轉到本頁，希望您能協助將該內部鏈接指向正確的主條目。";
+
 module.exports = {
   'pattern': function(info) {
     var m = info.text && info.text.match(reg_recite);
@@ -44,9 +46,15 @@ module.exports = {
       cont = cont.replace(/<br[\s\/]*>/g, '');
       cont = cont.replace(/<\/p>/g, '\n');
       cont = cont.replace(/<[^<]+>/g, '');
+      cont = cont.replace('消歧义页', '');
       cont = cont.replace(/&#160;/g, '');
       cont = cont.replace(/[\n]{3,}/g, '\n\n');
       cont = cont.trim();
+
+      if (cont.indexOf(qiyi) !== -1) {
+        cont = cont.replace(qiyi, '');
+        cont += '请输入完整标题';
+      }
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
       if (cont.length > 300) {
