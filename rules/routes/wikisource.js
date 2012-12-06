@@ -3,7 +3,7 @@ var webot = require('weixin-robot');
 var request = webot.request
 
 
-var reg_recite = /^背(诵|一遍|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
+var reg_recite = /^(背|念|吟|唱)(诵|一?(遍|下|首|曲)|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
 
 var reg_content = /<!-- bodycontent -->([\s\S]+?)<!-- \/bodycontent -->/;
 
@@ -11,7 +11,7 @@ module.exports = {
   'pattern': function(info) {
     var m = info.text && info.text.match(reg_recite);
     if (m) {
-      info.kw = m[2];
+      info.kw = m[4];
       return true;
     }
   },
