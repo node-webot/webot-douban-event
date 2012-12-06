@@ -124,15 +124,16 @@ waiter.set('search', {
 waiter.set('city_weather', {
   'tip': '要查询天气，我需要先知道你在哪个城市',
   'replies': function(uid, info, cb) {
-    weather(info.text, function(err, res) {
+    var loc = info.text;
+    var param = parser.listParam(info.text);
+    var loc_id = param['loc'];
+    if (loc_id && loc_id in cities.id2name) {
+      user(info.from).setLoc(loc_id);
+      loc = cities.id2name[loc_id]
+    }
+    weather(loc, function(err, res) {
       if (err || ! res) return cb(err);
       return cb(null, res);
-    });
-    process.nextTick(function() {
-      var param = parser.listParam(info.text);
-      if (param['loc']) {
-        user(info.from).setLoc(param['loc']);
-      }
     });
   }
 });
