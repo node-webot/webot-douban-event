@@ -29,7 +29,6 @@ module.exports = {
         'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
         'Cache-Control': 'no-cache',
         Connection: 'keep-alive',
-        Host: 'zh.wikisource.org',
         Pragma: 'no-cache',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11'
       }
@@ -37,7 +36,6 @@ module.exports = {
       var cont;
       if (!err && res) {
         var m = res.toString().match(reg_content);
-        console.log(m);
         cont = m && m[1];
       }
 
@@ -49,8 +47,8 @@ module.exports = {
       cont = cont.replace(/[\n]{3,}/g, '\n\n');
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
-      if (cont.length > 600) {
-        cont = cont.slice(0, 500) + '...\n\n(原文太长了，自己去' + wikilink + '看吧)';
+      if (cont.length > 300) {
+        cont = cont.slice(0, 300) + '...\n\n(原文太长了，自己去' + wikilink + '看吧)';
       } else {
         cont += '\n\n----来自' + wikilink;
       }
