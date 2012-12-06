@@ -61,6 +61,7 @@ module.exports = {
       cont = cont.replace(/<[^<]+>/g, '');
       cont = cont.replace('消歧义页', '');
       cont = cont.replace(/&#160;/g, '');
+      cont = cont.replace(/&lt;诗歌/, '');
       cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
       cont = cont.trim();
 
