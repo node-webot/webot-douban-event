@@ -3,7 +3,7 @@ var webot = require('weixin-robot');
 var request = webot.request
 
 
-var reg_recite = /^(背|念|来|吟|唱)(诵|一?(遍|下|首|曲)|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
+var reg_recite = /^(背|念|来|吟|唱)(背|念|唱|诵|一?(遍|下|首|曲)|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
 
 var reg_content = /<!-- bodycontent -->([\s\S]+?)<!-- \/bodycontent -->/;
 
@@ -61,7 +61,7 @@ module.exports = {
       cont = cont.replace(/<[^<]+>/g, '');
       cont = cont.replace('消歧义页', '');
       cont = cont.replace(/&#160;/g, '');
-      cont = cont.replace(/&lt;诗歌/, '');
+      cont = cont.replace(/&lt;/, '');
       cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
       cont = cont.trim();
 
