@@ -20,7 +20,7 @@ module.exports = {
     if (/^.诗$/.test(kw)) {
       return next(null, '发送“背诵 [诗歌名]”，我就能试一下背诵这首诗');
     }
-    var url = 'http://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
+    var url = 'https://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
     request(url, {
       printable: 'yes',
       headers: {
