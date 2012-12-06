@@ -138,6 +138,17 @@ waiter.set('city_weather', {
   }
 });
 
+var r_wikisource = require('./routes/wikisource');
+waiter.set('wikisource', {
+  'replies': function(uid, info, cb) {
+    var kw = info.text;
+    var m = kw.match(r_wikisource.reg_recite);
+    if (m) kw = m[4];
+    info.kw = kw;
+    r_wikisource.handler(info, cb);
+  }
+});
+
 var chengyu = require(pwd + '/data').chengyu;
 waiter.set('jielong', {
   'tip': function(uid, q) {
