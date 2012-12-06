@@ -6,6 +6,7 @@ var request = webot.request
 var reg_recite = /^(背|念|来|吟|唱)(背|念|唱|诵|一?(遍|下|首|曲)|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
 
 var reg_content = /<!-- bodycontent -->([\s\S]+?)<!-- \/bodycontent -->/;
+var reg_noprint = /<([\w]+)\s+[^<]+?noprint[^>]+>.*?<\/\1>/g;
 
 var qiyi = "這是一個消歧義頁——使用相同或相近標題，而主題不同的條目列表。如果您是通過某個内部鏈接轉到本頁，希望您能協助將該內部鏈接指向正確的主條目。";
 
@@ -58,6 +59,7 @@ module.exports = {
 
       cont = cont.replace(/<br[\s\/]*>/g, '');
       cont = cont.replace(/<\/p>/g, '\n');
+      cont = cont.replace(reg_noprint, '');
       cont = cont.replace(/<[^<]+>/g, '');
       cont = cont.replace('消歧义页', '');
       cont = cont.replace(/&#160;/g, '');
