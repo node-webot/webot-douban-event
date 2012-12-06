@@ -50,7 +50,7 @@ module.exports = {
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
       if (cont.length > 300) {
-        cont = cont.slice(0, 300) + '...\n\n(原文太长了，自己去' + wikilink + '看吧)';
+        cont = cont.slice(0, 300) + '....\n\n原文太长了，' + wikilink + '有全文';
       } else {
         cont += '\n\n----来自' + wikilink;
       }
