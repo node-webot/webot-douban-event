@@ -10,6 +10,11 @@ var reg_noprint = /<([\w]+)\s+[^<]+?noprint[^>]+>.*?<\/\1>/g;
 
 var qiyi = "這是一個消歧義頁——使用相同或相近標題，而主題不同的條目列表。如果您是通過某個内部鏈接轉到本頁，希望您能協助將該內部鏈接指向正確的主條目。";
 
+var notable_poets = '辛弃疾 欧阳修 周邦彦 吴文英 李清照 史达祖 王安石 王沂孙 晏几道 晏殊 苏轼 柳永 姜夔 秦观 贺铸 张先 张炎 陆游 李煜 黄庭坚 朱淑真 李之仪 冯延巳 陈与义 朱敦儒 刘辰翁 岳飞 周密 范成大 叶梦德 张泌 范仲淹 张孝祥 赵佶 万俟咏 吕本中 王观 周紫芝 胡铨 黄公度 潘阆 朱熹 黄裳 张耒 阎选 徐俯 孙光宪 顾夐 文天祥 魏承班 李纲 杨万里 戴复古 曾觌 康与之 李重元 唐婉 '
+notable_poets += '李白 白居易 杜甫 王维 韩愈 柳宗元';
+
+notable_poets = notable_poets.split(' ');
+
 module.exports = {
   'reg_recite': reg_recite,
   'pattern': function(info) {
@@ -31,8 +36,13 @@ module.exports = {
     if (tmp.length === 2) {
       kw = tmp[0] + '_(' + tmp[1] + ')';
     } else {
-      // wiki supported format
-      kw = kw.replace('（', '(').replace('）', ')').replace(/[\s\_]*\(/, '_(');
+      tmp = kw.split('的');
+      if (tmp.length === 2 && notable_poets.indexOf(tmp[0]) !== -1) {
+        kw = tmp[1] + '_(' + tmp[0] + ')';
+      } else {
+        // wiki supported format
+        kw = kw.replace('（', '(').replace('）', ')').replace(/[\s\_]*\(/, '_(');
+      }
     }
 
     var url = 'https://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
