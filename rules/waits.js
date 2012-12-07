@@ -119,7 +119,7 @@ waiter.set('search', {
     '要要要': function(uid, info, cb) {
       var u = info.u || user(info.from);
       u.setProp('stop_search', 2, function() {
-        return cb(null, '要要要，切克闹！\n今后我听不懂你的话时将总是尝试为你查找可能的相关活动。\b你可以回复“别闹了”取消此设置。');
+        return cb(null, '要要要，切克闹！\n今后我听不懂你的话时将总是尝试为你查找相关活动。\n你可以回复“别闹了”取消此设置。');
       });
     },
     'N': '好的，你说不要就不要' 
