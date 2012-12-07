@@ -57,14 +57,18 @@ waiter.set('who_create2', {
     'N': '可惜了啊，其实他还长得蛮帅的' 
   }
 });
+var reg_search_cmd = /^(搜索?|search|s)$/;
 waiter.set('search_cmd', {
-  pattern: /^(搜索?|search|s)$/,
+  pattern: reg_search_cmd,
   'tip': '你想搜什么？',
   'replies': function(uid, info, cb) {
     var u = info.u || user(info.from);
     var waiter = this;
     var next = function(err, loc) {
-      if (loc) return douban.search({ loc: loc, q: info.text }, cb);
+      if (loc) {
+        var q = info.text.replace(reg_search_cmd);
+        return douban.search({ loc: loc, q: q }, cb);
+      }
       waiter.data(uid, 'q', info.text);
       waiter.data(uid, 'want_city', 'search_cmd');
       return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
