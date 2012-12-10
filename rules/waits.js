@@ -11,7 +11,7 @@ var webot = require('weixin-robot');
 var waiter = webot.waiter();
 
 waiter.set('lonely', {
-  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|交友|约会|小妞/g,
+  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|交友|约会|^小?美?妞/g,
   tip: function(uid, info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
