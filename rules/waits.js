@@ -160,7 +160,7 @@ waiter.set('jielong', {
     return q;
   },
   'replies': {
-    '((什么|啥)意思|解释|释义)': function(uid, info, cb) {
+    '((什么|什麽|甚么|嘛|啥)意思|解释|释义)': function(uid, info, cb) {
       var q = this.data(uid, 'jielong');
       var ret = q && chengyu.explain[q];
       if (ret) return cb(null, '【' + q + '】' + ret);
