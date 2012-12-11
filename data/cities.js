@@ -3547,5 +3547,15 @@ cities.forEach(function(item) {
 	cities.id2name[_id] = item['name'].split('|')[0];
   item['name'] = new RegExp(item['name'], 'i');
 });
+cities.is_hot = function(loc) {
+  var i = 0;
+  loc = this.name2id[loc] || loc;
+  while (true) {
+    if (i > 20) return false;
+    if (this[i]['id'] == loc) return true;
+    if (this[i]['id'] == loc) return true;
+    i++;
+  }
+};
 
 module.exports = cities;
