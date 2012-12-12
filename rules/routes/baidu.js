@@ -12,7 +12,7 @@ function do_search(info, next) {
     // 调用 toString 方法，转换为 utf-8 的字符串
     res = res.toString();
 
-    var reg_h3t = /<h3 class="t">\s*(.+?)\s*<\/h3>/gi;
+    var reg_h3t = /<h3 class="t">\s*(<a.*?>.*?<\/a>).*?<\/h3>/gi;
     var links = [];
     var i = 1;
 
@@ -27,7 +27,12 @@ function do_search(info, next) {
     if (links.length) {
       ret = '在百度搜索到以下结果：\n\n' + links.join('\n');
       ret = ret.replace(/\s*data-click=".*?"/gi,  '');
+      ret = ret.replace(/\s*onclick=".*?"/gi,  '');
+      ret = ret.replace(/\s*target=".*?"/gi,  '');
       ret = ret.replace(/<em>(.*?)<\/em>/gi,  '$1');
+      ret = ret.replace(/<font.*?>(.*?)<\/font>/gi,  '$1');
+      ret = ret.replace(/<span.*?>(.*?)<\/span>/gi,  '$1');
+      console.log(ret);
       console.log(ret.length);
     } else {
       ret = '搜不到任何结果呢';
