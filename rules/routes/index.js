@@ -35,5 +35,6 @@ router.set('weather', require('./weather'));
 router.set('jielong', require('./jielong'));
 router.set('wikisource', require('./wikisource'));
 router.set('search', require('./search'));
+router.set('baidu', require('./baidu'));
 
 module.exports = router;
