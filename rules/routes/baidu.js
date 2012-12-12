@@ -32,8 +32,6 @@ function do_search(info, next) {
       ret = ret.replace(/<em>(.*?)<\/em>/gi,  '$1');
       ret = ret.replace(/<font.*?>(.*?)<\/font>/gi,  '$1');
       ret = ret.replace(/<span.*?>(.*?)<\/span>/gi,  '$1');
-      console.log(ret);
-      console.log(ret.length);
     } else {
       ret = '搜不到任何结果呢';
     }
@@ -42,9 +40,7 @@ function do_search(info, next) {
   });
 }
 module.exports = {
-  'pattern': function(info) {
-    return info.param['q'] && info.param['q'].length < 25;
-  },
+  'pattern': reg_search_cmd,
   'parser': function(info) {
     info.param.q = info.text.match(reg_search_cmd)[3];
     return info;
