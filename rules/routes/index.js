@@ -28,7 +28,7 @@ router.set('list', {
 
 var dialogs = webot.dialogs({
   dir: pwd + '/rules/dialogs',
-  files: ['basic', 'gags', 'greetings.js', 'bad', 'lonely', 'flirt', 'emoji', 'short']
+  files: ['basic', 'gags', 'greetings.js']
 });
 router.dialog(dialogs);
 router.set('weather', require('./weather'));
