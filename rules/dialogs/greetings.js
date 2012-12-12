@@ -27,7 +27,7 @@ greetings.push([
     if (h < 12) return '这都几点了，还早啊...';
     if (h < 14) return '人家中午饭都吃过了，还早呐？';
     if (h < 17) return '如此美好的下午，是很适合出门逛逛的';
-    if (h < 21) return '早，什么早？找碴的找？';
+    if (h < 21) return '现在...好像...是晚上吧..';
     if (h >= 21) return '您还是早点睡吧...';
   }
 ]);
@@ -37,7 +37,7 @@ greetings.push([
     var d = new Date();
     var h = d.getHours();
     if (h < 14 && h > 10) return '你也午安了！';
-    return '您这问候来得有点不合时宜吧..';
+    return '我们这边好像不是中午哦..';
   }
 ]);
 greetings.push([
