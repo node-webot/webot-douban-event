@@ -25,7 +25,7 @@ function do_search(info, next) {
 
     var ret;
     if (links.length) {
-      ret = '在百度搜索到以下结果：\n\n' + links.join('\n');
+      ret = '在百度搜索到以下结果：\n' + links.join('\n');
       ret = ret.replace(/\s*data-click=".*?"/gi,  '');
       ret = ret.replace(/\s*onclick=".*?"/gi,  '');
       ret = ret.replace(/\s*target=".*?"/gi,  '');
