@@ -1,0 +1,25 @@
+.share
+  h4 分享到: 
+  - var share_title = encodeURIComponent('[大声看法] 让法律因互联网而有趣');
+  - var share_url = encodeURIComponent('http://www.loudlaw.org');
+  - var share_image = encodeURIComponent('');
+  ul
+    li 
+      a.ico.ico-tencent(
+        target='_blank'
+        href='http://v.t.qq.com/share/share.php?title=#{share_title}&url=#{share_url}&site=www.loudlaw.org&pic=#{share_image}'
+        title='分享到腾讯微博'
+      ) 腾讯微博 
+    li 
+      a.ico.ico-renren(
+        target='_blank'
+        href='http://share.renren.com/share/buttonshare.do?title=#{share_title}&link=#{share_url}'
+        title='分享到人人网'
+      ) 人人网 
+    li 
+      a.ico.ico-douban(
+        target='_blank'
+        href='http://shuo.douban.com/!service/share?name=#{share_title}&href=#{share_url}&image=#{share_image}'
+        title='分享到豆瓣'
+      ) 豆瓣 
+  include weibo_share

@@ -1,0 +1,137 @@
+body, ol, ul, li {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  margin: 0.5em 0;
+  list-style: none; 
+}
+.on span,
+a {
+  color: #04a;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 2px;
+}
+.on span {
+  color: #666;
+  font-weight: 600;
+}
+a:hover {
+  background: #04a;
+  color: #fff;
+}
+.mod li {
+  list-style: none;
+  border-bottom: 1px dashed #ddd;
+  padding: 20px 0;
+}
+#header {
+  text-align: center;
+  background: #f3f6ff;
+  border-bottom: 1px solid #ccd;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 -1px 1px #fff;
+}
+#main-body {
+  padding: 0 20px 30px;
+  overflow: hidden;
+  zoom: 1;
+}
+#footer {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+#sidebar {
+  position: fixed;
+  right: 80px;
+  top: 80px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+h2 {
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+  font-size: 1.3em;
+}
+fieldset {
+  border: 1px solid #ccc;
+  display: block;
+  max-width: 900px;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+label {
+  margin-right: 0.5em;
+  display: inline-block;
+  float: left;
+  text-align: right;
+  vertical-align: top;
+  line-height: 2.2em;
+  font-weight: 600;
+}
+th {
+  vertical-align: top;
+  padding-top: 0.7em;
+}
+input[type=text],
+pre,
+textarea {
+  width: 80%;
+  border: 1px solid #d0d0d9;
+  padding: 0.6em;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+}
+input[type=text]:hover,
+pre:hover,
+textarea:hover {
+  box-shadow: 0 0 4px rgba(100,230,255,0.8);
+  border-color: #acf;
+}
+input[type=text]:focus,
+pre:focus,
+textarea:focus {
+  box-shadow: 0 0 6px rgba(100,230,255,0.8);
+  border-color: #8bf;
+  outline: none;
+}
+textarea:disabled,
+input[type=text]:disabled {
+  background: #f9f9f9;
+  box-shadow: none;
+  border-color: #d0d0d0;
+}
+textarea {
+  font-family: monospace;
+  height: 8em;
+  resize: vertical;
+}
+pre {
+  width: auto;
+  overflow: auto;
+}
+
+#routes label {
+  width: 3em;
+}
+.row label {
+  margin-left: -2em;
+}
+.row {
+  padding-left: 2em;
+}
+
+.menu {
+  border-left: 2px solid #eee;
+  padding-left: 10px;
+}
+.back-top {
+  font-size: 0.8em;
+}

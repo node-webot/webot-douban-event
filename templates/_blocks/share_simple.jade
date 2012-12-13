@@ -1,0 +1,25 @@
+.share
+  strong 分享: 
+  - var share_title = encodeURIComponent(title);
+  - var share_url = encodeURIComponent(SITE_ROOT + (locals.carnonical || req_url));
+  - var share_image = '';
+  a.ico.ico-sina(
+    target='_blank'
+    href='http://service.weibo.com/share/share.php?title=#{share_title}&url=#{share_url}&appkey=appkey=475087858&ralateUid=2377285010&pic=#{share_image}'
+    title='分享到新浪微博'
+  ) 新浪微博 
+  a.ico.ico-tencent(
+    target='_blank'
+    href='http://v.t.qq.com/share/share.php?title=#{share_title}&url=#{share_url}&site=www.loudlaw.org&pic=#{share_image}'
+    title='分享到腾讯微博'
+  ) 腾讯微博 
+  a.ico.ico-renren(
+    target='_blank'
+    href='http://share.renren.com/share/buttonshare.do?title=#{share_title}&link=#{share_url}'
+    title='分享到人人网'
+  ) 人人网 
+  a.ico.ico-douban(
+    target='_blank'
+    href='http://shuo.douban.com/!service/share?name=#{share_title}&href=#{share_url}&image=#{share_image}'
+    title='分享到豆瓣'
+  ) 豆瓣 

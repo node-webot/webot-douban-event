@@ -1,0 +1,28 @@
+mixin routes_sect(routes)
+  fieldset.section
+    h2 Routes // 共#{routes.length}条规则
+    #routes.mod
+      ol
+        each item, i in routes
+          li
+            mixin route(item, i)
+
+mixin route(item, i)
+  .row
+    label 命名
+    input(type="text", disabled=(item.name.indexOf('dialog') === 0),
+      name="r#{i}-name", value="#{item.name}")
+  if item.pattern
+    .row
+      label 匹配
+      pre(name="r#{i}-pattern")
+        code.language-javascript #{item.pattern}
+  if item.parser
+    .row
+      label 预处理 
+      pre(name="r#{i}-handler")
+        code.language-javascript #{item.parser}
+  .row
+    label 回复
+    pre(name="r#{i}-handler")
+      code.language-javascript #{item.handler}

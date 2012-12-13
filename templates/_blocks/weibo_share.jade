@@ -1,0 +1,17 @@
+script
+  (function(){
+    var _w = 72 , _h = 16;
+    var param = {
+      url:location.href,
+      type:'3',
+      count:'1',
+      appkey:'1511142102',
+      ralateUid:'2377285010',
+      rnd:new Date().valueOf()
+    }
+    var temp = [];
+    for( var p in param ){
+      temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+    }
+    document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+  })()

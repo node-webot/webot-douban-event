@@ -11,6 +11,7 @@
     "debug": "*",
     "iconv": ">= 1.2.4",
     "express": ">= 3.0.0beta2",
+    "jade": ">= 0.27.7",
     "weixin-robot": ">= 0.0.4",
     "memcached": ">= 0.1.4"
   },

@@ -1,0 +1,14 @@
+!!!
+//if IE 8
+  <html class="ie ie8">
+//if IE 7
+  <html class="ie ieold ie7">
+//if lt IE 7
+  <html class="ie ieold ie6">
+<head>
+include head 
+</head>
+cls = locals.bodyClass && ' class="' + locals.bodyClass + '"'
+id = locals.bodyId && ' id="' + locals.bodyId + '"'
+<body!{cls}!{id}>
+include header 

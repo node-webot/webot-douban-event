@@ -1,0 +1,10 @@
+ul.menu
+  each item,i in subs
+    if item === pagename
+      li.on
+        span #{subnames[i]}
+    else
+      li
+        a(href="/admin/#{item}") #{subnames[i]}
+  li.back-top
+    a(href="#header") 回顶部

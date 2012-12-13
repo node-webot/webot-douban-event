@@ -25,10 +25,13 @@ var messages = require('./data/messages');
 var conf = require('./conf');
 
 var app = express();
+app.use(express.static(__dirname + '/static'));
 app.enable('trust proxy');
+app.engine('jade', require('jade').__express);
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/templates');
 
 var checkSig = webot.checkSig(conf.weixin);
-
 app.get('/', checkSig);
 app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, res, next) {
   var info = req.wx_data;
@@ -67,6 +70,14 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
     end();
   });
 });
+
+var manager = require('./lib/manager');
+app.use('/admin', express.basicAuth(function(user, pass) {
+  var users = conf.users;
+  return users && (user in users) && users[user]['passwd'] === pass;
+}));
+app.get('/admin/:sub', manager.panel(robot));
+
 var port = conf.port || 3000;
 var hostname = conf.hostname || '127.0.0.1';
 app.listen(port, hostname, function() {

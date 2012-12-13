@@ -1,0 +1,25 @@
+!!!
+//if IE 8
+  <html class="ie ie8">
+//if IE 7
+  <html class="ie ieold ie7">
+//if lt IE 7
+  <html class="ie ieold ie6">
+<head>
+block head
+  include _blocks/head 
+</head>
+body
+  block header
+    include _blocks/header 
+  block body
+    #main-body
+      block main
+        #sidebar.aside.aside-left
+          block aside
+            include blocks/sidebar
+        #article.article
+          block article
+  block footer
+    include _blocks/footer 
+</html>

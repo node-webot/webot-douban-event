@@ -10,6 +10,11 @@ module.exports = {
       retries: 2
     }
   },
+  users: {
+    admin: {
+      passwd: 'admin'
+    }
+  },
   amap: 'fbc5912fdde546936f84e5935cb3110744fb390a',
   mixpanel: 'keyboardcat',
   weixin: 'keyboardcat123'

@@ -1,0 +1,20 @@
+mixin dialogs_sect(dialogs)
+  fieldset.section
+    h2 Dialogs // 共#{dialogs.length}条对话规则
+    #dialogs.mod
+      ol
+        each item, i in dialogs
+          li
+            mixin dialog(item, i)
+
+mixin dialog(item, i)
+  .row
+    label A:
+    pre(name="d#{i}-pattern")
+      code.language-javascript #{item[0]}
+  .row
+    label B:
+    - rs = item[1] instanceof Array ? item[1] : item[1].split(/\s+or\s+/)
+    each r in rs
+      pre(name="d#{i}-reply")
+        code.language-javascript #{r}
