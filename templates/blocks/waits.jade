@@ -1,0 +1,33 @@
+mixin waits_sect(waits)
+  fieldset.section
+    h2 Waits // 共#{waits.length}条等待规则
+    #waits.mod
+      ol
+        each item, i in waits
+          li
+            mixin dialog(item, i)
+
+mixin dialog(item, i, n)
+  .row
+    label 命名:
+    pre(name="d#{i}-name")
+      code.language-javascript #{n}
+  .row
+    label 匹配:
+    pre(name="d#{i}-pattern")
+      code.language-javascript #{item.pattern}
+  .row
+    label 提醒:
+    pre(name="d#{i}-tip")
+      code.language-javascript #{item.tip}
+  .row
+    label 回复:
+    if typeof item.replies === 'string':
+        pre(name="d#{i}-reply")
+          code.language-javascript #{item.replies}
+    else:
+      each v, r in item.replies
+        pre(name="d#{i}-reply")
+          code.language-javascript #{r}
+        pre(name="d#{i}-response")
+          code.language-javascript #{v}
