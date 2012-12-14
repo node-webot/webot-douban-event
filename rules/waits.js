@@ -11,7 +11,7 @@ var webot = require('weixin-robot');
 var waiter = webot.waiter();
 
 waiter.set('lonely', {
-  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|交友|约会|^小?美?妞/g,
+  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|约会|^小?美?妞/g,
   tip: function(uid, info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
@@ -22,7 +22,7 @@ waiter.set('lonely', {
       return '看来你比较寂寞，让我帮你在' + cities.id2name[loc_id] + '找一下聚会类的活动吧？';
     } else {
       waiter.data(uid, 'want_city', 'lonely');
-      return '看样子你很寂寞呀？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
+      return '想认识更多好朋友？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
     }
   },
   replies: {
