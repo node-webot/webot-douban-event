@@ -28,10 +28,9 @@ a:hover {
   padding: 20px 0;
 }
 #header {
-  text-align: center;
   background: #f3f6ff;
   border-bottom: 1px solid #ccd;
-  padding: 10px;
+  padding: 10px 30px;
   margin-bottom: 20px;
   box-shadow: 0 -1px 1px #fff;
 }
@@ -47,9 +46,9 @@ a:hover {
 }
 #sidebar {
   position: fixed;
-  right: 80px;
+  right: 50px;
   top: 80px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.6);
   border-radius: 3px;
 }
 
@@ -130,7 +129,7 @@ pre {
 
 .menu {
   border-left: 2px solid #eee;
-  padding-left: 10px;
+  padding: 0 10px;
 }
 .back-top {
   font-size: 0.8em;

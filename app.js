@@ -76,7 +76,8 @@ app.use('/admin', express.basicAuth(function(user, pass) {
   var users = conf.users;
   return users && (user in users) && users[user]['passwd'] === pass;
 }));
-app.get('/admin/:sub', manager.panel(robot));
+app.get('/admin/', manager.menu, manager.home(robot));
+app.get('/admin/:sub', manager.menu, manager.panel(robot));
 
 var port = conf.port || 3000;
 var hostname = conf.hostname || '127.0.0.1';

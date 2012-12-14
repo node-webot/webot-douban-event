@@ -1,13 +1,8 @@
 extend base
-include blocks/routes
-include blocks/dialogs 
 
 block article 
-  mixin routes_sect(routes)
-  mixin dialogs_sect(dialogs)
-
-  //script#tmpl-route-item(type="text/tmpl")
-  //script#tmpl-dialog-item(type="text/tmpl")
-  script(src="http://img3.douban.com/js/packed_jquery.min6301986802.js")
-  //script(src="/js/router.js")
-  //script(src="/js/panel.js")
+  .stat #{counts.routes} Routes // #{counts.dialogs} Dialogs // #{counts.waits} Waiter rules
+  style
+    #sidebar { position: static; margin-bottom: 30px; }
+    .menu { border: 0; padding: 0; }
+    #sidebar li { display: inline-block; margin-right: 20px; }
