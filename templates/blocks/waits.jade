@@ -7,25 +7,27 @@ mixin waits_sect(waits)
           li
             mixin dialog(item, i)
 
-mixin dialog(item, i, n)
+mixin dialog(item, i)
   .row
-    label 命名:
+    label 命名
     pre(name="d#{i}-name")
-      code.language-javascript #{n}
+      code.language-javascript #{item.name}
+  if item.pattern
+    .row
+      label 匹配
+      pre(name="d#{i}-pattern")
+        code.language-javascript #{item.pattern}
+  if item.tip
+    .row
+      label 提醒
+      pre(name="d#{i}-tip")
+        code.language-javascript #{item.tip}
   .row
-    label 匹配:
-    pre(name="d#{i}-pattern")
-      code.language-javascript #{item.pattern}
-  .row
-    label 提醒:
-    pre(name="d#{i}-tip")
-      code.language-javascript #{item.tip}
-  .row
-    label 回复:
-    if typeof item.replies === 'string':
+    label 回复
+    if typeof item.replies === 'string'
         pre(name="d#{i}-reply")
           code.language-javascript #{item.replies}
-    else:
+    else
       each v, r in item.replies
         pre(name="d#{i}-reply")
           code.language-javascript #{r}
