@@ -19,7 +19,7 @@ waiter.set('lonely', {
     var waiter = this;
     waiter.data(uid, { 'type': 'party', 'loc': loc_id });
     if (loc_id) {
-      return '看来你比较寂寞，让我帮你在' + cities.id2name[loc_id] + '找一下聚会类的活动吧？';
+      return '想认识更多朋友吗？让我帮你在' + cities.id2name[loc_id] + '找一下聚会类的活动吧？';
     } else {
       waiter.data(uid, 'want_city', 'lonely');
       return '想认识更多好朋友？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
