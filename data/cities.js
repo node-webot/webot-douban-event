@@ -99,7 +99,7 @@ var cities = [{
 	"id": "118200"
 },
 {
-	"name": "香港|hongkong",
+	"name": "香港|hongkong|\bhk\b",
 	"id": "108090"
 },
 {
@@ -171,7 +171,7 @@ var cities = [{
 	"id": "118403"
 },
 {
-	"name": "London|london",
+	"name": "London|伦敦",
 	"id": "128183"
 },
 {
@@ -195,7 +195,7 @@ var cities = [{
 	"id": "118304"
 },
 {
-	"name": "Paris|paris",
+	"name": "Paris|巴黎",
 	"id": "128166"
 },
 {
@@ -247,7 +247,7 @@ var cities = [{
 	"id": "119088"
 },
 {
-	"name": "Singapore|singapore",
+	"name": "Singapore|singapore|新加坡",
 	"id": "108231"
 },
 {
@@ -291,15 +291,15 @@ var cities = [{
 	"id": "118222"
 },
 {
-	"name": "Philadelphia|philadelphia",
+	"name": "Philadelphia|philadelphia|费城",
 	"id": "128401"
 },
 {
-	"name": "Tōkyō|tky",
+	"name": "Tōkyō|tky|东京|tokyo",
 	"id": "128260"
 },
 {
-	"name": "Seoul (Sŏul)|seoulsul",
+	"name": "Seoul (Sŏul)|seoul|首尔",
 	"id": "128363"
 },
 {
@@ -323,11 +323,11 @@ var cities = [{
 	"id": "118184"
 },
 {
-	"name": "Toronto|toronto",
+	"name": "Toronto|多伦多",
 	"id": "128136"
 },
 {
-	"name": "Sydney|sydney",
+	"name": "Sydney|悉尼",
 	"id": "128096"
 },
 {
@@ -335,7 +335,7 @@ var cities = [{
 	"id": "118225"
 },
 {
-	"name": "Los Angeles|losangeles",
+	"name": "Los Angeles|los.*angeles|\bl\.?a\.?\b|洛杉矶",
 	"id": "128397"
 },
 {
@@ -343,11 +343,11 @@ var cities = [{
 	"id": "118176"
 },
 {
-	"name": "New York City|newyorkcity",
+	"name": "New York City|newyorkcity|\bnyc\b|纽约",
 	"id": "128396"
 },
 {
-	"name": "Chicago|chicago",
+	"name": "Chicago|chicago|芝加哥|风城",
 	"id": "128398"
 },
 {
@@ -363,7 +363,7 @@ var cities = [{
 	"id": "118274"
 },
 {
-	"name": "San Francisco/Bay Area|sanfranciscobayarea",
+	"name": "San Francisco/Bay Area|sanfrancisco|湾区|旧金山|三藩市",
 	"id": "128400"
 },
 {
@@ -383,7 +383,7 @@ var cities = [{
 	"id": "118243"
 },
 {
-	"name": "Vancouver|vancouver",
+	"name": "Vancouver|温哥华",
 	"id": "128138"
 },
 {
@@ -423,11 +423,11 @@ var cities = [{
 	"id": "118227"
 },
 {
-	"name": "Melbourne|melbourne",
+	"name": "Melbourne|墨尔本",
 	"id": "128097"
 },
 {
-	"name": "Liverpool|liverpool",
+	"name": "Liverpool|利物浦",
 	"id": "128188"
 },
 {
@@ -455,7 +455,7 @@ var cities = [{
 	"id": "118179"
 },
 {
-	"name": "Berlin|berlin",
+	"name": "Berlin|berlin|柏林",
 	"id": "128172"
 },
 {
@@ -495,7 +495,7 @@ var cities = [{
 	"id": "118358"
 },
 {
-	"name": "Barcelona|barcelona",
+	"name": "Barcelona|barcelona|巴塞罗那",
 	"id": "128370"
 },
 {
@@ -2011,7 +2011,7 @@ var cities = [{
 	"id": "128273"
 },
 {
-	"name": "Las Vegas|lasvegas",
+	"name": "Las Vegas|(las\s*)?vegas|拉斯维加斯",
 	"id": "128426"
 },
 {
@@ -2035,7 +2035,7 @@ var cities = [{
 	"id": "118382"
 },
 {
-	"name": "London (Canada)|londoncanada",
+	"name": "London(Canada)|london.*canada",
 	"id": "128470"
 },
 {
