@@ -45,6 +45,7 @@ module.exports = {
     var loc = info.param['loc'];
 
     if (want_city && loc) {
+      this.waiter(uid, 'want_city', null);
       u.setLoc(loc);
       this.waiter.pass(uid, want_city);
       var q = this.waiter.data(uid, 'q');
