@@ -16,13 +16,13 @@ greetings.push([
     return String.fromCharCode(code+1);
 }]);
 greetings.push([
-  /^(早上?好?|(good )?morning)[啊\!！\.。]*$/i,
+  /^(早上?好?|(good )?morning)/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
     if (h < 3) return '[嘘] 我这边还是深夜呢，别吵着大家了';
-    if (h < 5) return '这才几点钟啊，您就醒了？';
-    if (h < 7) return '早啊官人！您可起得真早呐~ 给你请安了！\n 今天想参加点什么活动呢？';
+    if (h < 5) return '您起得可真早呀！';
+    if (h < 7) return '早啊官人！给您请安了！\n 今天想做什么计划好了吗？';
     if (h < 9) return 'Morning, sir! 新的一天又开始了！您今天心情怎么样？';
     if (h < 12) return '这都几点了，还早啊...';
     if (h < 14) return '人家中午饭都吃过了，还早呐？';
@@ -32,7 +32,7 @@ greetings.push([
   }
 ]);
 greetings.push([
-  /^(午安|中午好|good noon)[啊\!！\.。]*$/i,
+  /^(午安|中午好|good noon)/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
@@ -41,7 +41,7 @@ greetings.push([
   }
 ]);
 greetings.push([
-  /^(下午好|(good )?afternoon)[啊\!！\.。]*$/i,
+  /^(下午好|(good )?afternoon)/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
@@ -51,7 +51,7 @@ greetings.push([
   }
 ]);
 greetings.push([
-  /^(晚上好|(good )?evening)[啊\!！\.。]*$/i,
+  /^(晚上好|(good )?evening)/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
@@ -63,7 +63,7 @@ greetings.push([
   }
 ]);
 greetings.push([
-  /^(晚安|(good )?night)[啊\!！\.。]*$/i,
+  /^(晚安|(good )?night)/i,
   function(info) {
     var d = new Date();
     var h = d.getHours();
