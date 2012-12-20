@@ -72,12 +72,12 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
 });
 
 var manager = require('./lib/manager');
-app.use('/admin', express.basicAuth(function(user, pass) {
+var auth = express.basicAuth(function(user, pass) {
   var users = conf.users;
   return users && (user in users) && users[user]['passwd'] === pass;
-}));
-app.get('/admin/', manager.menu, manager.home(robot));
-app.get('/admin/:sub', manager.menu, manager.panel(robot));
+});
+app.get('/admin/', auth, manager.menu, manager.home(robot));
+app.get('/admin/:sub', auth, manager.menu, manager.panel(robot));
 
 var port = conf.port || 3000;
 var hostname = conf.hostname || '127.0.0.1';
