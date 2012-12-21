@@ -10,18 +10,36 @@ function obj_equal(a, b){
   }
   return true;
 }
+var reg_more = /更多|再来|more|下一页/ig;
 module.exports = {
+  'pattern': function(info) {
+    if (reg_more.test(info.text)) {
+      if (info.param.type || info.param.day_type) {
+        info.param['q'] = info.param['q'].replace(reg_more, '');
+        return false;
+      }
+      return true;
+    }
+    return false;
+  },
   'handler': function(info, next) {
-    var is_more = (/更多|再来|more|下一页/i).test(info.text);
     var uid = info.from;
     var u = info.u || user(uid);
     var waiter = this.waiter;
 
     u.getPrev(function(err, res){
-      if (err || !res) return next();
+      if (err || !res) {
+        var loc = u.getLoc();
+        if (loc) {
+          info.ended = true;
+          douban.list({ loc: loc }, next);
+        }
+        return next();
+      }
 
       var act = res['_wx_act'];
-      if (is_more === false && info.text !== res._text || !act || !(act in douban)) return next();
+
+      if (!act || !(act in douban)) return next();
 
       try {
         info.ended = true;
