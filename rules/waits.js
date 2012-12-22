@@ -6,6 +6,7 @@ var douban = require(pwd + '/lib/douban');
 var weather = require(pwd + '/lib/weather');
 
 var cities = data.cities;
+var etypes = data.types;
 
 var webot = require('weixin-robot');
 var waiter = webot.waiter();
@@ -83,7 +84,7 @@ waiter.set('search', {
   'pattern': function(info) {
     info.param = info.param || {};
     var text = info.param['q'] || info.text;
-    return info.type == 'text' && text.length > 1 && text.length < 15;
+    return info.type == 'text' && text.length < 15;
   },
   'tip': function(uid, info) {
     var q = info.param['q'] || info.text;
@@ -95,9 +96,14 @@ waiter.set('search', {
 
     // save user data
     waiter.data(uid, { 'q': q, 'loc': loc_id });
+    var type = info.param['type'] || '';
+    if (type) {
+      type = etypes[type] || '';
+      type = type && type.split('|')[0];
+    }
     if (loc_id) {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
-      '”相关的活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
+      '”相关的' + type + '活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
       waiter.data(uid, 'want_city', 'search');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';

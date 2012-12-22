@@ -27,6 +27,6 @@ module.exports = exports = {
   "sports": "运动|体育|sport",
   "drama": "戏剧|舞台剧|话剧|drama",
   "music": "音乐|演出|music",
-  "exhibition": "展览|exhibition",
+  "exhibition": "展览|展览会|exhibition",
   "party": "聚会|交友|party"
 };
