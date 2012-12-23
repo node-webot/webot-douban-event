@@ -447,10 +447,6 @@ var cities = [{
 	"id": "118228"
 },
 {
-	"name": "朝阳|chaoyang",
-	"id": "118135"
-},
-{
 	"name": "衢州|quzhou",
 	"id": "118179"
 },
