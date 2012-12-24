@@ -10,10 +10,10 @@ function obj_equal(a, b){
   }
   return true;
 }
-var reg_more = /更多|再来|more|下一页/ig;
+var reg_more = /(更多|再来|more|下一页)/ig;
 module.exports = {
   'pattern': function(info) {
-    if (reg_more.test(info.text)) {
+    if (info.text.match(reg_more)) {
       if (info.param.type || info.param.day_type) {
         info.param['q'] = info.param['q'].replace(reg_more, '');
         return false;
@@ -50,8 +50,12 @@ module.exports = {
           return next('NO_MORE');
         }
         delete res['_wx_act'];
-        res.start = res.start || 0;
-        res.start += 5;
+        if (!res.start) {
+          res.start = 5;
+          res['count'] = 5;
+        } else {
+          res.start += 5;
+        }
         douban[act](res, next);
       } catch (e) {
         next();
