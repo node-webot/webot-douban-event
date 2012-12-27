@@ -11,8 +11,9 @@ var etypes = data.types;
 var webot = require('weixin-robot');
 var waiter = webot.waiter();
 
+var reg_lonely = /(妹子|妹纸|帅哥|美女|姑娘|^小?美?妞)/;
 waiter.set('lonely', {
-  pattern: /妹子|妹纸|帅哥|美女|姑娘|相亲|约会|^小?美?妞/g,
+  pattern: reg_lonely,
   tip: function(uid, info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
@@ -20,7 +21,7 @@ waiter.set('lonely', {
     var waiter = this;
     waiter.data(uid, { 'type': 'party', 'loc': loc_id });
     if (loc_id) {
-      return '想认识更多朋友吗？让我帮你在' + cities.id2name[loc_id] + '找一下聚会类的活动吧？';
+      return '多出门参加一点同城活动就能遇见' + q.match(reg_lonely)[0] + '了哦？要不我帮你在' + cities.id2name[loc_id] + '找一些聚会类的活动？';
     } else {
       waiter.data(uid, 'want_city', 'lonely');
       return '想认识更多好朋友？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
@@ -112,11 +113,16 @@ waiter.set('search', {
   'replies': {
     'Y': function(uid, info, cb) {
       var d = this.data(uid);
+      if (!d['loc']) {
+        cb(null, '我需要先知道你在哪个城市哦亲');
+        this.reserve(uid, 'search');
+        return
+      }
       if (!d['loc'] || !d['q']) return true;
       d['uid'] = uid;
       return douban.search(d, cb);
     },
-    '永远不要|(不要){2,}|你好啰嗦|你好烦|取消|去死': function(uid, info, cb) {
+    '永远不要|(不要){2,}|你好啰嗦|你好烦|取消|去死|呸': function(uid, info, cb) {
       var u = info.u || user(info.from);
       u.setProp('stop_search', 1, function() {
         return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
