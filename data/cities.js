@@ -615,7 +615,7 @@ var cities = [{
 	"id": "118167"
 },
 {
-	"name": "Dallas|dallas",
+	"name": "Dallas|dallas|达拉斯",
 	"id": "128402"
 },
 {
@@ -647,15 +647,15 @@ var cities = [{
 	"id": "118216"
 },
 {
-	"name": "Glasgow|glasgow",
+	"name": "Glasgow|glasgow|格拉斯高",
 	"id": "128187"
 },
 {
-	"name": "Stuttgart|stuttgart",
+	"name": "Stuttgart|stuttgart|斯图加特",
 	"id": "128173"
 },
 {
-	"name": "Kyoto|kyoto",
+	"name": "Kyoto|kyoto|京都",
 	"id": "128473"
 },
 {
@@ -687,7 +687,7 @@ var cities = [{
 	"id": "118106"
 },
 {
-	"name": "Washington, D.C|washingtondc",
+	"name": "Washington, D.C|washingtondc|华盛顿",
 	"id": "128399"
 },
 {
@@ -699,7 +699,7 @@ var cities = [{
 	"id": "128302"
 },
 {
-	"name": "Cambridge|cambridge",
+	"name": "Cambridge|cambridge|剑桥",
 	"id": "128482"
 },
 {
@@ -711,11 +711,11 @@ var cities = [{
 	"id": "128167"
 },
 {
-	"name": "Manchester|manchester",
+	"name": "Manchester|manchester|曼彻斯特",
 	"id": "128185"
 },
 {
-	"name": "Edinburgh|edinburgh",
+	"name": "Edinburgh|edinburgh|爱丁堡",
 	"id": "128463"
 },
 {
