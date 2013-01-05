@@ -32,7 +32,7 @@ module.exports = {
         var loc = u.getLoc();
         if (loc) {
           info.ended = true;
-          douban.list({ loc: loc }, next);
+          return douban.list({ loc: loc }, next);
         }
         return next();
       }
