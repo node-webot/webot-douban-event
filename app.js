@@ -9,7 +9,9 @@ var fanjian = require('./lib/fanjian');
 
 webot.set('article props', {
   'pic': 'image_lmobile',
-  'url': 'adapt_url',
+  'url': function(item) {
+    return item.adapt_url.replace('adapt', 'partner');
+  },
   'desc': douban.eventDesc,
 });
 
