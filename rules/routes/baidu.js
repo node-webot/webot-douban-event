@@ -47,4 +47,3 @@ module.exports = {
   },
   'handler': do_search
 };
-
