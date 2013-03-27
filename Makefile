@@ -2,7 +2,7 @@ LOG_FILE = ./tmp.log
 
 nonce="19283749"
 # token for test environment
-token="keyboarddog"
+token="keyboardcat123"
 timestamp=$(shell date +%s)
 # how can this sort happen?
 str_arr=$(sort $(nonce) $(timestamp) $(token))

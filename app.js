@@ -34,6 +34,7 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
 var checkSig = webot.checkSig(conf.weixin);
+
 app.get('/', checkSig);
 app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, res, next) {
   var info = req.wx_data;

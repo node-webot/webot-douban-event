@@ -9,7 +9,7 @@ var douban = require(pwd + '/lib/douban');
 
 var router = webot.router();
 
-['location', 'image', 'want_city', 'more'].forEach(function(item) {
+['location', 'image', 'event', 'want_city', 'more'].forEach(function(item) {
   router.set(item, require('./' + item));
 });
 

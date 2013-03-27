@@ -15,7 +15,7 @@ module.exports = {
       passwd: 'admin'
     }
   },
-  amap: 'fbc5912fdde546936f84e5935cb3110744fb390a',
+  amap: '5d43370486bad3aeb0c89642b3836438',
   mixpanel: 'keyboardcat',
   weixin: 'keyboardcat123'
 };
