@@ -12,6 +12,9 @@ sig=`md5 -qs $(str)`
 TEST_URI="http://wx.kanfa.org/?signature=$(sig)&timestamp=$(timestamp)&nonce=$(nonce)"
 TEST_URI_LOCAL="http://0.0.0.0:3000/?signature=$(sig)&timestamp=$(timestamp)&nonce=$(nonce)"
 
+start:
+	@export DEBUG="webot* weixin* -*:verbose" && forever --watch app.js
+
 # interactive model
 send: clear
 	@read -p '输入要发送的文字：' txt;\

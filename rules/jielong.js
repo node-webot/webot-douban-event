@@ -12,6 +12,15 @@ function pick(obj) {
     return result;
 }
 
+var jielong_wait = {
+  pattern: '((什么|什麽|甚么|嘛|啥)意思|解释|释义)',
+  handler: function(info) {
+    var q = this.data(uid, 'jielong');
+    var ret = q && chengyu.explain[q];
+    if (ret) return '【' + q + '】' + ret;
+    return '我也不知道是什么意思呢...';
+  }
+};
 // 成语接龙
 module.exports = {
   'pattern': function(info) {
@@ -26,7 +35,9 @@ module.exports = {
     var lastChar = info.text[info.text.length - 1]; 
     if (lastChar in chengyu.index) {
       var ret = chengyu.index[lastChar].sample(1)[0];
-      return this.waiter.reserve(info.from, 'jielong', ret);
+      info.data('jielong', q);
+      info.wait('jielong');
+      return ret;
     }
     return '[大哭]你赢了.. 我接不上这个成语... 换下一个试试吧';
   }

@@ -3,6 +3,9 @@ process.on('uncaughtException', function (err) {
   if ('trace' in err) {
     err.trace();
   }
+  if ('stack' in err) {
+    console.log(err.stack);
+  }
 });
 
 var express = require('express');
@@ -14,16 +17,15 @@ var webot = require('weixin-robot');
 var douban = require('./lib/douban');
 var fanjian = require('./lib/fanjian');
 
-webot.config.mapping = function(item, i) {
+var mapping = webot.config.mapping = function(item, i) {
   item.pic = item.image_lmobile;
   item.url = item.adapt_url.replace('adapt', 'partner');
   item.desc = douban.eventDesc(item);
   return item;
 };
 
-require('yaml-js');
-require('./rules/routes')(robot);
-require('./rules/waits')(robot);
+require('js-yaml');
+require('./rules')(webot);
 
 var messages = require('./data/messages');
 var conf = require('./conf');
@@ -47,11 +49,11 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
     if (info.is_zht) {
       fanjian.zhs2zht(info.reply, function(ret) {
         info.reply = ret || info.reply;
-        res.send(webot.makeMessage(info));
+        res.send(info.toXML(mapping));
       });
       return;
     }
-    res.send(webot.makeMessage(info));
+    res.send(info.toXML(mapping));
   }
 
   if (!info) {
@@ -59,30 +61,16 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
     return end();
   }
 
-  robot.reply(info, function(err, ret) {
+  webot.reply(info, function(err) {
     if (err == 404 && info.param && info.param.start) {
       info.reply = messages['NO_MORE'];
-    } else if (err || !ret) {
+    } else if (err || !info.reply) {
       //res.statusCode = (typeof err === 'number' ? err : 500);
-      info.reply = ret || messages[String(err)] || messages['503'];
-    } else if (ret instanceof Array) {
-      info.items = ret;
-    } else if (typeof ret == 'string') {
-      info.reply = ret;
-    } else {
-      info.reply = messages['400'];
+      info.reply = info.reply || messages[String(err)] || messages['503'];
     }
     end();
   });
 });
-
-var manager = require('./lib/manager');
-var auth = express.basicAuth(function(user, pass) {
-  var users = conf.users;
-  return users && (user in users) && users[user]['passwd'] === pass;
-});
-app.get('/admin/', auth, manager.menu, manager.home(robot));
-app.get('/admin/:sub', auth, manager.menu, manager.panel(robot));
 
 var port = conf.port || 3000;
 var hostname = conf.hostname || '127.0.0.1';

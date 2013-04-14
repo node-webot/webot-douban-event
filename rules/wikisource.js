@@ -1,7 +1,7 @@
-// 从维基文库找诗文
-var webot = require('weixin-robot');
-var request = webot.request
-
+/**
+* 从维基文库找诗文
+*/
+var request = require('request');
 
 var reg_recite = /^(背|念|来|吟|唱)(背|念|唱|诵|一?(遍|下|首|曲)|首|\s)[\s《“”\<\>\"\']*(.+?)[\.。…“”》\<\>\"\']*$/;
 
@@ -15,8 +15,7 @@ notable_poets += '李白 白居易 杜甫 王维 韩愈 柳宗元';
 
 notable_poets = notable_poets.split(' ');
 
-module.exports = {
-  'reg_recite': reg_recite,
+var exports = {
   'pattern': function(info) {
     var m = info.text && info.text.match(reg_recite);
     if (m) {
@@ -29,7 +28,6 @@ module.exports = {
     if (/^.诗$/.test(kw)) {
       return next(null, '发送“背诵 [诗歌名]”，我就能试一下背诵这首诗');
     }
-    var waiter = this.waiter;
 
     kw = kw.trim();
     var tmp = kw.split(/[\s\.]+/);
@@ -80,7 +78,7 @@ module.exports = {
         cont = cont.replace(qiyi, '');
         cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
         cont += '\n\n请输入完整标题';
-        waiter.reserve(info.from, 'wikisource');
+        info.wait(wait_reply);
       }
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
@@ -93,3 +91,15 @@ module.exports = {
     });
   }
 };
+
+var wait_reply = {
+  handler: function(uid, info, cb) {
+    var kw = info.text;
+    var m = kw.match(reg_recite);
+    if (m) kw = m[4];
+    info.kw = kw;
+    exports.handler(info, cb);
+  }
+};
+
+module.exports = exports;
