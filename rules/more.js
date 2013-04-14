@@ -51,10 +51,10 @@ module.exports = {
         }
         delete res['_wx_act'];
         if (!res.start) {
-          res.start = 5;
-          res['count'] = 5;
+          res.start = 4;
+          res['count'] = 4;
         } else {
-          res.start += 5;
+          res.start += 4;
         }
         douban[act](res, next);
       } catch (e) {
