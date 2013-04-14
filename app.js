@@ -1,3 +1,10 @@
+process.on('uncaughtException', function (err) {
+  error('Caught exception: ' + err);
+  if ('trace' in err) {
+    err.trace();
+  }
+});
+
 var express = require('express');
 var debug = require('debug');
 var log = debug('weixin');
@@ -7,22 +14,17 @@ var webot = require('weixin-robot');
 var douban = require('./lib/douban');
 var fanjian = require('./lib/fanjian');
 
-webot.set('article props', {
-  'pic': 'image_lmobile',
-  'url': function(item) {
-    return item.adapt_url.replace('adapt', 'partner');
-  },
-  'desc': douban.eventDesc,
-});
+webot.config.mapping = function(item, i) {
+  item.pic = item.image_lmobile;
+  item.url = item.adapt_url.replace('adapt', 'partner');
+  item.desc = douban.eventDesc(item);
+  return item;
+};
 
-process.on('uncaughtException', function (err) {
-  error('Caught exception: ' + err);
-  if ('trace' in err) {
-    err.trace();
-  }
-});
+require('yaml-js');
+require('./rules/routes')(robot);
+require('./rules/waits')(robot);
 
-var robot = webot.robot(require('./rules/routes'), require('./rules/waits'));
 var messages = require('./data/messages');
 var conf = require('./conf');
 

@@ -8,22 +8,21 @@ var weather = require(pwd + '/lib/weather');
 var cities = data.cities;
 var etypes = data.types;
 
-var webot = require('weixin-robot');
-var waiter = webot.waiter();
+module.exports = function(webot) {
 
 var reg_lonely = /(妹子|妹纸|帅哥|美女|姑娘|^小?美?妞)/;
-waiter.set('lonely', {
+webot.set('lonely', {
   pattern: reg_lonely,
-  tip: function(uid, info) {
+  handler: function(uid, info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
     var u = info.u;
-    var waiter = this;
-    waiter.data(uid, { 'type': 'party', 'loc': loc_id });
+    var webot = this;
+    webot.data(uid, { 'type': 'party', 'loc': loc_id });
     if (loc_id) {
       return '多出门参加一点同城活动就能遇见' + q.match(reg_lonely)[0] + '了哦？要不我帮你在' + cities.id2name[loc_id] + '找一些聚会类的活动？';
     } else {
-      waiter.data(uid, 'want_city', 'lonely');
+      webot.data(uid, 'want_city', 'lonely');
       return '想认识更多好朋友？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
     }
   },
@@ -40,39 +39,39 @@ waiter.set('lonely', {
     N: '好的，你说不要就不要'
   }
 });
-waiter.set('who_create1', {
+webot.set('who_create1', {
   pattern: /你是.+做的/,
-  tip: '我其实是一个很猥琐的程序员做的，要我把他的微信号告诉你吗？',
+  handler: '我其实是一个很猥琐的程序员做的，要我把他的微信号告诉你吗？',
   'replies': {
     'Y': '好的，他的微信帐号是：YjgxNTQ5ZmQzYTA0OWNjNTQ3NzliNGMyNzRmYjdhMTUK',
     'N': '可惜了啊，其实他还长得蛮帅的' 
   }
 });
-waiter.set('who_create2', {
+webot.set('who_create2', {
   pattern: function(info) {
     var reg = /(什么人|谁|哪位.*|哪个.*)(给|为|帮)?你?(设置|做|配置|制造|制作|设计|写|创造|生产?)(了|的)?/;
     return reg.test(info.text) && info.text.replace(reg, '').indexOf('你') === 0;
   },
-  tip: '一个很猥琐的程序员，要我把他的微信号告诉你吗？',
+  handler: '一个很猥琐的程序员，要我把他的微信号告诉你吗？',
   'replies': {
     'Y': '好的，他的微信帐号是：YjgxNTQ5ZmQzYTA0OWNjNTQ3NzliNGMyNzRmYjdhMTUK',
     'N': '可惜了啊，其实他还长得蛮帅的' 
   }
 });
 var reg_search_cmd = /^(搜索?|search|s)$/;
-waiter.set('search_cmd', {
-  pattern: reg_search_cmd,
-  'tip': '你想搜什么？',
+webot.set('search_cmd', {
+  'pattern': reg_search_cmd,
+  'handler': '你想搜什么？',
   'replies': function(uid, info, cb) {
     var u = info.u || user(info.from);
-    var waiter = this;
+    var webot = this;
     var next = function(err, loc) {
       if (loc) {
         var q = info.text.replace(reg_search_cmd);
         return douban.search({ loc: loc, q: q }, cb);
       }
-      waiter.data(uid, 'q', info.text);
-      waiter.data(uid, 'want_city', 'search_cmd');
+      webot.data(uid, 'q', info.text);
+      webot.data(uid, 'want_city', 'search_cmd');
       return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
     };
     info.param = info.param || parser.listParam(info.text);
@@ -81,22 +80,22 @@ waiter.set('search_cmd', {
     u.getLoc(next);
   }
 });
-waiter.set('search', {
+webot.set('search', {
   'pattern': function(info) {
     info.param = info.param || {};
     var text = info.param['q'] || info.text;
     return info.type == 'text' && text.length < 15;
   },
-  'tip': function(uid, info) {
+  'handler': function(uid, info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
 
     var u = info.u;
 
-    var waiter = this;
+    var webot = this;
 
     // save user data
-    waiter.data(uid, { 'q': q, 'loc': loc_id });
+    webot.data(uid, { 'q': q, 'loc': loc_id });
     var type = info.param['type'] || '';
     if (type) {
       type = etypes[type] || '';
@@ -106,7 +105,7 @@ waiter.set('search', {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
       '”相关的' + type + '活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
-      waiter.data(uid, 'want_city', 'search');
+      webot.data(uid, 'want_city', 'search');
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
     }
   },
@@ -137,8 +136,8 @@ waiter.set('search', {
     'N': '好的，你说不要就不要' 
   }
 });
-waiter.set('city_weather', {
-  'tip': '要查询天气，我需要先知道你在哪个城市',
+webot.set('city_weather', {
+  'handler': '要查询天气，我需要先知道你在哪个城市',
   'replies': function(uid, info, cb) {
     var loc = info.text;
     var param = parser.listParam(info.text);
@@ -155,7 +154,7 @@ waiter.set('city_weather', {
 });
 
 var r_wikisource = require('./routes/wikisource');
-waiter.set('wikisource', {
+webot.set('wikisource', {
   'replies': function(uid, info, cb) {
     var kw = info.text;
     var m = kw.match(r_wikisource.reg_recite);
@@ -166,8 +165,8 @@ waiter.set('wikisource', {
 });
 
 var chengyu = require(pwd + '/data').chengyu;
-waiter.set('jielong', {
-  'tip': function(uid, q) {
+webot.set('jielong', {
+  'handler': function(uid, q) {
     this.data(uid, 'jielong', q);
     return q;
   },
@@ -180,4 +179,5 @@ waiter.set('jielong', {
     }
   }
 });
-module.exports = waiter;
+
+});
