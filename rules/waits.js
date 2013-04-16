@@ -80,6 +80,7 @@ webot.set('search_cmd', {
     u.getLoc(next);
   }
 });
+
 webot.set('confirm search', {
   'pattern': function(info) {
     info.param = info.param || {};
@@ -112,13 +113,13 @@ webot.set('confirm search', {
   'replies': {
     Y: function(info, cb) {
       var uid = info.from;
-      var d = this.data(uid);
+      var d = info.data();
       if (!d['loc']) {
         cb(null, '我需要先知道你在哪个城市哦亲');
         info.wait(webot.get('want_city'));
         return
       }
-      if (!d['loc'] || !d['q']) return true;
+      if (!d['loc'] || !d['q']) return cb();
       d['uid'] = uid;
       return douban.search(d, cb);
     },

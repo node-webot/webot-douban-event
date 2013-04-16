@@ -4,7 +4,7 @@ var data = require(pwd + '/data');
 var cities = data.cities;
 
 var douban = require(pwd + '/lib/douban');
-var paser = require(pwd + '/lib/parser');
+var parser = require(pwd + '/lib/parser');
 var user = require(pwd + '/lib/user');
 
 // Special type for location

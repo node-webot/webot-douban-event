@@ -9,10 +9,17 @@ var unknown_replies = [
   '不太明白你要表达个什么意思... 我智力很有限的！',
   'Remember, you can always type "search xxx" to search for events related to xxx',
   '你刚才说的我没听太懂，但我还在努力学习中，以后说不定就懂了哦~'
-]
+];
+
+var direct_search = /音乐会|话剧|孟京辉/i;
+
 module.exports = {
   'pattern': function(info) {
-    return info.param['q'] && info.param['q'].length < 25;
+    var ret = info.param['q'] && info.param['q'].length < 25;
+    if (ret && direct_search.test(info.text)) {
+      info.cmd = 'search';
+    }
+    return ret;
   },
   'handler': function(info, next) {
     var u = info.u || user(info.from);

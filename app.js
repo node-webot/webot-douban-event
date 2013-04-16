@@ -19,16 +19,17 @@ var fanjian = require('./lib/fanjian');
 
 var mapping = webot.config.mapping = function(item, i) {
   item.pic = item.image_lmobile;
-  item.url = item.adapt_url.replace('adapt', 'partner');
-  item.desc = douban.eventDesc(item);
+  item.url = item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '';
+  item.desc = item.owner && douban.eventDesc(item);
   return item;
 };
-
 require('js-yaml');
 require('./rules')(webot);
 
 var messages = require('./data/messages');
 var conf = require('./conf');
+
+webot.config.codeReplies = messages;
 
 var app = express();
 app.use(express.static(__dirname + '/static'));
@@ -61,13 +62,22 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
     return end();
   }
 
-  webot.reply(info, function(err) {
-    if (err == 404 && info.param && info.param.start) {
+  webot.reply(info, function(err, ret) {
+    var param = info.param || {};
+
+    if (err == 404 && param.start) {
       info.reply = messages['NO_MORE'];
-    } else if (err || !info.reply) {
+    } else if (err || !ret) {
       //res.statusCode = (typeof err === 'number' ? err : 500);
-      info.reply = info.reply || messages[String(err)] || messages['503'];
+      info.reply = ret || messages[String(err)] || messages['503'];
     }
+
+    if (Array.isArray(info.reply) && info.has_more) {
+      info.reply.push({
+        title: '回复 more 查看更多'
+      });
+    }
+
     end();
   });
 });
