@@ -45,7 +45,9 @@ var exports = {
 
     var url = 'https://zh.wikisource.org/wiki/' + encodeURIComponent(kw);
     request(url, {
-      printable: 'yes',
+      qs: {
+        printable: 'yes',
+      },
       headers: {
         Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Charset': 'UTF-8,*;q=0.5',
@@ -56,9 +58,10 @@ var exports = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11'
       }
     }, function(err, res) {
+
       var cont;
       if (!err && res) {
-        var m = res.toString().match(reg_content);
+        var m = res.body.toString().match(reg_content);
         cont = m && m[1];
       }
 

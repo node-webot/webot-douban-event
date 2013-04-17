@@ -15,7 +15,7 @@
     "express": "~3.0",
     "jade": "~0.27.7",
     "js-yaml": "~2.0.3",
-    "weixin-robot": "~0.3.0",
+    "weixin-robot": "~0.3.2",
     "memcached": "~0.1.4"
   },
   "devDependencies": {
