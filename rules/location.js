@@ -14,7 +14,12 @@ module.exports = {
   },
   handler: function(info, next) {
     parser.geo2loc(info, function(err, city) {
-      if (!city) return next('CITY_404');
+
+      info.ended = true;
+
+      if (!city) {
+        return next('GEO_404');
+      }
 
       var loc_id;
       for (var i = 0, l = cities.length; i < l; i++) {
@@ -23,7 +28,7 @@ module.exports = {
           loc_id = item['id'];
         }
       }
-      if (!loc_id) return next('CITY_404');
+      if (!loc_id) return next('GEO_404');
 
       user(info.from).setLoc(loc_id);
       var param = {
@@ -32,7 +37,6 @@ module.exports = {
         lng: info.lng,
         loc: loc_id
       };
-      info.ended = true;
       return douban.nearby(param, next);
     });
   }

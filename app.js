@@ -69,7 +69,7 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
       info.reply = messages['NO_MORE'];
     } else if (err || !ret) {
       //res.statusCode = (typeof err === 'number' ? err : 500);
-      info.reply = ret || messages[String(err)] || messages['503'];
+      info.reply = ret.reply || messages[String(err)] || messages['503'];
     }
 
     if (Array.isArray(info.reply) && info.has_more) {
