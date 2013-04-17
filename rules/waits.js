@@ -121,6 +121,7 @@ webot.set('confirm search', {
       }
       if (!d['loc'] || !d['q']) return cb();
       d['uid'] = uid;
+      info.ended = true;
       return douban.search(d, cb);
     },
     N: '好的，你说不要就不要',
