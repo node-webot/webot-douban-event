@@ -20,7 +20,7 @@ var fanjian = require('./lib/fanjian');
 var mapping = webot.config.mapping = function(item, i) {
   item.pic = item.image_lmobile;
   item.url = item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '';
-  item.desc = item.owner && douban.eventDesc(item);
+  item.description = item.owner && douban.eventDesc(item);
   return item;
 };
 require('js-yaml');
@@ -74,7 +74,7 @@ app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, 
 
     if (Array.isArray(info.reply) && info.has_more) {
       info.reply.push({
-        title: '回复 more 查看更多'
+        title: '回复 more 查看更多...'
       });
     }
 

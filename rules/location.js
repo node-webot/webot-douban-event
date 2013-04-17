@@ -26,10 +26,14 @@ module.exports = {
       if (!loc_id) return next('CITY_404');
 
       user(info.from).setLoc(loc_id);
-      info.param.uid = info.from;
-      info.param.loc = loc_id;
+      var param = {
+        uid: info.from,
+        lat: info.lat,
+        lng: info.lng,
+        loc: loc_id
+      };
       info.ended = true;
-      return douban.nearby(info.param, next);
+      return douban.nearby(param, next);
     });
   }
 };
