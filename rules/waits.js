@@ -10,6 +10,28 @@ var etypes = data.types;
 
 module.exports = function(webot) {
 
+webot.waitRule('wiki_fulltitle', function(uid, info, cb) {
+  var kw = info.text;
+  var m = kw.match(reg_recite);
+  if (m) kw = m[4];
+  info.kw = kw;
+  webot.get('wikisource').handler(info, cb);
+});
+
+webot.waitRule('wait_weather_city', function(info, cb) {
+  var loc = info.text;
+  var param = parser.listParam(info.text);
+  var loc_id = param['loc'];
+  if (loc_id && loc_id in cities.id2name) {
+    user(info.from).setLoc(loc_id);
+    loc = cities.id2name[loc_id]
+  }
+  weather(loc, function(err, res) {
+    if (err || ! res) return cb(err);
+    return cb(null, res);
+  });
+});
+
 var reg_lonely = /(妹子|妹纸|帅哥|美女|姑娘|^小?美?妞)/;
 webot.set('lonely', {
   pattern: reg_lonely,
@@ -18,11 +40,13 @@ webot.set('lonely', {
     var loc_id = info.param['loc'];
     var u = info.u;
     var webot = this;
-    info.data({ 'type': 'party', 'loc': loc_id });
+    info.session.type = 'party';
+    info.session.loc = loc_id;
+
     if (loc_id) {
       return '多出门参加一点同城活动就能遇见' + q.match(reg_lonely)[0] + '了哦？要不我帮你在' + cities.id2name[loc_id] + '找一些聚会类的活动？';
     } else {
-      info.data('want_city', 'lonely');
+      info.session.want_city = 'lonely';
       return '想认识更多好朋友？告诉我你所在的城市，让我帮你找点聚会类的活动吧';
     }
   },
@@ -70,8 +94,8 @@ webot.set('search_cmd', {
         var q = info.text.replace(reg_search_cmd);
         return douban.search({ loc: loc, q: q }, cb);
       }
-      info.data('q', info.text);
-      info.data('want_city', 'search_cmd');
+      info.session.q = info.text;
+      info.session.want_city = 'search_cmd';
       return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
     };
     info.param = info.param || parser.listParam(info.text);
@@ -96,7 +120,9 @@ webot.set('confirm search', {
     var webot = this;
 
     // save user data
-    info.data({ 'q': q, 'loc': loc_id });
+    info.session.q = q;
+    info.session.loc = loc_id;
+
     var type = info.param['type'] || '';
     if (type) {
       type = etypes[type] || '';
@@ -106,21 +132,20 @@ webot.set('confirm search', {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
       '”相关的' + type + '活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
-      info.data('want_city', 'search');
+      info.session.want_city = 'search';
       return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
     }
   },
   'replies': {
     Y: function(info, cb) {
       var uid = info.from;
-      var d = info.data();
+      var d = info.session;
       if (!d['loc']) {
         cb(null, '我需要先知道你在哪个城市哦亲');
         info.wait(webot.get('want_city'));
         return
       }
       if (!d['loc'] || !d['q']) return cb();
-      d['uid'] = uid;
       info.ended = true;
       return douban.search(d, cb);
     },

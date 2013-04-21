@@ -9,15 +9,14 @@ module.exports = {
     var u = user(uid);
 
     // is waiting for user to reply a city name
-    var want_city = info.data('want_city');
+    var want_city = info.session.want_city;
     var loc = info.param['loc'];
 
     if (want_city && loc) {
-      info.data('want_city', null);
-      info.data('waiter', null);
+      delete info.session.want_city;
       u.setLoc(loc);
-      var q = info.data('q');
-      var type = info.data('type');
+      var q = info.session.q;
+      var type = info.session.type;
       if (type && !q) {
         info.ended = true;
         return douban.list({ loc: loc, type: type }, next);

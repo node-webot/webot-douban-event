@@ -1,27 +1,8 @@
-var webot = require('weixin-robot');
-
 var pwd = process.cwd();
 var weather = require(pwd + '/lib/weather');
 var cities = require(pwd + '/data').cities;
 
 var reg_tq = /天气|weather|wheather|\btq\b|\btianqi\b/i;
-
-var city_weather = {
-  name: 'wait city weather',
-  handler: function(info, cb) {
-    var loc = info.text;
-    var param = parser.listParam(info.text);
-    var loc_id = param['loc'];
-    if (loc_id && loc_id in cities.id2name) {
-      user(info.from).setLoc(loc_id);
-      loc = cities.id2name[loc_id]
-    }
-    weather(loc, function(err, res) {
-      if (err || ! res) return cb(err);
-      return cb(null, res);
-    });
-  }
-}
 
 module.exports = {
   'pattern': function(info) {
@@ -38,7 +19,7 @@ module.exports = {
     var loc_name = loc && cities.id2name[loc] || info.param && info.param['q'];
     if (loc_name === '阿') loc_name = '';
     if (!loc_name) {
-      info.wait(city_weather);
+      info.wait('wait_weather_city');
       return next(null, '要查询天气，我需要先知道你在哪个城市');
     }
     weather(loc_name, function(err, res) {

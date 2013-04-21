@@ -2,7 +2,7 @@ module.exports = {
   port: 3000,
   hostname: '127.0.0.1',
   douban: {
-    apikey: '004bd0da70f50d1000e3728f52df2730'
+    apikey: ''
   },
   memcached: {
     hosts: '127.0.0.1:11211',
@@ -15,7 +15,7 @@ module.exports = {
       passwd: 'admin'
     }
   },
-  amap: '5d43370486bad3aeb0c89642b3836438',
+  salt: 'hirobot',
   mixpanel: 'keyboardcat',
   weixin: 'keyboardcat123'
 };

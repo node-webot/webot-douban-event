@@ -1,7 +1,7 @@
 
 module.exports = {
   pattern: function(info) {
-    return info.isEvent();
+    return info.is('event');
   },
   handler: function(info, next) {
     if (info.param.event === 'subscribe') {

@@ -10,7 +10,7 @@ var user = require(pwd + '/lib/user');
 // Special type for location
 module.exports = {
   pattern: function(info) {
-    return info.isLocation();
+    return info.is('location');
   },
   handler: function(info, next) {
     parser.geo2loc(info, function(err, city) {

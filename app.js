@@ -16,74 +16,78 @@ var error = debug('weixin:error');
 var webot = require('weixin-robot');
 var douban = require('./lib/douban');
 var fanjian = require('./lib/fanjian');
-
-var mapping = webot.config.mapping = function(item, i) {
-  item.pic = item.image_lmobile;
-  item.url = item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '';
-  item.description = item.owner && douban.eventDesc(item);
-  return item;
-};
-require('js-yaml');
-require('./rules')(webot);
+var memcached = require('./lib/memcached');
 
 var messages = require('./data/messages');
 var conf = require('./conf');
 
-webot.config.codeReplies = messages;
+function event_list_mapping(item, i) {
+  return {
+    title: item.title,
+    picurl: item.image_lmobile || '',
+    url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
+    description: item.owner && douban.eventDesc(item),
+  };
+}
+
+webot.codeReplies = messages;
+
+webot.config.beforeSend = function(err, info, next) {
+  if (err == 404 && info.param.start) {
+    info.reply = messages['NO_MORE'];
+  } else if (err || !info.reply) {
+    //res.statusCode = (typeof err === 'number' ? err : 500);
+    info.reply = info.reply || messages[String(err)] || messages['503'];
+  }
+
+  if (Array.isArray(info.reply)) {
+    info.reply = info.reply.map(event_list_mapping);
+    if (info.has_more) {
+      info.reply.push({
+        title: '回复 more 查看更多...',
+        picUrl: '',
+        url: 'http://www.douban.com/location/',
+      });
+    }
+  }
+
+  if (!info.is_zht) return next();
+
+  fanjian.zhs2zht(info.reply, function(ret) {
+    info.reply = ret || info.reply;
+    next();
+  });
+};
+
+webot.use(function ensure_zhs(info, next) {
+  if (!info.text) return next();
+
+  fanjian(info.text, function(ret) {
+    if (ret !== info.text) info.is_zht = true;
+    info.text = ret;
+    next();
+  });
+});
+// load rules
+require('./rules')(webot);
 
 var app = express();
+
 app.use(express.static(__dirname + '/static'));
-app.enable('trust proxy');
 app.engine('jade', require('jade').__express);
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
-var checkSig = webot.checkSig(conf.weixin);
+app.use(express.cookieParser());
+app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_session') }));
 
-app.get('/', checkSig);
-app.post('/', checkSig, webot.bodyParser(), fanjian.middleware(), function(req, res, next) {
-  var info = req.wx_data;
-
-  res.type('xml');
-
-  function end() {
-    if (info.is_zht) {
-      fanjian.zhs2zht(info.reply, function(ret) {
-        info.reply = ret || info.reply;
-        res.send(info.toXML(mapping));
-      });
-      return;
-    }
-    res.send(info.toXML(mapping));
-  }
-
-  if (!info) {
-    info.reply = messages['400'];
-    return end();
-  }
-
-  webot.reply(info, function(err, ret) {
-    var param = info.param || {};
-
-    if (err == 404 && param.start) {
-      info.reply = messages['NO_MORE'];
-    } else if (err || !ret) {
-      //res.statusCode = (typeof err === 'number' ? err : 500);
-      info.reply = ret.reply || messages[String(err)] || messages['503'];
-    }
-
-    if (Array.isArray(info.reply) && info.has_more) {
-      info.reply.push({
-        title: '回复 more 查看更多...'
-      });
-    }
-
-    end();
-  });
-});
+webot.watch(app, conf.weixin);
 
 var port = conf.port || 3000;
 var hostname = conf.hostname || '127.0.0.1';
+
 app.listen(port, hostname, function() {
   log('listening on ', hostname, port);
 });
+
+app.enable('trust proxy');

@@ -35,7 +35,7 @@ module.exports = {
     var lastChar = info.text[info.text.length - 1]; 
     if (lastChar in chengyu.index) {
       var ret = chengyu.index[lastChar].sample(1)[0];
-      info.data('jielong', q);
+      info.session.jielong = q;
       info.wait('jielong');
       return ret;
     }

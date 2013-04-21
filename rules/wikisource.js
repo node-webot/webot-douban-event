@@ -58,7 +58,6 @@ var exports = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11'
       }
     }, function(err, res) {
-
       var cont;
       if (!err && res) {
         var m = res.body.toString().match(reg_content);
@@ -81,7 +80,7 @@ var exports = {
         cont = cont.replace(qiyi, '');
         cont = cont.replace(/(\n\s*){3,}/g, '\n\n');
         cont += '\n\n请输入完整标题';
-        info.wait(wait_reply);
+        info.wait('wait_wiki_fulltile');
       }
 
       var wikilink = '<a href="' + url + '">维基文库</a>';
@@ -92,16 +91,6 @@ var exports = {
       }
       next(null, cont);
     });
-  }
-};
-
-var wait_reply = {
-  handler: function(uid, info, cb) {
-    var kw = info.text;
-    var m = kw.match(reg_recite);
-    if (m) kw = m[4];
-    info.kw = kw;
-    exports.handler(info, cb);
   }
 };
 
