@@ -1,4 +1,5 @@
 node_modules
 npm*
 conf/vps.js
+conf/development.js
 .DS_Store

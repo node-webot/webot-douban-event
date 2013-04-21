@@ -13,7 +13,7 @@ module.exports = {
     return info.is('location');
   },
   handler: function(info, next) {
-    parser.geo2loc(info, function(err, city) {
+    parser.geo2loc(info.param, function(err, city) {
 
       info.ended = true;
 
@@ -32,9 +32,9 @@ module.exports = {
 
       user(info.from).setLoc(loc_id);
       var param = {
-        uid: info.from,
-        lat: info.lat,
-        lng: info.lng,
+        uid: info.uid,
+        lat: info.param.lat,
+        lng: info.param.lng,
         loc: loc_id
       };
       return douban.nearby(param, next);
