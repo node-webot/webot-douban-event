@@ -10,10 +10,10 @@ function obj_equal(a, b){
   }
   return true;
 }
-var reg_more = /(更多|再来|more|下一页)/ig;
+var reg_more = /(更多|再来|more|下一页)/i;
 module.exports = {
-  'pattern': function(info) {
-    if (info.text.match(reg_more)) {
+  pattern: function(info) {
+    if (info.text && reg_more.test(info.text)) {
       if (info.param.type || info.param.day_type) {
         info.param['q'] = info.param['q'].replace(reg_more, '');
         return false;
@@ -22,10 +22,9 @@ module.exports = {
     }
     return false;
   },
-  'handler': function(info, next) {
-    var uid = info.from;
+  handler: function(info, next) {
+    var uid = info.uid;
     var u = info.u || user(uid);
-    var waiter = this.waiter;
 
     u.getPrev(function(err, res){
       if (err || !res) {
@@ -42,21 +41,24 @@ module.exports = {
       if (!act || !(act in douban)) return next();
 
       try {
-        info.ended = true;
         // 实际得到的比想要的少，说明没有更多了
         if (res.count > res._len) {
           info.param.start = 1;
           u.setPrev(null);
+          delete res['_wx_act'];
           return next('NO_MORE');
         }
-        delete res['_wx_act'];
+
         if (!res.start) {
           res.start = 4;
           res['count'] = 4;
         } else {
           res.start += 4;
         }
-        douban[act](res, next);
+        douban[act](res, function(err, res) {
+          info.ended = true;
+          next(err, res);
+        });
       } catch (e) {
         next();
       }

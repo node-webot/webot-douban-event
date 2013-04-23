@@ -3,11 +3,13 @@ var user = require(pwd + '/lib/user');
 
 var parser = require(pwd + '/lib/parser');
 
-var cmds = ['search|搜索|s', 'stop_search|别闹了'];
+var cmds = ['search|搜索|\\bs\\b', 'stop_search|别闹了'];
 
 module.exports = {
   'handler': function(info, next) {
     var _text = info.text;
+
+    if (!_text) return next();
 
     // parse command
     var lead = _text.split(/\s+/)[0];

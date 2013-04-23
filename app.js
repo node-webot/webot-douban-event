@@ -24,7 +24,7 @@ var conf = require('./conf');
 function event_list_mapping(item, i) {
   return {
     title: item.title,
-    picurl: item.image_lmobile || '',
+    picUrl: item.image_lmobile || '',
     url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
     description: item.owner && douban.eventDesc(item),
   };
@@ -32,12 +32,23 @@ function event_list_mapping(item, i) {
 
 webot.codeReplies = messages;
 
-webot.config.beforeSend = function(err, info, next) {
-  if (err == 404 && info.param.start) {
+webot.beforeReply(function ensure_zhs(info, next) {
+  info.from = info.uid;
+
+  if (!info.text) return next();
+
+  fanjian(info.text, function(ret) {
+    if (ret !== info.text) info.is_zht = true;
+    info.text = ret;
+    next();
+  });
+});
+webot.afterReply(function(info, next) {
+  if (info.err == 404 && info.param.start) {
     info.reply = messages['NO_MORE'];
-  } else if (err || !info.reply) {
+  } else if (info.err || !info.reply) {
     //res.statusCode = (typeof err === 'number' ? err : 500);
-    info.reply = info.reply || messages[String(err)] || messages['503'];
+    info.reply = info.reply || messages[String(info.err)] || messages['503'];
   }
 
   if (Array.isArray(info.reply)) {
@@ -57,17 +68,8 @@ webot.config.beforeSend = function(err, info, next) {
     info.reply = ret || info.reply;
     next();
   });
-};
-
-webot.use(function ensure_zhs(info, next) {
-  if (!info.text) return next();
-
-  fanjian(info.text, function(ret) {
-    if (ret !== info.text) info.is_zht = true;
-    info.text = ret;
-    next();
-  });
 });
+
 // load rules
 require('./rules')(webot);
 

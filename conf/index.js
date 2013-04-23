@@ -15,6 +15,7 @@ module.exports = {
       passwd: 'admin'
     }
   },
+  site_root: 'http://127.0.0.1:3000/',
   salt: 'hirobot',
   mixpanel: 'keyboardcat',
   weixin: 'keyboardcat123'

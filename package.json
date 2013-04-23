@@ -1,6 +1,6 @@
 {
   "name": "weixin-event",
-  "version": "0.2.3",
+  "version": "0.2.3-1",
   "homepage": "http:/www.douban.com/location/",
   "description": "豆瓣同城微信接口",
   "private": true,
@@ -16,7 +16,7 @@
     "xml2js": "~0.2.6",
     "jade": "~0.27.7",
     "js-yaml": "~2.0.3",
-    "weixin-robot": "~0.4.1",
+    "weixin-robot": "~0.4.2",
     "memcached": "~0.1.4"
   },
   "devDependencies": {

@@ -4,27 +4,32 @@ var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
 
 module.exports = {
-  'handler': function(info, next) {
-    var uid = info.from;
+  pattern: function(info) {
+    return info.session.want_city;
+  }, 
+  handler: function(info, next) {
+    if (!info.text) return next();
+
+    var uid = info.uid;
     var u = user(uid);
 
     // is waiting for user to reply a city name
     var want_city = info.session.want_city;
     var loc = info.param['loc'];
 
-    if (want_city && loc) {
+    if (loc) {
       delete info.session.want_city;
       u.setLoc(loc);
-      var q = info.session.q;
-      var type = info.session.type;
-      if (type && !q) {
+
+      var rule = webot.get(want_city);
+
+      if (rule) {
+        info.param.loc = loc;
+        info.param.q = info.param.q || info.session.q;
+        info.param.type = info.param.type || info.session.type;
         info.ended = true;
-        return douban.list({ loc: loc, type: type }, next);
-      } else if (q) {
-        //info.param['type'] = type;
-        info.param['q'] = q;
-        info.ended = true;
-        return douban.search(info.param, next);
+        rule.exec(info, next);
+        return;
       }
     }
     next();

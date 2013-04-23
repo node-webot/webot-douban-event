@@ -8,7 +8,7 @@ var cities = [{
 },
 {
 	"id": "118281",
-	"name": "广州|guangzhou|广州|羊城"
+	"name": "广州|guangzhou|羊城"
 },
 {
 	"id": "118282",
@@ -2999,7 +2999,7 @@ var cities = [{
 	"id": "118149"
 },
 {
-	"name": "Fès|fs",
+	"name": "Fès",
 	"id": "128296"
 },
 {
