@@ -21,7 +21,7 @@ module.exports = {
       delete info.session.want_city;
       u.setLoc(loc);
 
-      var rule = webot.get(want_city);
+      var rule = info.webot.get(want_city);
 
       if (rule) {
         info.param.loc = loc;
