@@ -104,8 +104,7 @@ module.exports = {
     if (!info.text) return;
     for (var k in regs) {
       if (regs[k].test(info.text)) {
-        info.gala = k;
-        info.conf = confs[k];
+        info.gala = info.session.gala = k;
         return true;
       }
     }
@@ -114,18 +113,27 @@ module.exports = {
     var u = info.u;
     var loc = info.param.loc || u.getLoc();
 
-    var conf = info.conf;
+    var _gala = info.gala || info.session.gala;
+    var conf = confs[_gala];
+
+    if (!conf) {
+      info.ended = false;
+      return;
+    }
 
     if (!loc) {
       info.session.want_city = 'gala';
       return '要查询' + conf.name + '的演出安排，我需要先知道你所在城市哦。目前我可以帮你查到' +
         getCities(conf.cities) + conf.name + '的演出安排。请直接回复城市名。';
     }
-    if (!(loc in info.conf.cities)) {
+
+    delete info.session.gala;
+
+    if (!(loc in conf.cities)) {
       return '你所在的城市目前好像没有举办' + conf.name + '哦。';
     }
 
-    var ret = lookup(gala(info.gala + '-' + loc));
+    var ret = lookup(gala(_gala + '-' + loc));
     var city = conf.cities[loc];
 
     if (ret === 'comming soon') {
@@ -133,7 +141,7 @@ module.exports = {
         title: '2013' + city + conf.name + '即将开始',
         description: '演出当日发送「' + conf.cmd + '」即可查询接下来登场的乐队/歌手信息',
         picUrl: conf.pic,
-        url: app_conf.site_root + info.gala + '-' + loc + '.txt'
+        url: app_conf.site_root + _gala + '-' + loc + '.txt'
       };
     }
 

@@ -1,5 +1,5 @@
 process.on('uncaughtException', function (err) {
-  error('Caught exception: ' + err);
+  console.error('Caught exception: ' + err);
   if ('trace' in err) {
     err.trace();
   }
