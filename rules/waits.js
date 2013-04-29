@@ -4,6 +4,7 @@ var parser = require(pwd + '/lib/parser');
 var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
 var weather = require(pwd + '/lib/weather');
+var chengyu = data.chengyu;
 
 var cities = data.cities;
 var etypes = data.types;
@@ -16,6 +17,19 @@ webot.waitRule('wiki_fulltitle', function(uid, info, cb) {
   if (m) kw = m[4];
   info.kw = kw;
   webot.get('wikisource').handler(info, cb);
+});
+
+webot.waitRule('jielong',  {
+  pattern: '((什么|什麽|甚么|嘛|啥)意思|解释|释义)',
+  handler: function(info) {
+    var q = info.session.jielong;
+
+    delete info.session.jielong;
+
+    var ret = q && chengyu.explain[q];
+    if (ret) return '【' + q + '】' + ret;
+    return '我也不知道是什么意思呢...';
+  }
 });
 
 webot.waitRule('wait_weather_city', function(info, cb) {

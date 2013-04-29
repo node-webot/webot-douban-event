@@ -17,7 +17,8 @@ webot.set(/^建议(.{4})/, function(info) {
 
 require('js-yaml');
 
-var dialog_files = ['basic.yaml', 'gags.yaml', 'greetings.js', 'bad.yaml', 'lonely.yaml', 'sad.yaml', 'flirt.yaml', 'emoji.yaml', 'short.yaml'];
+var dialog_files = ['basic.yaml', 'gags.yaml', 'greetings.js', 'love.yaml',
+  'praise.yaml', 'bad.yaml', 'lonely.yaml', 'sad.yaml', 'flirt.yaml', 'emoji.yaml', 'short.yaml'];
 webot.dialog(dialog_files.map(function(f) {
   return __dirname + '/dialogs/' + f;
 }));
