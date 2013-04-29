@@ -13,6 +13,17 @@ function obj_equal(a, b){
 var reg_more = /(更多|再来|more|下一页)/i;
 module.exports = {
   pattern: function(info) {
+    if (!info.text) return;
+
+    var prev_text = info.session.prev_text;
+    if (prev_text === info.text) {
+      return true;
+    } else if (!info.param.q) {
+      info.session.prev_text = info.text;
+    } else {
+      delete info.session.prev_text;
+    }
+
     if (info.text && reg_more.test(info.text)) {
       if (info.param.type || info.param.day_type) {
         info.param['q'] = info.param['q'].replace(reg_more, '');
