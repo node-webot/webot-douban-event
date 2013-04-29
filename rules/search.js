@@ -11,7 +11,7 @@ var unknown_replies = [
   '你刚才说的我没听太懂，但我还在努力学习中，以后说不定就懂了哦~'
 ];
 
-var direct_search = /音乐会|话剧|孟京辉/i;
+var direct_search = /音乐会|话剧|孟京辉|约会|相亲/i;
 
 module.exports = {
   'pattern': function(info) {
