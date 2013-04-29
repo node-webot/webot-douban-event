@@ -109,7 +109,7 @@ webot.set('confirm search', {
   'pattern': function(info) {
     info.param = info.param || {};
     var text = info.param['q'] || info.text;
-    return info.type == 'text' && text.length < 15;
+    return text && text.length < 15;
   },
   'handler': function(info) {
     var q = info.param['q'] || info.text;
@@ -133,7 +133,7 @@ webot.set('confirm search', {
       '”相关的' + type + '活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
       info.session.want_city = 'search';
-      return '告诉我你所在的城市，我就可以帮你查找“' + q + '”相关的活动';
+      return '真是惭愧，我还不知道您在哪儿呢。告诉我你所在的城市，我就能帮你找活动了哦！[愉快]';
     }
   },
   'replies': {
