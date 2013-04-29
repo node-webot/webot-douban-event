@@ -10,7 +10,7 @@ function obj_equal(a, b){
   }
   return true;
 }
-var reg_more = /(更多|再来|more|下一页)/i;
+var reg_more = /(更多|再来|more|下一页)(?!帮助|\s*help)/i;
 module.exports = {
   pattern: function(info) {
     if (!info.text) return;
