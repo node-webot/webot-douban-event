@@ -23,7 +23,7 @@ module.exports = exports = {
   "others": "其他",
   "film": "电影|观影|movie",
   "commonweal": "公益",
-  "travel": "旅行|旅游",
+  "travel": "旅行|旅游|出游",
   "sports": "运动|体育|sport",
   "drama": "戏剧|舞台剧|话剧|drama",
   "music": "音乐|演出|music",
