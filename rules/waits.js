@@ -132,7 +132,7 @@ webot.set('confirm search', {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
       '”相关的' + type + '活动吗？请回复“要”或“不要”，回复“要要要”总是尝试搜索';
     } else {
-      info.session.want_city = 'search';
+      info.session.want_city = info.param.q ? 'search' : 'list';
       return '真是惭愧，我还不知道您在哪儿呢。告诉我你所在的城市，我就能帮你找活动了哦！[愉快]';
     }
   },
