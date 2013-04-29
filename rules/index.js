@@ -6,7 +6,7 @@ var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
 
 module.exports = function(webot) {
-['location', 'image', 'event', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
+['location', 'image', 'event', 'other_type', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
   webot.set(item, require('./' + item));
 });
 
