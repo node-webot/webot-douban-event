@@ -10,6 +10,11 @@ module.exports = function(webot) {
   webot.set(item, require('./' + item));
 });
 
+webot.set(/^建议(.{4})/, function(info) {
+  info.flag = true;
+  return '你的意见已经收到，我们会尽快处理。[微笑]';
+});
+
 require('js-yaml');
 
 var dialog_files = ['basic.yaml', 'gags.yaml', 'greetings.js', 'bad.yaml', 'lonely.yaml', 'sad.yaml', 'flirt.yaml', 'emoji.yaml', 'short.yaml'];
