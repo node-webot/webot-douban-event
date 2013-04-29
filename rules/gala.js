@@ -4,8 +4,8 @@ var app_conf = require(pwd + '/conf');
 var intros = gala.intros;
 
 var regs = {
-  'caomei': /(草莓|strawberry|caomei|^cm\b)\s*(音乐节)?\s*(演出安排)?\s*(日程)?/i,
-  'midi': /(迷笛|midi|^md\b)\s*(音乐节)?\s*(演出安排)?\s*(日程)?/i,
+  'caomei': /(草莓|strawberry|caomei|^cm\b)\s*(音乐节)?\s*(演出安排)?\s*(日程表?)?$/i,
+  'midi': /(迷笛|midi|^md\b)\s*(音乐节)?\s*(演出安排)?\s*(日程表?)?$/i,
 };
 var confs = {
   caomei: {
@@ -108,6 +108,7 @@ module.exports = {
         return true;
       }
     }
+    return false;
   },
   handler: function(info) {
     var u = info.u;
