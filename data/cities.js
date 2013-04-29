@@ -3527,6 +3527,10 @@ var cities = [{
 	"id": "128229"
 },
 {
+  "name": "朝阳市|辽宁朝阳",
+  "id": "chaoyang"
+},
+{
 	"name": "Ciudad de Guatemala|ciudaddeguatemala",
 	"id": "128192"
 }];
