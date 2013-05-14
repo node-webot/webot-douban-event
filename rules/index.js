@@ -20,7 +20,7 @@ webot.set('羽泉',{
   },
   handler: function(info) {
     info.flag = true;
-    return '你已成功参加《羽泉15周年特别版音乐会》北京抢票活动，如果中奖我们会通过微信直接联系你。\n\n'
+    return '你已成功参加《羽泉15周年特别版音乐会》北京抢票活动，如果中奖我们会通过微信直接联系你。\n\n\n'
     + '<a href="http://www.douban.com/location/partner/event/18875660/">活动详情»</a>';
   }
 });
