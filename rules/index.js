@@ -14,9 +14,18 @@ webot.set(/^建议(.{4})/, function(info) {
   info.flag = true;
   return '你的意见已经收到，我们会尽快处理。[微笑]';
 });
+webot.set('我想看', {
+  pattern: function(info) {
+    return (/我想看.{2,}/).test(info.text);
+  },
+  handler: function(info, next) {
+    info.flag = true;
+    next();
+  },
+});
 webot.set('寻找初恋',{
   pattern: function(info) {
-    return (/报名.*寻找初恋/).test(info.text) && info.u.getLoc() == '108296';
+    return (/(报名|我想看).*寻找初恋/).test(info.text) && info.u.getLoc() == '108296';
   },
   handler: function(info) {
     info.flag = true;
