@@ -1,5 +1,5 @@
 var pwd = process.cwd();
-var user = require(pwd + '/lib/user');
+var User = require(pwd + '/model/user');
 
 var douban = require(pwd + '/lib/douban');
 
@@ -11,7 +11,7 @@ module.exports = {
     if (!info.text) return next();
 
     var uid = info.uid;
-    var u = user(uid);
+    var u = User(uid);
 
     // is waiting for user to reply a city name
     var want_city = info.session.want_city;

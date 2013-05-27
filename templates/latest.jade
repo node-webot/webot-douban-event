@@ -1,0 +1,16 @@
+extend base
+
+block article 
+  fieldset.section
+    h1 最近对话的人
+    .mod
+      ol
+      each s in sessions
+        li
+          .row
+            label ID
+            input(type="text", readonly, value=s.id)
+          .row
+            label 详情
+            pre
+              | #{JSON.stringify(s, null, '    ')}

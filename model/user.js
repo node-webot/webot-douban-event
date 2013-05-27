@@ -1,8 +1,13 @@
-var memcached = require('./memcached');
+var memcached = require('../lib/memcached');
 var mc = memcached.mc;
 var MemObj = memcached.MemObj;
 
+var people_meta = new MemObj('wx_people_meta');
+
 function User(uid) {
+  if (!(this instanceof User)) {
+    return new User(uid);
+  }
   this.uid = uid;
   this._cache = new MemObj('user', uid);
   this._cache_obj = {};
@@ -52,8 +57,11 @@ User.prototype.setPrev = function(n, v, fn){
   return this.setProp('prev', v, fn);
 };
 
-module.exports = function(uid) {
-  return new User(uid);
+User.get_silented = function(fn) {
+  people_meta.get('silented', fn);
 };
 
-module.exports.User = User;
+User.set_silented = function(silented, fn) {
+  people_meta.set('silented', silented, fn, 3600000);
+};
+module.exports = User;

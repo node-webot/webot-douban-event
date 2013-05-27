@@ -14,7 +14,7 @@ TEST_URI_LOCAL="http://0.0.0.0:3000/?signature=$(sig)&timestamp=$(timestamp)&non
 
 start:
 	#@export DEBUG="webot* weixin* -*:verbose" && forever --watch app.js
-	@export DEBUG="webot* weixin*" && forever --watch app.js
+	@export DEBUG="webot* weixin*" && supervisor -- --debug app.js
 
 # interactive model
 send: clear

@@ -12,11 +12,12 @@
     "request": "~2.12",
     "iconv": "~1.2.4",
     "opencc": "~0.4.1",
+    "async": "~0.2.8", 
     "express": "~3.0",
     "xml2js": "~0.2.6",
     "jade": "~0.27.7",
     "js-yaml": "~2.0.3",
-    "weixin-robot": "~0.4.2-1",
+    "weixin-robot": "~0.4.2-2",
     "memcached": "~0.1.4"
   },
   "devDependencies": {

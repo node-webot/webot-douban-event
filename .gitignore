@@ -4,3 +4,4 @@ conf/vps.js
 conf/development.js
 wx_config.json
 .DS_Store
+*.bak

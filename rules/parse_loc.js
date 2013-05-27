@@ -1,5 +1,5 @@
 var pwd = process.cwd();
-var user = require(pwd + '/lib/user');
+var user = require(pwd + '/model/user');
 
 var parser = require(pwd + '/lib/parser');
 

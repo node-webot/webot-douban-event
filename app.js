@@ -43,6 +43,7 @@ webot.beforeReply(function ensure_zhs(info, next) {
     next();
   });
 });
+
 webot.afterReply(function(info, next) {
   if (info.err == 404 && info.param.start) {
     info.reply = messages['NO_MORE'];
@@ -70,9 +71,6 @@ webot.afterReply(function(info, next) {
   });
 });
 
-// load rules
-require('./rules')(webot);
-
 var app = express();
 
 app.use(express.static(__dirname + '/static'));
@@ -80,8 +78,14 @@ app.engine('jade', require('jade').__express);
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
+app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_session') }));
+
+// load rules
+require('./rules')(webot);
+
+require('./admin')(app, webot);
 
 webot.watch(app, conf.weixin);
 

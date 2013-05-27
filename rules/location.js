@@ -5,7 +5,7 @@ var cities = data.cities;
 
 var douban = require(pwd + '/lib/douban');
 var parser = require(pwd + '/lib/parser');
-var user = require(pwd + '/lib/user');
+var user = require(pwd + '/model/user');
 
 // Special type for location
 module.exports = {

@@ -1,7 +1,7 @@
 var pwd = process.cwd();
 var data = require(pwd + '/data');
 var parser = require(pwd + '/lib/parser');
-var user = require(pwd + '/lib/user');
+var user = require(pwd + '/model/user');
 var douban = require(pwd + '/lib/douban');
 var weather = require(pwd + '/lib/weather');
 var chengyu = data.chengyu;

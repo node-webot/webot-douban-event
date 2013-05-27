@@ -1,11 +1,29 @@
+module.exports = function(webot) {
+
+
 var pwd = process.cwd();
 var data = require(pwd + '/data');
 var cities = data.cities;
 
-var user = require(pwd + '/lib/user');
 var douban = require(pwd + '/lib/douban');
+var User = require(pwd + '/model/user');
 
-module.exports = function(webot) {
+webot.set('silented', {
+ handler: function(info, next) {
+    User.get_silented(function(err, silented) {
+      silented = silented || [];
+      if (silented.indexOf(String(info.uid)) !== -1) {
+        info.flag = 1;
+        // wait for wechat to close the connection
+        setTimeout(next, 5500);
+        return;
+      }
+      next();
+    })
+  },
+});
+
+
 ['location', 'image', 'event', 'other_type', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
   webot.set(item, require('./' + item));
 });

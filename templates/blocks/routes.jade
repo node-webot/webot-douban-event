@@ -24,5 +24,8 @@ mixin route(item, i)
         code.language-javascript #{item.parser}
   .row
     label 回复
-    pre(name="r#{i}-handler")
-      code.language-javascript #{item.handler}
+    if !(Array.isArray(item.handler))
+      - item.handler = [item.handler]
+    each h in item.handler
+      pre(name="r#{i}-handler")
+        code.language-javascript #{h}
