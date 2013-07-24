@@ -224,6 +224,7 @@ var cities = [{
 },
 {
 	"name": "中山|zhongshan",
+	"reg": /中山(?!公园|音乐堂|音乐厅|大学)|zhongshan/,
 	"id": "118298"
 },
 {
@@ -3539,13 +3540,17 @@ cities.name2id = {};
 cities.id2name = {};
 
 cities.forEach(function(item) {
+  var name = item.name, reg = item.reg;
+  if (!reg) {
+    reg = new RegExp(name, 'i');
+  }
 	var tmp = item['name'].split('|');
 	var _id = item['id'];
 	tmp.forEach(function(n) {
 		cities.name2id[n] = _id;
 	});
-	cities.id2name[_id] = item['name'].split('|')[0];
-  item['name'] = new RegExp(item['name'], 'i');
+	cities.id2name[_id] = tmp[0];
+  item['name'] = reg;
 });
 cities.is_hot = function(loc) {
   var i = 0;

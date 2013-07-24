@@ -139,8 +139,7 @@ webot.set('confirm search', {
 
     var type = info.param['type'] || '';
     if (type) {
-      type = etypes[type] || '';
-      type = type && type.split('|')[0];
+      type = etypes[type].name;
     }
     if (loc_id) {
       return '要我在' + cities.id2name[loc_id] + '搜索“' + q +
