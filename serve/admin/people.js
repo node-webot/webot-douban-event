@@ -1,6 +1,6 @@
 module.exports = function(app, webot) {
 
-var User = require('../model/user');
+var User = require('../../model/user');
 
 app.get('/admin/people', function(req, res, next) {
   User.get_silented(function(err, r) {

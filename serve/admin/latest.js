@@ -1,6 +1,6 @@
 module.exports = function(app, webot) {
 
-var memcached = require('../lib/memcached');
+var memcached = require('../../lib/memcached');
 var latestUsers = new memcached.MemObj('wx_latest_users');
 
 var async = require('async');

@@ -2,13 +2,18 @@ module.exports = {
   port: 3000,
   hostname: '127.0.0.1',
   douban: {
-    apikey: ''
+    key: ''
   },
   memcached: {
     hosts: '127.0.0.1:11211',
     options: {
       retries: 2
     }
+  },
+  mongo: {
+    host: '127.0.0.1',
+    port: '27017',
+    dbname: 'weixin-event',
   },
   users: {
     admin: {
@@ -20,7 +25,13 @@ module.exports = {
   mixpanel: 'keyboardcat',
   weixin: 'keyboardcat123'
 };
+
 var environ = process.env.NODE_ENV || 'development';
+
+if (process.env.BAE_ENV_ADDR_MONGO_IP) {
+  environ = 'bae';
+}
+
 try {
   var localConf = require('./' + environ);
   for (var i in localConf) {

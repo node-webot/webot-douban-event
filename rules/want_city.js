@@ -5,13 +5,10 @@ var douban = require(pwd + '/lib/douban');
 
 module.exports = {
   pattern: function(info) {
-    return info.session.want_city;
+    return info.text && info.session.want_city;
   }, 
-  handler: function(info, next) {
-    if (!info.text) return next();
-
-    var uid = info.uid;
-    var u = User(uid);
+  handler: function(info) {
+    var u = info.user;
 
     // is waiting for user to reply a city name
     var want_city = info.session.want_city;

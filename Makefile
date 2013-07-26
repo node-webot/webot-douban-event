@@ -16,13 +16,6 @@ start:
 	#@export DEBUG="webot* weixin* -*:verbose" && forever --watch app.js
 	@export DEBUG="webot* weixin*" && supervisor -- --debug app.js
 
-# interactive model
-send: clear
-	@read -p '输入要发送的文字：' txt;\
-	xx=`cat ./test/wx_text.xml | sed s/{text}/$${txt}/`;\
-	curl -d "$$xx" $(TEST_URI_LOCAL)
-	@echo "\n"
-
 clear:
 	@clear
 

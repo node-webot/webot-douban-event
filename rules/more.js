@@ -1,5 +1,4 @@
 var pwd = process.cwd();
-var user = require(pwd + '/model/user');
 
 var douban = require(pwd + '/lib/douban');
 
@@ -35,44 +34,44 @@ module.exports = {
   },
   handler: function(info, next) {
     var uid = info.uid;
-    var u = info.u || user(uid);
+    var u = info.user;
 
-    u.getPrev(function(err, res){
-      if (err || !res) {
-        var loc = u.getLoc();
-        if (loc) {
-          info.ended = true;
-          return douban.list({ loc: loc }, next);
-        }
-        return next();
+    var last_param = info.session.last_param;
+
+    if (!last_param) {
+      var loc = u.loc;
+      if (loc) {
+        info.ended = true;
+        return douban.event.list({ loc: loc }, next);
+      }
+      return next();
+    }
+
+    var act = last_param['_wx_act'];
+
+    if (!act || !(act in douban.event)) return next();
+
+    try {
+      // 实际得到的比想要的少，说明没有更多了
+      if (last_param.count > last_param._len) {
+        info.param.start = 1;
+        u.setPrev(null);
+        delete last_param['_wx_act'];
+        return next('NO_MORE');
       }
 
-      var act = res['_wx_act'];
-
-      if (!act || !(act in douban)) return next();
-
-      try {
-        // 实际得到的比想要的少，说明没有更多了
-        if (res.count > res._len) {
-          info.param.start = 1;
-          u.setPrev(null);
-          delete res['_wx_act'];
-          return next('NO_MORE');
-        }
-
-        if (!res.start) {
-          res.start = 4;
-          res['count'] = 4;
-        } else {
-          res.start += 4;
-        }
-        douban[act](res, function(err, res) {
-          info.ended = true;
-          next(err, res);
-        });
-      } catch (e) {
-        next();
+      if (!last_param.start) {
+        last_param.start = 4;
+        last_param['count'] = 4;
+      } else {
+        last_param.start += 4;
       }
-    });
+      douban.event[act](last_param, function(err, ret) {
+        info.ended = true;
+        next(err, ret);
+      });
+    } catch (e) {
+      next();
+    }
   }
 };

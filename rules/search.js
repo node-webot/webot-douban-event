@@ -1,6 +1,4 @@
 var pwd = process.cwd();
-var user = require(pwd + '/model/user');
-
 var douban = require(pwd + '/lib/douban');
 
 var unknown_replies = [
@@ -22,37 +20,42 @@ module.exports = {
     return ret;
   },
   'handler': function(info, next) {
-    var u = info.u || user(info.from);
+    var u = info.user;
 
+    function do_search() {
+      var param = info.session.last_param = info.param;
+      param['_wx_act'] = 'search';
+      return douban.event.search(param, next);
+    }
     // 如果有搜索关键字
     if (info._ori_loc || info.cmd === 'search') {
       info.ended = true;
-      return douban.search(info.param, next);
+      return do_search();
     }
 
     var loc = info.param['loc'];
-    u.getProp('stop_search', function(err, res){
-      if (!res) {
-        // 请求为“别闹了”
-        if (info.cmd === 'stop_search') return next(null, '好好好... 都听你的...');
-        return next(); // will goto ask search
-      }
+    var ask_search = info.session.ask_search;
 
-      if (info.cmd === 'stop_search') {
-        // 别闹了
-        u.delProp('stop_search', function() {
-          info.ended = true;
-          return next(null, '好的，有关自动搜索的设定已重置');
-        });
-      } else if (res == 2) {
-        // stop_search === 2 时，总是自动搜索
-        info.ended = true;
-        return douban.search(info.param, next);
-      } else {
-        // 已停止询问搜索
-        return next(null, unknown_replies.sample(1)[0]);
-      }
-    });
+    if (!ask_search) {
+      if (info.cmd === 'stop_search') return next(null, '好好好... 都听你的...');
+      return next(); // will goto ask search
+    }
+
+    if (info.cmd === 'stop_search') {
+      // 别闹了
+      delete info.session.ask_search;
+      info.ended = true;
+      return next(null, '好的，有关自动搜索的设定已重置');
+    }
+
+    // ask_search === 2 时，总是自动搜索
+    if (ask_search == 2) {
+      info.ended = true;
+      return do_search();
+    }
+
+    // 已停止询问搜索，随机回复我不懂你
+    return next(null, unknown_replies.sample(1)[0]);
   }
 };
 

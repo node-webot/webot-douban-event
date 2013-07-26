@@ -5,7 +5,7 @@ var cities = data.cities;
 
 var douban = require(pwd + '/lib/douban');
 var parser = require(pwd + '/lib/parser');
-var user = require(pwd + '/model/user');
+var User = require(pwd + '/model/user');
 
 // Special type for location
 module.exports = {
@@ -30,14 +30,15 @@ module.exports = {
       }
       if (!loc_id) return next('GEO_404');
 
-      user(info.from).setLoc(loc_id);
-      var param = {
-        uid: info.uid,
-        lat: info.param.lat,
-        lng: info.param.lng,
-        loc: loc_id
-      };
-      return douban.nearby(param, next);
+      info.user.update({ loc: loc_id }, function() {
+        var param = {
+          uid: info.uid,
+          lat: info.param.lat,
+          lng: info.param.lng,
+          loc: loc_id
+        };
+        return douban.nearby(param, next);
+      });
     });
   }
 };

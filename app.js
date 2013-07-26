@@ -4,8 +4,9 @@ process.on('uncaughtException', function (err) {
     err.trace();
   }
   if ('stack' in err) {
-    console.log(err.stack);
+    console.error(err.stack);
   }
+  //process.exit();
 });
 
 var express = require('express');
@@ -14,6 +15,7 @@ var log = debug('weixin');
 var error = debug('weixin:error');
 
 var webot = require('weixin-robot');
+var User = require('./model/user');
 var douban = require('./lib/douban');
 var fanjian = require('./lib/fanjian');
 var memcached = require('./lib/memcached');
@@ -26,21 +28,32 @@ function event_list_mapping(item, i) {
     title: item.title,
     picUrl: item.image_lmobile || '',
     url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
-    description: item.owner && douban.eventDesc(item),
+    description: item.owner && douban.event.eventDesc(item),
   };
 }
 
 webot.codeReplies = messages;
 
 webot.beforeReply(function ensure_zhs(info, next) {
+  // add alias
   info.from = info.uid;
 
-  if (!info.text) return next();
+  // find user
+  User.getOrCreate(info.uid, function(err, user) {
+    if (err) {
+      info.ended = true;
+      return next(err);
+    }
 
-  fanjian(info.text, function(ret) {
-    if (ret !== info.text) info.is_zht = true;
-    info.text = ret;
-    next();
+    info.user = user;
+
+    if (!info.text) return next();
+
+    fanjian(info.text, function(ret) {
+      if (ret !== info.text) info.is_zht = true;
+      info.text = ret;
+      next();
+    });
   });
 });
 
@@ -73,6 +86,7 @@ webot.afterReply(function(info, next) {
 
 var app = express();
 
+app._conf = conf;
 app.use(express.static(__dirname + '/static'));
 app.engine('jade', require('jade').__express);
 app.set('view engine', 'jade');
@@ -85,7 +99,7 @@ app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_ses
 // load rules
 require('./rules')(webot);
 
-require('./admin')(app, webot);
+require('./serve')(app, webot);
 
 webot.watch(app, conf.weixin);
 

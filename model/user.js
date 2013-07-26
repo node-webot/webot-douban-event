@@ -1,67 +1,54 @@
-var memcached = require('../lib/memcached');
-var mc = memcached.mc;
-var MemObj = memcached.MemObj;
+var util = require('util');
+var MemObj = require('../lib/memcached').MemObj;
+var utils = require('../lib/utils');
+var mongo = require('../lib/mongo');
+var consts = require('./consts');
 
-var people_meta = new MemObj('wx_people_meta');
+var Model = mongo.Model;
+var extend = utils.extend;
 
-function User(uid) {
+function User(info) {
   if (!(this instanceof User)) {
-    return new User(uid);
+    return new User(info);
   }
-  this.uid = uid;
-  this._cache = new MemObj('user', uid);
-  this._cache_obj = {};
+  var self = this;
+
+  extend(self, info);
+
+  self._cache = new MemObj('user', self._id);
+  self._cache.get('loc', function(err, res) {
+    if (res) {
+      self.loc = res;
+      self.update({ loc: res });
+    }
+  });
 }
 
-User.prototype.getLoc = function(fn) {
-  return this.getProp('loc', fn);
-};
-User.prototype.setLoc = function(v, fn) {
-  return this.setProp('loc', v, fn);
-};
-User.prototype.getProp = function(n, fn){
-  var self = this;
-  var obj = self._cache_obj;
-  if (n in obj) {
-    fn && fn(null, obj[n]);
-    return obj[n];
-  }
-  return this._cache.get(n, function(err, res) {
-    if (!err && typeof res !== 'undefined') {
-      obj[n] = res;
-    }
-    fn && fn.call(self, err, res);
+util.inherits(User, Model);
+extend(User, Model);
+
+User.prototype.kind = User.kind = 'user';
+User.prototype._collection = User._collection = consts.USER_COLLECTION;
+
+User.getOrCreate = function(uid, callback) {
+  User.get(uid, function(err, item) {
+    if (err) return callback(err);
+    if (item instanceof User) return callback(null, item);
+    callback(null, new User({ _id: uid }));
   });
 };
-User.prototype.setProp = function(n, v, fn){
-  var self = this;
-  var obj = self._cache_obj;
-  obj[n] = v;
-  this._cache.set(n, v, fn);
-  return self;
-};
-User.prototype.delProp = function(n, fn){
-  var self = this;
-  delete self._cache_obj[n];
-  this._cache.del(n, fn);
-  return self;
-};
-User.prototype.getPrev = function(fn){
-  return this.getProp('prev', fn);
-};
-var ONE_DAY = 3600000 * 24;
-User.prototype.setPrev = function(n, v, fn){
-  if (n === null) return this.setProp('prev', null, fn);
-  v['_wx_act'] = n;
-  v['maxAge'] = v['maxAge'] || ONE_DAY;
-  return this.setProp('prev', v, fn);
+
+User.prototype.toObject = function() {
+  return {
+    _id: this._id,
+    loc: this.loc,
+    access_token: this.access_token || null,
+    last_params: {},
+  };
 };
 
-User.get_silented = function(fn) {
-  people_meta.get('silented', fn);
+User.prototype.setLoc = function(loc_id, callback) {
+  this.update({ loc: loc_id }, callback);
 };
 
-User.set_silented = function(silented, fn) {
-  people_meta.set('silented', silented, fn, 3600000);
-};
 module.exports = User;

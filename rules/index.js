@@ -5,30 +5,24 @@ var pwd = process.cwd();
 var data = require(pwd + '/data');
 var cities = data.cities;
 
-var douban = require(pwd + '/lib/douban');
-var User = require(pwd + '/model/user');
-
 webot.set('silented', {
  handler: function(info, next) {
-    User.get_silented(function(err, silented) {
-      silented = silented || [];
-      if (silented.indexOf(String(info.uid)) !== -1) {
-        info.flag = 1;
-        // wait for wechat to close the connection
-        setTimeout(next, 5500);
-        return;
-      }
-      next();
-    })
+    if (info.silented) {
+      info.flag = 1;
+      info.ended = true;
+      info.noReply = true;
+      return;
+    }
+    next();
   },
 });
 
 
-['location', 'image', 'event', 'other_type', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
+['location', 'image', 'event', 'other_type', 'bind', 'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
   webot.set(item, require('./' + item));
 });
 
-webot.set(/^建议(.{4})/, function(info) {
+webot.set(/^建议(.{3})/, function(info) {
   info.flag = true;
   return '你的意见已经收到，我们会尽快处理。[微笑]';
 });
@@ -40,16 +34,6 @@ webot.set('我想看', {
     info.flag = true;
     next();
   },
-});
-webot.set('寻找初恋',{
-  pattern: function(info) {
-    return (/(报名|我想看).*寻找初恋/).test(info.text) && info.u.getLoc() == '108296';
-  },
-  handler: function(info) {
-    info.flag = true;
-    return '你需要在豆瓣同城上找到「《寻找初恋》专业观众观摩场」活动，点击「我要参加」填写报名表，提供姓名和电话。如果被选中，我们会电话联系你。'
-    + '<a href="http://www.douban.com//event/18928228/">活动详情»</a>';
-  }
 });
 
 require('js-yaml');

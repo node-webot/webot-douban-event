@@ -1,7 +1,7 @@
 module.exports = function(app, webot) {
 
 var express = require('express');
-var conf = require('../conf');
+var conf = require('../../conf');
 var users = conf.users;
 
 app.use('/admin/', express.basicAuth(function(user, pass) {

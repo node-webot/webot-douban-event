@@ -12,8 +12,11 @@ module.exports = {
 
     info.ended = true;
 
-    var param = info.param;
-    douban.list(param, function(err, ret) {
+    var param = info.session.last_param = info.param;
+
+    param['_wx_act'] = 'list';
+
+    douban.event.list(param, function(err, ret) {
       if (!param.start && ret && ret.length != param._total) {
         info.has_more = true;
       }

@@ -1,7 +1,6 @@
 var pwd = process.cwd();
 var data = require(pwd + '/data');
 var parser = require(pwd + '/lib/parser');
-var user = require(pwd + '/model/user');
 var douban = require(pwd + '/lib/douban');
 var weather = require(pwd + '/lib/weather');
 var chengyu = data.chengyu;
@@ -37,7 +36,7 @@ webot.waitRule('wait_weather_city', function(info, cb) {
   var param = parser.listParam(info.text);
   var loc_id = param['loc'];
   if (loc_id && loc_id in cities.id2name) {
-    user(info.from).setLoc(loc_id);
+    info.user.setLoc(loc_id);
     loc = cities.id2name[loc_id]
   }
   weather(loc, function(err, res) {
@@ -66,13 +65,11 @@ webot.set('lonely', {
   },
   replies: {
     Y: function(info, cb) {
-      var u = info.u || user(info.from);
-      u.getLoc(function(err, loc) {
-        douban.list({
-          loc: loc,
-          type: 'party'
-        }, cb);
-      });
+      var loc = info.user.loc;
+      douban.list({
+        loc: loc,
+        type: 'party'
+      }, cb);
     },
     N: '好的，你说不要就不要'
   }
@@ -100,22 +97,23 @@ var reg_search_cmd = /^(搜索?|search|s)$/;
 webot.set('search_cmd', {
   'pattern': reg_search_cmd,
   'handler': '你想搜什么？',
-  'replies': function(info, cb) {
-    var u = info.u || user(info.from);
-    var webot = this;
-    var next = function(err, loc) {
-      if (loc) {
-        var q = info.text.replace(reg_search_cmd);
-        return douban.search({ loc: loc, q: q }, cb);
-      }
-      info.session.q = info.text;
-      info.session.want_city = 'search_cmd';
-      return cb(null, '哎呀，我还不知道你住在哪个城市呢……');
-    };
+  'replies': function(info, next) {
     info.param = info.param || parser.listParam(info.text);
+
     var loc = info.param['loc'];
-    if (loc) return true;
-    u.getLoc(next);
+    // 如果回复内容里指定了 loc ，
+    // 直接跳到下一个 Route
+    if (loc) return next();
+
+    loc = info.user.loc;
+
+    if (loc) {
+      var q = info.text.replace(reg_search_cmd);
+      return douban.search({ loc: loc, q: q }, cb);
+    }
+    info.session.q = info.text;
+    info.session.want_city = 'search_cmd';
+    return next(null, '哎呀，我还不知道你住在哪个城市呢……');
   }
 });
 
@@ -128,10 +126,6 @@ webot.set('confirm search', {
   'handler': function(info) {
     var q = info.param['q'] || info.text;
     var loc_id = info.param['loc'];
-
-    var u = info.u;
-
-    var webot = this;
 
     // save user data
     info.session.q = q;
@@ -151,7 +145,7 @@ webot.set('confirm search', {
   },
   'replies': {
     Y: function(info, cb) {
-      var uid = info.from;
+      var uid = info.uid;
       var d = info.session;
       if (!d['loc']) {
         cb(null, '我需要先知道你在哪个城市哦亲');
@@ -164,16 +158,13 @@ webot.set('confirm search', {
     },
     N: '好的，你说不要就不要',
     '永远不要|(不要){2,}|你好啰嗦|你好烦|取消|去死|呸': function(info, cb) {
-      var u = info.u || user(info.from);
-      u.setProp('stop_search', 1, function() {
-        return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
-      });
+      info.sesion.ask_search = 1;
+      return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
     },
     '要要要': function(info, cb) {
       var u = info.u || user(info.from);
-      u.setProp('stop_search', 2, function() {
-        return cb(null, '要要要，切克闹！\n今后我听不懂你的话时将总是尝试为你查找相关活动。\n你可以回复“别闹了”取消此设置。\n再次发送刚才的关键字开始搜索。');
-      });
+      info.session.ask_search = 2;
+      return cb(null, '要要要，切克闹！\n今后我听不懂你的话时将总是尝试为你查找相关活动。\n你可以回复“别闹了”取消此设置。\n再次发送刚才的关键字开始搜索。');
     },
   }
 });
