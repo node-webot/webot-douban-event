@@ -7,7 +7,7 @@ module.exports = {
   pattern: function(info) {
     return info.text && info.session.want_city;
   }, 
-  handler: function(info) {
+  handler: function(info, next) {
     var u = info.user;
 
     // is waiting for user to reply a city name

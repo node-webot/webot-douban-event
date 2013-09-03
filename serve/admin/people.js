@@ -13,7 +13,6 @@ app.get('/admin/people', function(req, res, next) {
 });
 
 app.post('/admin/people', function(req, res, next) {
-  console.log(req);
   var silented = req.body.silented.split('\n');
   User.set_silented(silented, function() {
     res.redirect('/admin/people');

@@ -21,8 +21,6 @@ webot.afterReply(function save_latest(info, next) {
     ids.push(uid);
     ids = ids.slice(-50);
 
-    console.log(ids);
-
     latestUsers.set('ids', ids, function(err) {
       next();
     });

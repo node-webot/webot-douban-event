@@ -18,8 +18,15 @@ webot.set('silented', {
 });
 
 
-['location', 'image', 'event', 'other_type', 'bind', 'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
-  webot.set(item, require('./' + item));
+['location', 'image', 'event', 'other_type',
+  'bind', 'mine',
+  'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
+  var mod = require('./' + item);
+  if (typeof mod == 'function') {
+    mod(webot);
+  } else {
+    webot.set(item, mod);
+  }
 });
 
 webot.set(/^建议(.{3})/, function(info) {

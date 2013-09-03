@@ -2,8 +2,10 @@ module.exports = {
   port: 3000,
   hostname: '127.0.0.1',
   douban: {
-    key: ''
+    key: '',
+    secret: ''
   },
+  douban_more: [],
   memcached: {
     hosts: '127.0.0.1:11211',
     options: {

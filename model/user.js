@@ -3,6 +3,7 @@ var MemObj = require('../lib/memcached').MemObj;
 var utils = require('../lib/utils');
 var mongo = require('../lib/mongo');
 var consts = require('./consts');
+var AuthToken = require('./auth');
 
 var Model = mongo.Model;
 var extend = utils.extend;
@@ -49,6 +50,13 @@ User.prototype.toObject = function() {
 
 User.prototype.setLoc = function(loc_id, callback) {
   this.update({ loc: loc_id }, callback);
+};
+
+User.prototype.make_connect_url = function(fn, type) {
+  var self = this;
+  AuthToken.generate(self._id, type, function(err, token) {
+    fn.call(self, err, token && token.connect_url());
+  });
 };
 
 module.exports = User;

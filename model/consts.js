@@ -1,5 +1,5 @@
 var conf = require('../conf');
-var db_prefix = conf.db_prefix || 'wx-';
+var db_prefix = conf.db_prefix || 'wx_';
 
 module.exports = {
   USER_COLLECTION: db_prefix + 'user',

@@ -14,8 +14,10 @@ var sparse_option = {
   background: true,
 };
 
+var consts = require('../model/consts');
+
 module.exports = function(db, next) {
-  db.collection('user', function(err, r) {
+  db.collection(consts.USER_COLLECTION, function(err, r) {
     log('ensuring database "users"...');
     var n = 1;
     function _tick(err, r) {

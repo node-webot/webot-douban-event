@@ -6,7 +6,7 @@ process.on('uncaughtException', function (err) {
   if ('stack' in err) {
     console.error(err.stack);
   }
-  //process.exit();
+  process.exit();
 });
 
 var express = require('express');
@@ -57,7 +57,7 @@ webot.beforeReply(function ensure_zhs(info, next) {
   });
 });
 
-webot.afterReply(function(info, next) {
+webot.afterReply(function reply_output(info, next) {
   if (info.err == 404 && info.param.start) {
     info.reply = messages['NO_MORE'];
   } else if (info.err || !info.reply) {

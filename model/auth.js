@@ -1,4 +1,5 @@
 var bcrypt = require('bcrypt');
+var crypto = require('crypto');
 var util = require('util');
 var utils = require('../lib/utils');
 var mongo = require('../lib/mongo');
@@ -27,7 +28,10 @@ AuthToken.prototype._collection = AuthToken._collection = consts.AUTHTOKEN_COLLE
  * Generate new auth token from a user_id
  */
 AuthToken.generate = function(user_id, type, callback) {
-  type = type || 'wechat';
+  if (typeof type === 'function') {
+    type = type || 'wechat';
+    callback = type;
+  }
 
   var token = AuthToken({
     type: type,
@@ -40,12 +44,23 @@ AuthToken.generate = function(user_id, type, callback) {
   });
 };
 
+AuthToken.prototype.toObject = function() {
+  var self = this;
+  return {
+    _id: self._id,
+    user_id: self.user_id,
+    type: self.type,
+  };
+};
+
 AuthToken.prototype.connect_url = function() {
-  return conf.site_root + '/auth/connect/' + this._id;
+  return conf.site_root + 'auth/connect/' + this._id;
 };
 
 function generate_token(user_id, type) {
-  return bcrypt.hashSync(user_id + '::' + type, bcrypt.genSaltSync(10));
+  return crypto.createHash('md5')
+         .update(user_id + '::' + type + '//' + bcrypt.genSaltSync(10))
+         .digest('hex');
 }
 
 module.exports = AuthToken;
