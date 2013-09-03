@@ -30,7 +30,7 @@ module.exports = {
       }
       if (!loc_id) return next('GEO_404');
 
-      info.user.update({ loc: loc_id }, function() {
+      info.user.setLoc(loc_id, function() {
         var param = {
           uid: info.uid,
           lat: info.param.lat,

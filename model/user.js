@@ -38,6 +38,9 @@ User.getOrCreate = function(uid, callback) {
     callback(null, new User({ _id: uid }));
   });
 };
+Object.defineProperty(User.prototype, 'douban_id', {
+  get: function() { return this.access_token.douban_user_id; }
+});
 
 User.prototype.toObject = function() {
   return {
