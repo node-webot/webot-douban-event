@@ -12,12 +12,13 @@ var render_event_list = _.template([
   '你当前标记了<%= total %>个要参加的活动:',
   '',
   '<% _.each(events, function(item, i) { %>' +
-    '<%= (i + 1) %>. [<%= _.format_time(item.begin_time) %>] <a href="<%= item.alt %>"><%= item.title %></a>',
+    '<%= (i + 1) %>. [<%= _.format_time(item.begin_time) %>]',
+    '   <a href="<%= item.alt %>"><%= item.title %></a>',
   '<% }) %>' +
   '<% if (total > events.length) { %>' +
     '...',
   '<% } %>',
-  '<a href="http://www.douban.com/location/mine/events">查看详细 &raquo;</a>'
+  '<a href="http://www.douban.com/location/mine/events">查看详细»</a>'
 ].join('\n'));
 
 

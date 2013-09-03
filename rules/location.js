@@ -37,7 +37,7 @@ module.exports = {
           lng: info.param.lng,
           loc: loc_id
         };
-        return douban.nearby(param, next);
+        return douban.event.nearby(param, next);
       });
     });
   }

@@ -13,7 +13,7 @@ module.exports = {
       + "直接发送你所在的城市名（不用加省份）给我，我就能帮你找到本市近期热门同城活动。\n\n"
       + "发送“帮助”可以查看详细使用指南。")
     } else if (event === 'unsubscribe') {
-      log('User [%s] unsubscribed.', info.uid);
+      //log('User [%s] unsubscribed.', info.uid);
       return next(null, '再见!');
     }
     if (event === 'click') {
