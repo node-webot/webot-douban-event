@@ -114,6 +114,7 @@ textarea {
 }
 pre {
   width: auto;
+  max-width: 800px;
   overflow: auto;
 }
 
@@ -133,4 +134,20 @@ pre {
 }
 .back-top {
   font-size: 0.8em;
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.table th,
+.table td {
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  text-align: center;
+}
+.table th {
+  font-weight: bold;
+  font-size: 1.1em;
 }

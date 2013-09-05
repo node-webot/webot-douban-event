@@ -4,6 +4,7 @@ var utils = require('../lib/utils');
 var mongo = require('../lib/mongo');
 var consts = require('./consts');
 var AuthToken = require('./auth');
+var cities = require('../data/cities');
 
 var Model = mongo.Model;
 var extend = utils.extend;
@@ -39,7 +40,19 @@ User.getOrCreate = function(uid, callback) {
   });
 };
 Object.defineProperty(User.prototype, 'douban_id', {
-  get: function() { return this.access_token.douban_user_id; }
+  get: function() {
+    return this.access_token && this.access_token.douban_user_id;
+  }
+});
+Object.defineProperty(User.prototype, 'name', {
+  get: function() {
+    return this.access_token && this.access_token.douban_user_name;
+  }
+});
+Object.defineProperty(User.prototype, 'city', {
+  get: function() {
+    return cities.id2name[this.loc];
+  }
 });
 
 User.prototype.toObject = function() {
@@ -60,6 +73,10 @@ User.prototype.make_connect_url = function(fn, type) {
   AuthToken.generate(self._id, type, function(err, token) {
     fn.call(self, err, token && token.connect_url());
   });
+};
+User.prototype.douban_url = function() {
+  var dou_id = this.douban_id;
+  return dou_id ? 'http://www.douban.com/people/' + dou_id + '/' : '';
 };
 
 module.exports = User;

@@ -1,13 +1,26 @@
 module.exports = function(app, webot) {
 
+var async = require('async');
 var User = require('../../model/user');
 
 app.get('/admin/people', function(req, res, next) {
-  User.get_silented(function(err, r) {
-    r = r || []
+  async.parallel([
+    function(callback) {
+      User.count(callback);
+    },
+    function(callback) {
+      User.find(null, {
+        sort: { 'silented': -1 },
+        limit: 2000
+      }, callback);
+    },
+  ], function(err, result) {
+    total = result[0];
+    people = result[1];
     res.render('people', {
       pagename: 'people',
-      silented: r
+      total: total,
+      people: people
     });
   });
 });

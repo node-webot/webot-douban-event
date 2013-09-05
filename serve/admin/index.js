@@ -27,6 +27,9 @@ app.locals({
   }]
 });
 
+app.get('/admin/', function(req, res, next) {
+  return res.redirect('/admin/home');
+});
 app.get('/admin/home', function(req, res, next) {
   return res.render('panel', {
     pagename: 'home',

@@ -3,10 +3,21 @@ extend base
 block article 
   form(method="post")
     fieldset.section
-      h1 暂时不需要自动回复的人
-        small (1小时后释放)
-      p
-        textarea(name="silented", row=5, cols=30)
-          !{silented.join('\n')}
-      p
-        button.btn(type="submit") 保存
+      h1 管理用户
+      p.stats 当前共有 #{total} 位用户
+      table.table
+        tr
+          th weixin id
+          th douban
+          th city 
+          th last param
+          th sliented
+        each p in people
+          tr
+            td #{p._id}
+            td #{p.city}
+            td
+              a(target="_blank", href="#{p.douban_url()}") #{p.name}
+            td(class="param")
+              #{p.last_param}
+            td #{p.sliented ? 'YES' : 'NO'}

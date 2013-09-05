@@ -5,19 +5,6 @@ var pwd = process.cwd();
 var data = require(pwd + '/data');
 var cities = data.cities;
 
-webot.set('silented', {
- handler: function(info, next) {
-    if (info.silented) {
-      info.flag = 1;
-      info.ended = true;
-      info.noReply = true;
-      return;
-    }
-    next();
-  },
-});
-
-
 ['location', 'image', 'event', 'other_type',
   'bind', 'mine',
   'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
