@@ -5,23 +5,27 @@ var AuthToken = require('../../model/auth');
 var conf = require('../../conf');
 
 
-webot.set(/^(绑定|bd|bang|bind|login)$/i, function(info, next) {
+webot.set(/^(绑定|bd|bang|bind|login)(帐号)?$/i, function(info, next) {
   info.user.make_connect_url(function(err, url) {
     if (err) return next(500);
-    next(null, '<a href="' + url + '">点此绑定豆瓣账号</a>');
+    next(null, '点此绑定豆瓣账号'.link(url));
   });
 });
 
-webot.set(/^我的同城$/i, function(info) {
-  var msg = '';
-  if (!info.user.access_token) {
-    msg += '发送“绑定”开始绑定你的豆瓣帐号到微信。绑定成功后即可在微信里标记活动为要参加或感兴趣。\n\n';
-  } else {
-    msg += '你已成功绑定豆瓣帐号！\n\n';
+webot.set(/^我的同城$/i, function(info, next) {
+  var msg = '发送“mine”查看你要参加的活动，发送“wish”查看你感兴趣的活动\n\n' +
+            '点此查看详细指南'.link(conf.site_root + 'auth/help');
+
+  if (info.user.access_token) {
+    msg = '你已成功绑定豆瓣帐号！\n\n' + msg;
+    return next(null, msg);
   }
-  msg += '发送“mine”查看你要参加的活动，发送“wish”查看你感兴趣的活动\n\n' +
-         '<a href="'+ conf.site_root +'auth/help">点此查看详细指南</a>';
-  return msg;
+
+  info.user.make_connect_url(function(err, url) {
+    var _msg = url ? '点此绑定豆瓣帐号'.link(url) + '\n\n' : '发送“绑定”开始绑定你的豆瓣帐号到微信。';
+    _msg += '绑定成功后即可在微信里标记活动为要参加或感兴趣。\n\n';
+    next(null, _msg + msg);
+  });
 });
 
 webot.set(/^(解绑|解除绑定|unbind|logout)$/i, function(info, next) {
