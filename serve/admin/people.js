@@ -10,8 +10,10 @@ app.get('/admin/people', function(req, res, next) {
     },
     function(callback) {
       User.find(null, {
-        sort: { 'silented': -1 },
-        limit: 2000
+        sort: {
+          'access_token': -1
+        },
+        limit:  3000
       }, callback);
     },
   ], function(err, result) {

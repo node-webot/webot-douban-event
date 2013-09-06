@@ -1,4 +1,9 @@
 extend ../dropin
 
+block title
+  绑定成功
+
 block article
-  p 已成功绑定，回复「帮助」看看你都能干什么吧
+  p.msg-ok 好耶！已成功绑定了豆瓣账号！
+  p 现在你可以
+  include ./mods/action_list

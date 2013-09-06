@@ -8,16 +8,13 @@ block article
       table.table
         tr
           th weixin id
-          th douban
           th city 
-          th last param
-          th sliented
+          th douban
+          th silented 
         each p in people
           tr
             td #{p._id}
             td #{p.city}
             td
               a(target="_blank", href="#{p.douban_url()}") #{p.name}
-            td(class="param")
-              #{p.last_param}
-            td #{p.sliented ? 'YES' : 'NO'}
+            td #{p.silented ? 'YES' : 'NO'}

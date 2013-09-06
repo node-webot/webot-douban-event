@@ -44,8 +44,8 @@
         },
         {
           "type":"click",
-          "name":"功能建议",
-          "key":"建议"
+          "name":"我的同城",
+          "key":"我的同城"
         },
         {
           "type":"click",

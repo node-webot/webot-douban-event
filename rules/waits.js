@@ -109,7 +109,7 @@ webot.set('search_cmd', {
 
     if (loc) {
       var q = info.text.replace(reg_search_cmd);
-      return douban.search({ loc: loc, q: q }, cb);
+      return douban.event.search({ loc: loc, q: q }, cb);
     }
     info.session.q = info.text;
     info.session.want_city = 'search_cmd';
@@ -154,7 +154,7 @@ webot.set('confirm search', {
       }
       if (!d['loc'] || !d['q']) return cb();
       info.ended = true;
-      return douban.search(d, cb);
+      return douban.event.search(d, cb);
     },
     N: '好的，你说不要就不要',
     '永远不要|(不要){2,}|你好啰嗦|你好烦|取消|去死|呸': function(info, cb) {

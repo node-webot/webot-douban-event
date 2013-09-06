@@ -6,7 +6,7 @@ var data = require(pwd + '/data');
 var cities = data.cities;
 
 ['location', 'image', 'event', 'other_type',
-  'bind', 'mine',
+  'mine',
   'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
   var mod = require('./' + item);
   if (typeof mod == 'function') {

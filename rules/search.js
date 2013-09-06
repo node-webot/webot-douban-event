@@ -9,15 +9,15 @@ var unknown_replies = [
   '你刚才说的我没听太懂，但我还在努力学习中，以后说不定就懂了哦~'
 ];
 
-var direct_search = /音乐会|话剧|孟京辉|约会|相亲/i;
+var direct_search = /孟京辉|约会|相亲/i;
 
 module.exports = {
   'pattern': function(info) {
-    var ret = info.param['q'] && info.param['q'].length < 25;
-    if (ret && direct_search.test(info.text)) {
+    var t = info.param['q'] && info.param['q'].length < 25;
+    if (t && direct_search.test(info.text)) {
       info.cmd = 'search';
     }
-    return ret;
+    return t;
   },
   'handler': function(info, next) {
     var u = info.user;

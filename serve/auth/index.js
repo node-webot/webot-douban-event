@@ -12,16 +12,25 @@ var oauth = require('../../lib/douban/oauth');
 
 var OAUTH_CALLBACK_URI = app._conf.site_root + 'auth/callback';
 
+var noop = function(){};
+
+
+
 app.get('/auth/connect/:token', function(req, res, next) {
   var token = req.params.token;
-
-  // save token to session
-  req.session.auth_token = token;
-
-  res.redirect(oauth.api().getAuthorizeUrl({
-    redirect_uri: OAUTH_CALLBACK_URI,
-    response_type: 'code',
-  }));
+  AuthToken.get(token, function(err, doc) {
+    if (!doc) {
+      return res.render('error', {
+        msg: '此链接已失效，请重新发起绑定请求'
+      });
+    }
+    // save token to session
+    req.session.auth_token = token;
+    res.redirect(oauth.api().getAuthorizeUrl({
+      redirect_uri: OAUTH_CALLBACK_URI,
+      response_type: 'code',
+    }));
+  });
 });
 
 /**
@@ -50,12 +59,22 @@ app.get('/auth/callback', function(req, res, next) {
         }, callback);
       },
     ], function(err, ret) {
-      if (err) return show_error('获取用户信息失败');
+      if (!ret[0]) {
+        return show_error('链接已失效，请重新发起绑定请求');
+      }
 
+      var user_id = ret[0].user_id;
+      // remove used tokens
+      AuthToken.remove({ user_id: user_id }, noop);
+
+      if (err) {
+        error('[auth callback]: %s, %s', JSON.stringify(err), JSON.stringify(ret))
+        return show_error('获取用户信息失败，请重试');
+      }
 
       log('[auth callback]: %s, %s', ret[0], JSON.stringify(ret[1]))
       User({
-        _id: ret[0].user_id,
+        _id: user_id
       }).update({
         $upsert: true,
         name: ret[1].douban_user_name,
@@ -70,6 +89,9 @@ app.get('/auth/callback', function(req, res, next) {
 
 app.get('/auth/ok', function(req, res, next) {
   res.render('auth/ok');
+});
+app.get('/auth/help', function(req, res, next) {
+  res.render('auth/help');
 });
 
 

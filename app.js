@@ -23,16 +23,22 @@ var memcached = require('./lib/memcached');
 var messages = require('./data/messages');
 var conf = require('./conf');
 
-function event_list_mapping(item, i) {
-  return {
-    title: item.title,
-    picUrl: item.image_lmobile || '',
-    url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
-    description: item.owner && douban.event.eventDesc(item),
-  };
-}
-
 webot.codeReplies = messages;
+
+var app = express();
+
+app._conf = conf;
+app.use(express.static(__dirname + '/static'));
+app.engine('jade', require('jade').__express);
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/templates');
+
+app.use(express.bodyParser());
+app.use(express.cookieParser());
+app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_session') }));
+
+// load rules
+require('./rules')(webot);
 
 webot.beforeReply(function ensure_zhs(info, next) {
   // add alias
@@ -84,20 +90,16 @@ webot.afterReply(function reply_output(info, next) {
   });
 });
 
-var app = express();
+function event_list_mapping(item, i) {
+  return {
+    title: (i+1) + '. ' + item.title,
+    picUrl: item.image_lmobile || '',
+    url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
+    description: item.owner && douban.event.eventDesc(item),
+  };
+}
 
-app._conf = conf;
-app.use(express.static(__dirname + '/static'));
-app.engine('jade', require('jade').__express);
-app.set('view engine', 'jade');
-app.set('views', __dirname + '/templates');
 
-app.use(express.bodyParser());
-app.use(express.cookieParser());
-app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_session') }));
-
-// load rules
-require('./rules')(webot);
 
 require('./serve')(app, webot);
 

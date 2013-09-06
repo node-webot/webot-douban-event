@@ -1,8 +1,25 @@
 !!!
 head
+  title
+    block title
+      豆瓣同城微信账号 douban-event
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   style
-    body { padding: 5px; }
+    body { margin: 0; padding: 0 0 20px; background: #fff; color: #111; }
+    header, article { padding: 10px 15px }
+    header { background: #f6f5f2; }
+    h1 { color: #e85206; margin: 0; font-size: 30px; }
+    code {
+      font-size: 1.2em;
+      font-weight: 600;
+      display: inline-block;
+      border-radius: 2px;
+      color: #000;
+    }
+    .msg-ok { padding: 10px; color: green; background: #f3ffef; border: 1px solid #dff6dc; }
 body
-  block header
-    h1 豆瓣同城
-  block article
+  header
+    block header
+      h1 豆瓣同城
+  article
+    block article
