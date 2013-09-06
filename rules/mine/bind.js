@@ -17,7 +17,7 @@ webot.set(/^我的同城$/i, function(info) {
   if (!info.user.access_token) {
     msg += '发送“绑定”开始绑定你的豆瓣帐号到微信。绑定成功后即可在微信里标记活动为要参加或感兴趣。\n\n';
   } else {
-    msg += '你已成功绑定豆瓣帐号！';
+    msg += '你已成功绑定豆瓣帐号！\n\n';
   }
   msg += '发送“mine”查看你要参加的活动，发送“wish”查看你感兴趣的活动\n\n' +
          '<a href="'+ conf.site_root +'auth/help">点此查看详细指南</a>';
