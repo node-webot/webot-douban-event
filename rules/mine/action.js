@@ -9,32 +9,45 @@ var cwd = process.cwd();
 var task = require(cwd + '/lib/task');
 
 
+// save events list array
 webot.afterReply(function(info) {
   return Array.isArray(info.reply);
 }, function(info) {
   // for actions
-  var sel = {};
-  info.session.event_selections = sel;
-  info.reply.forEach(function(item, i) {
-    sel[String(i + 1)] = { _id: item.id, title: item.title };
+  var sel = info.reply.map(function(item, i) {
+    return { _id: item.id, title: item.title };
   });
+  var old_sel = info.session.event_selections;
+  if (old_sel && Array.isArray(old_sel)) {
+    sel = sel.concat(old_sel).slice(0,20);
+  }
+  info.session.event_selections = sel;
 });
 
 
 function get_matched(list, keyword) {
-  if (!list || !Object.keys(list).length) {
+  if (!list || !Array.isArray(list)) {
     return [];
   }
+  keyword = keyword.toLowerCase();
 
-  if (keyword in list) return [list[keyword]];
-
-  var ret = [];
-  for (var k in list) {
-    var item = list[k];
-    if (item.title.indexOf(keyword) != -1) {
-      ret.push(item);
-    }
+  var n = parseInt(keyword, 10);
+  if (n) {
+    return n <= list.length ? [list[n - 1]] : [];
   }
+  ret = list.filter(function(item, i) {
+    if (item.title.toLowerCase().indexOf(keyword) != -1) return true;
+  });
+
+  var seen = {};
+  ret = ret.filter(function(item) {
+    if (item.title in seen) {
+      return false;
+    }
+    seen[item.title] = 1;
+    return true;
+  });
+
   return ret;
 }
 
@@ -42,9 +55,9 @@ function get_matched(list, keyword) {
 var tmpl_choices = _.template([
   '你指定的活动关键字太模糊，请重新选择',
   '',
-  '根据关键字"<%= keyword %>"匹配到了<%= items.length %>个活动：',
+  '关键字"<%= keyword %>"匹配到了<%= items.length %>个活动：',
   '<% _.each(items, function(item, i) { %>' +
-    '<%= (i+1) %>. <%= item.title %>',
+    '<%= item.title %>',
   '<% }); %>'
 ].join('\n'));
 
@@ -65,7 +78,10 @@ webot.set('mine action', {
     var matched = get_matched(info.session.event_selections, keyword);
 
     if (matched.length > 1) {
-      return next(null, tmpl_choices(matched));
+      return next(null, tmpl_choices({
+        keyword: keyword,
+        items: matched
+      }));
     }
     if (matched.length == 0) {
       return next(null, '抱歉，我并不知道活动"' + keyword + '"是什么，所以无法处理你的请求');
@@ -97,7 +113,7 @@ webot.set('mine undo', {
   handler: function(info, next) {
     var last = info.session.event_last_acted;
     if (!last) {
-      return next(null, '并不知道要取消啥操作');
+      return next(null, '并不知道要取消什么操作');
     }
 
     var action = last.action;
