@@ -11,9 +11,10 @@ app.get('/admin/people', function(req, res, next) {
     function(callback) {
       User.find(null, {
         sort: {
-          'access_token': -1
+          'access_token': -1,
+          'active_lottery': -1
         },
-        limit:  3000
+        limit:  2000
       }, callback);
     },
   ], function(err, result) {

@@ -7,14 +7,14 @@ block article
       p.stats 当前共有 #{total} 位用户
       table.table
         tr
-          th weixin id
+          th &nbsp;
           th city 
           th douban
           th silented 
           th active lottery
-        each p in people
+        each p, i in people
           tr
-            td #{p._id}
+            td #{i+1}
             td #{p.city}
             td
               a(target="_blank", href="#{p.douban_url()}") #{p.name}

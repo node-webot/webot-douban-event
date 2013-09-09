@@ -31,7 +31,7 @@ module.exports = function(db, next) {
     }
     r.ensureIndex({ 'loc': 1 }, background_option, _tick); 
     r.ensureIndex({ 'silented': 1 }, background_option, _tick); 
-    r.ensureIndex({ 'active_lottery': 1 }, background_option, _tick); 
+    r.ensureIndex({ 'access_token': -1, 'active_lottery': 1 }, background_option, _tick); 
   });
 
   db.collection(consts.AUTHTOKEN_COLLECTION, function(err, r) {
