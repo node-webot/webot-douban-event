@@ -40,6 +40,8 @@ app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_ses
 // load rules
 require('./rules')(webot);
 
+var ONE_HOUR = 3600000;
+
 webot.beforeReply(function ensure_zhs(info, next) {
   // add alias
   info.from = info.uid;
@@ -52,6 +54,11 @@ webot.beforeReply(function ensure_zhs(info, next) {
     }
 
     info.user = user;
+
+    // waiter will expire
+    if (user.mtime < new Date() - ONE_HOUR) {
+      delete info.session.waiter;
+    }
 
     if (!info.text) return next();
 

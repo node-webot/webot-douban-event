@@ -6,16 +6,6 @@ function pad(n) {
 
 var greetings = [];
 greetings.push([
-  /^\d+$/, function(info) {
-    var num = parseInt(info.text, 10);
-    return '' + (num + 1);
-}]);
-greetings.push([
-  /^\w$/, function(info) {
-    var code = info.text.charCodeAt(0);
-    return String.fromCharCode(code+1);
-}]);
-greetings.push([
   /^(早上?好?|(good )?morning)/i,
   function(info) {
     var d = new Date();

@@ -22,13 +22,14 @@ webot.afterReply(function(info) {
     sel = sel.concat(old_sel);
     var seen = {};
     sel = sel.filter(function(item) {
+      // 尽管活动 title 也可能重名，我们决定不去解决它
       if (item._id in seen) {
         return false;
       }
       seen[item._id] = 1;
       return true;
     });
-    sel = sel.slice(-12); // save the last three page
+    sel = sel.slice(0, 12); // save the last three page
   }
   info.session.event_selections = sel;
 });
@@ -53,42 +54,75 @@ function get_matched(list, keyword) {
 
 
 var tmpl_choices = _.template([
-  '你指定的活动关键字太模糊，请重新选择',
-  '',
   '关键字"<%= keyword %>"匹配到了<%= items.length %>个活动：',
   '<% _.each(items, function(item, i) { %>' +
-    '<%= item.title %>',
-  '<% }); %>'
+    '<%= (i+1) %>. <%= item.title.link("http://www.douban.com/event/" + item._id + "/") %>',
+  '<% }); %>',
+  '',
+  '你想标记的到底是哪个呢（请回复数字序号）？'
 ].join('\n'));
 
-webot.set('mine action', {
+
+webot.waitRule('event multi choose', function(info, next) {
+  var t = parseInt(info.text, 10);
+  if (!t) {
+    return next(); 
+  }
+  info._dou_event = info.session.event_reselect[t - 1];
+  if (!info._dou_event) {
+    info.rewait();
+    return next(null, '根本没有这个选项！再试一次？');
+  }
+  info._dou_action = info.session.event_reselect_action;
+
+  delete info.session.event_reselect;
+  delete info.session.event_reselect_action;
+
+  webot.get('mine event action').handler(info, next);
+});
+
+webot.set('mine event action', {
   domain: 'mine',
   pattern: /^(wish|感兴趣|attend|mark|canjia|要参加)\s*(.+)\s*$/i,
   handler: function(info, next) {
-    if (/^(wish|感兴趣)$/i.test(info.param[1])) {
-      var action = 'wish';
-    } else {
-      var action = 'attend';
+    var action = info._dou_action;
+
+    if (!action) {
+      if (/^(wish|感兴趣)$/i.test(info.param[1])) {
+        action = 'wish';
+      } else {
+        action = 'attend';
+      }
     }
 
     var action_name = action == 'wish' ? '感兴趣' : '要参加';
     var api_path = action == 'wish' ? 'wishers' : 'participants';
 
-    var keyword = info.param[2];
-    var matched = get_matched(info.session.event_selections, keyword);
-
-    if (matched.length > 1) {
-      return next(null, tmpl_choices({
-        keyword: keyword,
-        items: matched
-      }));
-    }
-    if (matched.length == 0) {
-      return next(null, '抱歉，我并不知道活动"' + keyword + '"是什么，所以无法处理你的请求');
-    }
-
-    var e = matched[0];
+    var e = info._dou_event;
     var user = info.user;
+
+    if (!e) {
+      var keyword = info.param[2];
+      var matched = get_matched(info.session.event_selections, keyword);
+
+      if (matched.length > 1) {
+
+        info.session.event_reselect = matched;
+        info.session.event_reselect_action = action;
+        info.wait('event multi choose');
+
+        return next(null, tmpl_choices({
+          keyword: keyword,
+          items: matched
+        }));
+      }
+      if (matched.length == 0) {
+        return next(null, '抱歉，我并不知道活动"' + keyword + '"是什么，所以无法处理你的请求');
+      }
+      e = matched[0];
+    }
+
+
     task.user_api(user, function(client) {
       client.post('/v2/event/' + e._id + '/' + api_path, function(err, res) {
         if (err) {
@@ -127,6 +161,7 @@ webot.set('mine undo', {
           error('Unmark event failed: %s %s - %s', user._id, e._id, JSON.stringify(err));
           return next(null, 'oops.. 操作失败了耶');
         }
+        delete info.session.event_last_acted;
         return next(null, '已取消收藏活动：' + e.title);
       });
     });
