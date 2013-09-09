@@ -154,7 +154,6 @@ webot.set('list choices', {
     if (!sel || !sel.length) {
       return '暂时没有可供选择的活动，先搜索一些活动试试吧';
     }
-    sel = sel.slice(-15);
     return tmpl_list_choices({ items: sel });
   }
 });
