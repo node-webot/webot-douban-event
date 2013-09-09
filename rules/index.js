@@ -6,7 +6,7 @@ var data = require(pwd + '/data');
 var cities = data.cities;
 
 ['location', 'image', 'event', 'other_type',
-  'mine',
+  'mine', 'lottery',
   'parse_cmd', 'parse_loc', 'want_city', 'gala', 'more', 'list'].forEach(function(item) {
   var mod = require('./' + item);
   if (typeof mod == 'function') {
@@ -19,15 +19,6 @@ var cities = data.cities;
 webot.set(/^建议(.{3})/, function(info) {
   info.flag = true;
   return '你的意见已经收到，我们会尽快处理。[微笑]';
-});
-webot.set('我想看', {
-  pattern: function(info) {
-    return (/我想看.{2,}/).test(info.text);
-  },
-  handler: function(info, next) {
-    info.flag = true;
-    next();
-  },
 });
 
 require('js-yaml');

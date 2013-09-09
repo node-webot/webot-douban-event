@@ -5,7 +5,7 @@ var AuthToken = require('../../model/auth');
 var conf = require('../../conf');
 
 
-webot.set(/^(绑定|bd|bang|bind|login)(帐号)?$/i, function(info, next) {
+webot.set(/^(绑定|验证|douban|bd|bang|bind|login)(帐号)?$/i, function(info, next) {
   info.user.make_connect_url(function(err, url) {
     if (err) return next(500);
     next(null, '点此绑定豆瓣账号'.link(url));

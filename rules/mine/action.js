@@ -20,6 +20,14 @@ webot.afterReply(function(info) {
   var old_sel = info.session.event_selections;
   if (old_sel && Array.isArray(old_sel)) {
     sel = sel.concat(old_sel).slice(0,20);
+    var seen = {};
+    sel = sel.filter(function(item) {
+      if (item._id in seen) {
+        return false;
+      }
+      seen[item._id] = 1;
+      return true;
+    });
   }
   info.session.event_selections = sel;
 });
@@ -39,15 +47,6 @@ function get_matched(list, keyword) {
     if (item.title.toLowerCase().indexOf(keyword) != -1) return true;
   });
 
-  var seen = {};
-  ret = ret.filter(function(item) {
-    if (item.title in seen) {
-      return false;
-    }
-    seen[item.title] = 1;
-    return true;
-  });
-
   return ret;
 }
 
@@ -63,7 +62,7 @@ var tmpl_choices = _.template([
 
 webot.set('mine action', {
   domain: 'mine',
-  pattern: /^(wish|感兴趣|do|mark|canjia|要参加)\s*(.+)\s*$/i,
+  pattern: /^(wish|感兴趣|attend|mark|canjia|要参加)\s*(.+)\s*$/i,
   handler: function(info, next) {
     if (/^(wish|感兴趣)$/i.test(info.param[1])) {
       var action = 'wish';
@@ -134,5 +133,28 @@ webot.set('mine undo', {
 });
 
 
+var tmpl_list_choices = _.template([
+  '你已经发现了这些活动：',
+  '',
+  '<% _.each(items, function(item, i) { %>' +
+    '<%= i+1 %>. <a href="http://www.douban.com/event/<%= item._id %>/"><%= item.title %></a>',
+  '<% }); %>',
+  '',
+  '回复 "wish [序号]" 标记对活动感兴趣， "mark [序号]" 标记要参加活动。其中[序号]为活动标题前的数字或标题中的唯一关键字。',
+  '',
+  '继续点击菜单栏 "本周热门" 发现更多活动'
+].join('\n'));
+
+webot.set('list choices', {
+  domain: 'mine',
+  pattern: /^do|list$/i,
+  handler: function(info) {
+    var sel = info.session.event_selections;
+    if (!sel || !sel.length) {
+      return '暂时没有可供选择的活动，先搜索一些活动试试吧';
+    }
+    return tmpl_list_choices({ items: sel });
+  }
+});
 
 };

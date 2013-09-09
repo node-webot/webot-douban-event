@@ -11,6 +11,7 @@ block article
           th city 
           th douban
           th silented 
+          th active lottery
         each p in people
           tr
             td #{p._id}
@@ -18,3 +19,4 @@ block article
             td
               a(target="_blank", href="#{p.douban_url()}") #{p.name}
             td #{p.silented ? 'YES' : 'NO'}
+            th #{p.active_lottery}

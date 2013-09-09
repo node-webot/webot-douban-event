@@ -75,7 +75,7 @@ webot.afterReply(function reply_output(info, next) {
     info.reply = info.reply.map(event_list_mapping);
     if (info.has_more) {
       info.reply.push({
-        title: '回复 more 查看更多...',
+        title: '回复 more 查看更多，回复 do 查看其他可用操作',
         picUrl: '',
         url: 'http://www.douban.com/location/',
       });

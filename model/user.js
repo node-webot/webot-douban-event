@@ -59,8 +59,9 @@ User.prototype.toObject = function() {
   return {
     _id: this._id,
     loc: this.loc,
+    active_lottery: this.active_lottery || null,
     access_token: this.access_token || null,
-    last_params: {},
+    last_param: {},
   };
 };
 
