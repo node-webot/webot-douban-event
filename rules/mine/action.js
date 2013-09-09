@@ -19,7 +19,7 @@ webot.afterReply(function(info) {
   });
   var old_sel = info.session.event_selections;
   if (old_sel && Array.isArray(old_sel)) {
-    sel = sel.concat(old_sel).slice(0,20);
+    sel = sel.concat(old_sel);
     var seen = {};
     sel = sel.filter(function(item) {
       if (item._id in seen) {
@@ -28,6 +28,7 @@ webot.afterReply(function(info) {
       seen[item._id] = 1;
       return true;
     });
+    sel = sel.slice(-12); // save the last three page
   }
   info.session.event_selections = sel;
 });
@@ -153,6 +154,7 @@ webot.set('list choices', {
     if (!sel || !sel.length) {
       return '暂时没有可供选择的活动，先搜索一些活动试试吧';
     }
+    sel = sel.slice(-15);
     return tmpl_list_choices({ items: sel });
   }
 });
