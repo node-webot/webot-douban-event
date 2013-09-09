@@ -23,7 +23,7 @@ var consts = require('../model/consts');
 module.exports = function(db, next) {
   db.collection(consts.USER_COLLECTION, function(err, r) {
     log('ensuring database "users"...');
-    var n = 3;
+    var n = 4;
     function _tick(err, r) {
       n--;
       if (err) console.error(err);
@@ -31,6 +31,7 @@ module.exports = function(db, next) {
     }
     r.ensureIndex({ 'loc': 1 }, background_option, _tick); 
     r.ensureIndex({ 'silented': 1 }, background_option, _tick); 
+    r.ensureIndex({ 'mtime': -1 }, sparse_option, _tick); 
     r.ensureIndex({ 'access_token': -1, 'active_lottery': 1 }, background_option, _tick); 
   });
 

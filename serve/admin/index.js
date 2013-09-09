@@ -13,9 +13,9 @@ app.locals({
     name: 'home',
     title: '首页'
   }, {
-    name: 'routes',
-    title: '规则'
-  }, {
+    //name: 'routes',
+    //title: '规则'
+  //}, {
     //name: 'waits',
     //title: '等待'
   //}, {

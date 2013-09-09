@@ -34,6 +34,10 @@ a:hover {
   margin-bottom: 20px;
   box-shadow: 0 -1px 1px #fff;
 }
+#header p {
+  float: left;
+  margin-right: 20px;
+}
 #main-body {
   padding: 0 20px 30px;
   overflow: hidden;
@@ -131,6 +135,9 @@ pre {
 .menu {
   border-left: 2px solid #eee;
   padding: 0 10px;
+}
+.menu li {
+  display: inline-block;
 }
 .back-top {
   font-size: 0.8em;

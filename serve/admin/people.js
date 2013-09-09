@@ -4,12 +4,16 @@ var async = require('async');
 var User = require('../../model/user');
 
 app.get('/admin/people', function(req, res, next) {
+  var query = {};
+  if (req.query.lottery) {
+    query.active_lottery = req.query.lottery;
+  }
   async.parallel([
     function(callback) {
-      User.count(callback);
+      User.count(query, callback);
     },
     function(callback) {
-      User.find(null, {
+      User.find(query, {
         sort: {
           'access_token': -1,
           'active_lottery': -1

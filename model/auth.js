@@ -44,7 +44,7 @@ AuthToken.generate = function(user_id, type, callback) {
   });
 };
 
-AuthToken.prototype.toObject = function() {
+AuthToken.prototype.toJSON = function() {
   var self = this;
   return {
     _id: self._id,

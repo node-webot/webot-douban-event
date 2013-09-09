@@ -55,13 +55,14 @@ Object.defineProperty(User.prototype, 'city', {
   }
 });
 
-User.prototype.toObject = function() {
+User.prototype.toJSON = function() {
   return {
     _id: this._id,
     loc: this.loc,
+    mtime: this.mtime,
+    prev_text: this.prev_text,
     active_lottery: this.active_lottery || null,
     access_token: this.access_token || null,
-    last_param: {},
   };
 };
 

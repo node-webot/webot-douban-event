@@ -14,13 +14,11 @@ module.exports = {
   pattern: function(info) {
     if (!info.text) return;
 
-    var prev_text = info.session.prev_text;
-    if (prev_text === info.text) {
+    var prev_text = info.user.prev_text || info.session.prev_text; // TODO: remove this
+    if (prev_text === info.text && info.param.q != info.text) {
       return true;
     } else if (!info.param.q) {
-      info.session.prev_text = info.text;
-    } else {
-      delete info.session.prev_text;
+      info.user.prev_text = info.text;
     }
 
     if (info.text && reg_more.test(info.text)) {
@@ -60,6 +58,8 @@ module.exports = {
         return next('NO_MORE');
       }
 
+      // will update info.session.last_param, cause
+      // this variable is just an object reference
       if (!last_param.start) {
         last_param.start = 4;
         last_param['count'] = 4;

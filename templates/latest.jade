@@ -5,11 +5,11 @@ block article
     h1 最近对话的人
     .mod
       ol
-      each s in sessions
+      each s in people
         li
           .row
             label ID
-            input(type="text", readonly, value=s.id)
+            input(type="text", readonly, value=s._id)
           .row
             label 详情
             pre
