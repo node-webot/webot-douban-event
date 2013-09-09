@@ -29,7 +29,7 @@ webot.dialog(dialog_files.map(function(f) {
   return __dirname + '/dialogs/' + f;
 }));
 
-['weather', 'jielong', 'wikisource', 'search', 'baidu'].forEach(function(item) {
+['jielong', 'wikisource', 'search', 'baidu'].forEach(function(item) {
   webot.set(item, require('./' + item));
 });
 

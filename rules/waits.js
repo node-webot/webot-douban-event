@@ -2,7 +2,6 @@ var pwd = process.cwd();
 var data = require(pwd + '/data');
 var parser = require(pwd + '/lib/parser');
 var douban = require(pwd + '/lib/douban');
-var weather = require(pwd + '/lib/weather');
 var chengyu = data.chengyu;
 
 var cities = data.cities;
@@ -29,20 +28,6 @@ webot.waitRule('jielong',  {
     if (ret) return '【' + q + '】' + ret;
     return '我也不知道是什么意思呢...';
   }
-});
-
-webot.waitRule('wait_weather_city', function(info, cb) {
-  var loc = info.text;
-  var param = parser.listParam(info.text);
-  var loc_id = param['loc'];
-  if (loc_id && loc_id in cities.id2name) {
-    info.user.setLoc(loc_id);
-    loc = cities.id2name[loc_id]
-  }
-  weather(loc, function(err, res) {
-    if (err || ! res) return cb(err);
-    return cb(null, res);
-  });
 });
 
 var reg_lonely = /(妹子|妹纸|帅哥|美女|姑娘|^小?美?妞)/;
