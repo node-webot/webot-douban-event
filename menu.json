@@ -35,8 +35,13 @@
         }]
     },
     {
-      "name":"更多",
+      "name":"我的同城",
       "sub_button":[
+        {
+          "type":"click",
+          "name":"关于我们",
+          "key":"关于"
+        },
         {
           "type":"click",
           "name":"使用帮助",
@@ -44,13 +49,13 @@
         },
         {
           "type":"click",
-          "name":"我的同城",
-          "key":"我的同城"
+          "name":"我参加的",
+          "key":"mine"
         },
         {
           "type":"click",
-          "name":"关于我们",
-          "key":"关于"
+          "name":"感兴趣的",
+          "key":"wish"
         }]
     }]
 }

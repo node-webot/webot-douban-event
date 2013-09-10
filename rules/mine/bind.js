@@ -6,6 +6,10 @@ var conf = require('../../conf');
 
 
 webot.set(/^(绑定|验证|douban|bd|bang|bind|login)(帐号)?$/i, function(info, next) {
+  if (info.user.access_token) {
+    return next(null, '你已成功绑定豆瓣账号。' + '点此查看使用指南'.link(conf.site_root + 'auth/help') +
+                      '\n\n发送"unbind"接触绑定。');
+  }
   info.user.make_connect_url(function(err, url) {
     if (err) return next(500);
     next(null, '点此绑定豆瓣账号'.link(url));

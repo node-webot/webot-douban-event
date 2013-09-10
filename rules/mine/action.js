@@ -7,6 +7,7 @@ var _ = require('lodash');
 
 var cwd = process.cwd();
 var task = require(cwd + '/lib/task');
+var LocEvent = require(cwd + '/model/event');
 
 
 // save events list array
@@ -49,41 +50,22 @@ function get_matched(list, keyword) {
     if (item.title.toLowerCase().indexOf(keyword) != -1) return true;
   });
 
-  return ret;
+  return LocEvent.loads(ret);
 }
-
 
 var tmpl_choices = _.template([
   '关键字"<%= keyword %>"匹配到了<%= items.length %>个活动：',
   '<% _.each(items, function(item, i) { %>' +
-    '<%= (i+1) %>. <%= item.title.link("http://www.douban.com/event/" + item._id + "/") %>',
+    '<%= (i+1) %>. <%= item.link() %>',
   '<% }); %>',
   '',
   '你想标记的到底是哪个呢（请回复数字序号）？'
 ].join('\n'));
 
 
-webot.waitRule('event multi choose', function(info, next) {
-  var t = parseInt(info.text, 10);
-  if (!t) {
-    return next(); 
-  }
-  info._dou_event = info.session.event_reselect[t - 1];
-  if (!info._dou_event) {
-    info.rewait();
-    return next(null, '根本没有这个选项！再试一次？');
-  }
-  info._dou_action = info.session.event_reselect_action;
-
-  delete info.session.event_reselect;
-  delete info.session.event_reselect_action;
-
-  webot.get('mine event action').handler(info, next);
-});
-
-webot.set('mine event action', {
+webot.set('event action', {
   domain: 'mine',
-  pattern: /^(wish|感兴趣|attend|mark|canjia|要参加)\s*(.+)\s*$/i,
+  pattern: /^(wish|感兴趣|attend|mark|canjia|要?参加)\s*(.+)\s*$/i,
   handler: function(info, next) {
     var action = info._dou_action;
 
@@ -109,7 +91,7 @@ webot.set('mine event action', {
 
         info.session.event_reselect = matched;
         info.session.event_reselect_action = action;
-        info.wait('event multi choose');
+        info.wait('do list choose');
 
         return next(null, tmpl_choices({
           keyword: keyword,
@@ -122,6 +104,7 @@ webot.set('mine event action', {
       e = matched[0];
     }
 
+    e = LocEvent(e);
 
     task.user_api(user, function(client) {
       client.post('/v2/event/' + e._id + '/' + api_path, function(err, res) {
@@ -132,8 +115,7 @@ webot.set('mine event action', {
         log('Mark event: %s - %s - %s', user.name, action, e.title);
         e.action = action;
         info.session.event_last_acted = e;
-        next(null, '已将活动 <a href="http://www.douban.com/event/' + e._id + '/">' +
-                    e.title + '</a> 标记为' + action_name + 
+        next(null, '已将活动 ' + e.link() + ' 标记为' + action_name + 
                     '，发送 undo 取消标记');
       });
     });
@@ -170,18 +152,18 @@ webot.set('mine undo', {
 
 
 var tmpl_list_choices = _.template([
-  '你已经发现了这些活动：',
+  '你已经发现了以下活动：',
   '',
   '<% _.each(items, function(item, i) { %>' +
-    '<%= i+1 %>. <a href="http://www.douban.com/event/<%= item._id %>/"><%= item.title %></a>',
+    '<%= i+1 %>. <%= item.link() %>',
   '<% }); %>',
   '',
-  '回复"wish [序号]"标记对活动感兴趣，"mark [序号]"标记要参加活动。其中 [序号] 为活动标题前的数字或标题中的唯一关键字。',
+  '请问你要选择哪个活动进行操作呢？(回复数字序号)',
   '',
-  '继续点击菜单栏 "本周热门" 发现更多活动'
+  '继续点击菜单栏"本周热门"发现更多活动'
 ].join('\n'));
 
-webot.set('list choices', {
+webot.set('do list', {
   domain: 'mine',
   pattern: /^do|list$/i,
   handler: function(info) {
@@ -189,8 +171,60 @@ webot.set('list choices', {
     if (!sel || !sel.length) {
       return '暂时没有可供选择的活动，先搜索一些活动试试吧';
     }
-    return tmpl_list_choices({ items: sel });
+    info.wait('do list choose');
+    info.session.event_reselect = sel;
+    return tmpl_list_choices({ items: LocEvent.loads(sel) });
   }
 });
+
+webot.waitRule('do list choose', function(info, next) {
+  var t = parseInt(info.text, 10);
+  if (!t) {
+    return next(); 
+  }
+  if (!info.session.event_reselect) {
+    return next(500);
+  }
+
+  var event = info.session.event_reselect[t - 1];
+  var action = info.session.event_reselect_action;
+
+  if (!event) {
+    info.rewait();
+    return next(null, '根本没有这个选项！再试一次？(回复 1 ~ ' + info.session.event_reselect.length + ' 的任意数字)');
+  }
+  if (!action) {
+    info.wait('do list choose action');
+    info.session.event_selected = t;
+    return next(null, '选择将活动 ' + LocEvent(event).link() + ' 标记为：\n\n1. 要参加\n2. 感兴趣');
+  }
+
+  info._dou_event = event;
+  info._dou_action = action;
+
+  delete info.session.event_reselect;
+  delete info.session.event_reselect_action;
+
+  webot.get('event action').handler(info, next);
+});
+
+webot.waitRule('do list choose action', function(info, next) {
+  var t = parseInt(info.text, 10);
+  if (isNaN(t)) {
+    return next(); 
+  }
+  if (t > 2 || t < 0) {
+    info.rewait();
+    return next(null, '请输入 1 或 2；1 代表感兴趣，2 代表要参加');
+  }
+
+  info.session.event_reselect_action = t == 1 ? 'attend' : 'wish';
+  info.text = info.session.event_selected;
+
+  webot.waitRule('do list choose')[0].handler(info, next);
+});
+
+
+webot.set(/^[0-9]{1,2}$/, '当前并无任何可用选项，回复 do 查看你可以操作的活动');
 
 };

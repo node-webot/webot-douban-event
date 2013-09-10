@@ -28,7 +28,7 @@ var render_event_list = _.template([
 
 
 
-var reg_mine = /^(我的(活动)?|mine|my|mark)$/i;
+var reg_mine = /^(我(要?参加)?的(活动)?|mine|my|mark)$/i;
 var reg_wish = /^((my )?wish|我?感兴趣的(活动)?)$/i;
 webot.set('mine events', {
   domain: 'mine',
