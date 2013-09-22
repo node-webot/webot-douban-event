@@ -138,7 +138,6 @@ webot.set('confirm search', {
         return
       }
       if (!d['loc'] || !d['q']) return cb();
-      info.ended = true;
       return douban.event.search(d, cb);
     },
     N: '好的，你说不要就不要',
@@ -147,7 +146,6 @@ webot.set('confirm search', {
       return cb(null, '好的，今后我听不懂你的话时将不再询问你是否搜索。\n你总是可以发送“搜索 xxx”来直接搜索 xxx 相关的活动。');
     },
     '要要要': function(info, cb) {
-      var u = info.u || user(info.from);
       info.session.ask_search = 2;
       return cb(null, '要要要，切克闹！\n今后我听不懂你的话时将总是尝试为你查找相关活动。\n你可以回复“别闹了”取消此设置。\n再次发送刚才的关键字开始搜索。');
     },

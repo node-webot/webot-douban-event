@@ -25,11 +25,11 @@ module.exports = {
     function do_search() {
       var param = info.session.last_param = info.param;
       param['_wx_act'] = 'search';
+      info.ended = true;
       return douban.event.search(param, next);
     }
     // 如果有搜索关键字
     if (info._ori_loc || info.cmd === 'search') {
-      info.ended = true;
       return do_search();
     }
 
@@ -41,16 +41,8 @@ module.exports = {
       return next(); // will goto ask search
     }
 
-    if (info.cmd === 'stop_search') {
-      // 别闹了
-      delete info.session.ask_search;
-      info.ended = true;
-      return next(null, '好的，有关自动搜索的设定已重置');
-    }
-
     // ask_search === 2 时，总是自动搜索
     if (ask_search == 2) {
-      info.ended = true;
       return do_search();
     }
 

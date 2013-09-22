@@ -1,14 +1,3 @@
-process.on('uncaughtException', function (err) {
-  console.error('Caught exception: ' + err);
-  if ('trace' in err) {
-    err.trace();
-  }
-  if ('stack' in err) {
-    console.error(err.stack);
-  }
-  process.exit();
-});
-
 var express = require('express');
 var debug = require('debug');
 var log = debug('weixin');
@@ -78,17 +67,6 @@ webot.afterReply(function reply_output(info, next) {
     info.reply = info.reply || messages[String(info.err)] || messages['503'];
   }
 
-  if (Array.isArray(info.reply)) {
-    info.reply = info.reply.map(event_list_mapping);
-    if (info.has_more) {
-      info.reply.push({
-        title: '回复 more 查看更多，回复 do 查看其他可用操作',
-        picUrl: '',
-        url: 'http://www.douban.com/location/',
-      });
-    }
-  }
-
   if (!info.is_zht) return next();
 
   fanjian.zhs2zht(info.reply, function(ret) {
@@ -96,17 +74,6 @@ webot.afterReply(function reply_output(info, next) {
     next();
   });
 });
-
-function event_list_mapping(item, i) {
-  return {
-    title: (i+1) + '. ' + item.title,
-    picUrl: item.image_lmobile || '',
-    url: item.adapt_url && item.adapt_url.replace('adapt', 'partner') || '',
-    description: item.owner && douban.event.eventDesc(item),
-  };
-}
-
-
 
 require('./serve')(app, webot);
 

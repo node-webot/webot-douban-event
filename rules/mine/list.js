@@ -1,10 +1,10 @@
-var error = require('debug')('weixin:reply:error');
-
 module.exports = function(webot) {
 
 
+var error = require('debug')('weixin:reply:error');
 var cwd = process.cwd();
 var task = require(cwd + '/lib/task');
+var handle_api_error = require('../utils').handle_api_error;
 
 var _ = require('lodash');
 
@@ -54,15 +54,7 @@ webot.set('mine events', {
       //client.get('/shuo/v2/statuses/home_timeline', function(err, ret) {
         if (err) {
           error('[API] get %s events failed: ', info.action, err);
-          info.ended = true;
-          if (err.statusCode == 400) {
-            info.user.make_connect_url(function(err, url) {
-              if (err) return next(500);
-              return next('T.T 请求失败，请尝试<a href="' + url + '">重新绑定豆瓣帐号</a>');
-            });
-            return;
-          }
-          return next('T.T 获取活动出错了，稍后再试吧');
+          return handle_api_error(err, 'T.T 获取活动出错了，稍后再试吧', info, next);
         }
         ret.uid = user.douban_id;
         ret.action = info.action === 'attend' ? '要参加' : '感兴趣';

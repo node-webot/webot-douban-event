@@ -27,7 +27,7 @@
     "generic-pool": "2.0.3",
     "passport": "~0.1.15",
     "passport-douban": "~0.0.1",
-    "douban-api": "~0.0.2",
+    "douban-api": "~0.0.3",
     "memcached": "~0.1.4"
   },
   "devDependencies": {

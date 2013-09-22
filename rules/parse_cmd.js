@@ -14,5 +14,10 @@ module.exports = {
         info.text = text.replace(cmds[k], '');
       }
     }
+    if (info.cmd === 'stop_search') {
+      // 别闹了
+      delete info.session.ask_search;
+      return '好的，有关自动搜索的设定已重置';
+    }
   },
 };
