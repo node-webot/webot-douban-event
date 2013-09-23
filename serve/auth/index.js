@@ -64,6 +64,7 @@ app.get('/auth/callback', function(req, res, next) {
       }
 
       var user_id = ret[0].user_id;
+      var access_token = ret[1];
       // remove used tokens
       AuthToken.remove({ user_id: user_id }, noop);
 
@@ -73,15 +74,20 @@ app.get('/auth/callback', function(req, res, next) {
       }
 
       log('[auth callback]: %s, %s', ret[0], JSON.stringify(ret[1]))
-      User({
-        _id: user_id
-      }).update({
+      var user = User({ _id: user_id });
+      user.update({
         $upsert: true,
-        name: ret[1].douban_user_name,
-        access_token: ret[1],
+        name: access_token.douban_user_name,
+        access_token: access_token,
       }, function(err, user) {
         if (err) return show_error('保存用户信息失败');
         res.redirect('/auth/ok');
+      });
+
+      oauth.api().clientFromToken(access_token).get('/v2/user/~me', function(err, res) {
+        if (res && res.loc_id) {
+          user.update({ loc: res.loc_id, $upsert: true }, noop);
+        }
       });
     });
   }
