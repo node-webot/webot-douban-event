@@ -1196,7 +1196,7 @@ var cities = [{
 	"id": "118102"
 },
 {
-	"name": "襄樊|xiangfan",
+	"name": "襄阳|xiangyang",
 	"id": "118256"
 },
 {
