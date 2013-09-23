@@ -115,6 +115,9 @@ webot.set('search drama', {
       }
 
       var items = res.items.map(drama_list_mapping);
+      if (items.length === 1) {
+        items[0].desc += '(回复 d 给这部剧打分和评论)';
+      }
       info.wait('drama select');
       next(err, items);
     });
@@ -199,7 +202,7 @@ webot.waitRule('drama select rate', function(info, next) {
 });
 
 webot.set('drama select comment', {
-  pattern: /「?dc\s*(.+)」?/i,
+  pattern: /「?d\s*c\s*(.+)」?/i,
   handler: function(info, next) {
     var comment = info.param[1];
     var rating = info.session.drama_last_rating || 0;
