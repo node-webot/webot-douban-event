@@ -68,12 +68,12 @@ function drama_href(drama) {
 
 
 var tmpl_drama_search_results = _.template([
-  '关键词 "<%= keyword %>" 匹配到了<%= total %>部舞台剧：',
+  '关键词 "<%= keyword %>" 匹配到：',
   '',
   '<% _.each(items, function(item, i) { %>' +
     '<%= i+1 %>. <a href="http://www.douban.com/location/drama/<%= item._id %>/"><%= item.title %></a>',
   '<% }); %>' +
-  '等...',
+  '等<%= total %>部舞台剧...',
   '',
   '回复标题前的序号收藏该条目到豆瓣',
   '<% if (total > 4) { %>' +
@@ -88,7 +88,6 @@ var tmpl_list_choices = _.template([
   '<% _.each(items, function(item, i) { %>' +
     '<%= i+1 %>. <a href="http://www.douban.com/location/drama/<%= item._id %>/"><%= item.title %></a>',
   '<% }); %>',
-  '',
   '回复标题前的序号开始收藏这部舞台剧到豆瓣',
 ].join('\n'));
 
@@ -151,7 +150,7 @@ webot.waitRule('drama select', function(info, next) {
   if (!drama) {
     console.log(info.rewaitCount);
     if (info.rewaitCount) {
-      return next(null, '好吧，看来你不想选，继续回复【d 剧名】搜索舞台剧');
+      return next();
     } else {
       info.rewait();
       return next('INVALID_CHOICE');
