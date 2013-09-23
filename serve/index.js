@@ -4,8 +4,4 @@ module.exports = function(app, webot) {
     require('./' + item)(app, webot);
   });
 
-  app.get('help/drama', function(req, res, next) {
-    res.render('help/drama');
-  });
-
 };

@@ -93,6 +93,10 @@ app.get('/auth/ok', function(req, res, next) {
 app.get('/auth/help', function(req, res, next) {
   res.render('auth/help');
 });
+app.get('/help/drama', function(req, res, next) {
+  res.render('help/drama');
+});
+
 
 
 };

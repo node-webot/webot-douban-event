@@ -16,12 +16,21 @@ function drama_search(keyword, callback) {
         error('Search drama failed: %s, %s', q, err.statusCode);
         return callback(err);
       }
-      if (!res.dramas || !res.dramas.length) {
+      var items = res.dramas;
+      if (!items || !items.length) {
         return callback(404);
       }
+      // 完全匹配
+      if (keyword.length > 2 && items[0].title === keyword) {
+        return callback(null, {
+          total: 1,
+          items: [items[0]]
+        });
+      }
+
       callback(null, {
         total: res.total,
-        items: res.dramas
+        items: items
       });
     });
   });
@@ -113,10 +122,14 @@ webot.set('search drama', {
           items: sitems
         }));
       }
-
       var items = res.items.map(drama_list_mapping);
       if (items.length === 1) {
-        items[0].desc += '(回复 d 给这部剧打分和评论)';
+        items[0].description += '(回复 d 给这部剧打分和评论)';
+      } else {
+        items.push({
+          title: '回复标题前的序号选择剧目打分和评论',
+          url: conf.site_root + '/help/drama'
+        });
       }
       info.wait('drama select');
       next(err, items);
@@ -151,7 +164,6 @@ webot.waitRule('drama select', function(info, next) {
   }
   var drama = keyword_filtered(selection, info.text)[0]; 
   if (!drama) {
-    console.log(info.rewaitCount);
     if (info.rewaitCount) {
       return next();
     } else {
