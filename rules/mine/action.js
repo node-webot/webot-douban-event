@@ -14,7 +14,7 @@ var keyword_filtered = require('../utils').keyword_filtered;
 
 // save events list array
 webot.afterReply(function(info) {
-  return Array.isArray(info.reply);
+  return Array.isArray(info.reply) && info.reply[0].geo;
 }, function(info) {
   // for actions
   var sel = info.reply.map(function(item, i) {

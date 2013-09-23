@@ -60,7 +60,10 @@ function drama_slist_mapping(item, i) {
   };
 }
 function drama_link(drama) {
-  return drama.title.link('http://www.douban.com/location/drama/' + drama._id + '/');
+  return drama.title.link(drama_href(drama));
+}
+function drama_href(drama) {
+  return 'http://www.douban.com/location/drama/' + drama._id + '/';
 }
 
 
@@ -69,9 +72,10 @@ var tmpl_drama_search_results = _.template([
   '',
   '<% _.each(items, function(item, i) { %>' +
     '<%= i+1 %>. <a href="http://www.douban.com/location/drama/<%= item._id %>/"><%= item.title %></a>',
-  '<% }); %>',
+  '<% }); %>' +
+  '等...',
   '',
-  '回复 d 选择剧目进行操作',
+  '回复标题前的序号收藏该条目到豆瓣',
   '<% if (total > 4) { %>' +
     '',
     '你可以尝试用更精确的关键词缩小结果范围，如使用舞台剧全名或加上演员、剧院信息' +
@@ -93,7 +97,7 @@ module.exports = function(webot) {
 
 
 webot.set('search drama', {
-  pattern: /^(舞台剧|drama|d)\s+(.+)$/i,
+  pattern: /^(舞台剧|drama\s+|d\s+)(.+)$/i,
   handler: function(info, next) {
     var keyword = info.param[2];
     drama_search(keyword, function(err, res) {
@@ -101,9 +105,8 @@ webot.set('search drama', {
       if (err) {
         return next(null, '搜索舞台剧出错了，请稍后再试');
       }
-      var sitems = info.session.drama_selection = res.items.map(drama_slist_mapping);
-      info.wait('drama select');
 
+      var sitems = info.session.drama_selection = res.items.map(drama_slist_mapping);
       if (res.total > 4) {
         return next(null, tmpl_drama_search_results({
           keyword: keyword,
@@ -113,10 +116,7 @@ webot.set('search drama', {
       }
 
       var items = res.items.map(drama_list_mapping);
-      //items.push({
-        //title: '回复 help drama 查看可用操作',
-        //url: conf.site_root + 'help/drama'
-      //});
+      info.wait('drama select');
       next(err, items);
     });
   },
@@ -144,10 +144,18 @@ webot.waitRule('drama select', function(info, next) {
   if (!selection || !selection.length) {
     return next(null, 'Oops.. 出错了');
   }
+  if (info.text === 'd') {
+    return next();
+  }
   var drama = keyword_filtered(selection, info.text)[0]; 
   if (!drama) {
-    info.rewait();
-    return next('INVALID_CHOICE');
+    console.log(info.rewaitCount);
+    if (info.rewaitCount) {
+      return next(null, '好吧，看来你不想选，继续回复【d 剧名】搜索舞台剧');
+    } else {
+      info.rewait();
+      return next('INVALID_CHOICE');
+    }
   }
   info.session.drama_selected = drama;
   info.wait('drama select rate');
@@ -185,7 +193,9 @@ webot.waitRule('drama select rate', function(info, next) {
       return handle_api_error(err, '[大哭] 收藏舞台剧失败，请稍后重试', info, next);
     }
     info.session.drama_last_rating = rate;
-    return next(null, '已成功收藏' + drama_link(drama) + '！继续回复「dc 你的评语」，与豆瓣网友分享你对这部剧的看法。');
+    return next(null, '已成功收藏 ' + drama.title + ' ！\n\n' +
+                      '继续回复【dc 你的评语】，与豆瓣网友分享你对这部剧的看法\n\n' +
+                      '剧目详情'.link(drama_href(drama)));
   });
 });
 
@@ -200,7 +210,8 @@ webot.set('drama select comment', {
         info.rewait();
         return handle_api_error(err, '[大哭] 操作失败，请稍后重试', info, next);
       }
-      return next(null, '你对 ' + drama_link(drama) + ' 的评语已发布！其他人将可以在豆瓣网页上看到您的评论。感谢你的分享。');
+      return next(null, '你对 ' + drama.title + ' 的评语已发布！其他人将能在豆瓣网页上看到您的评论。感谢你的分享。\n\n' +
+                        '剧目详情'.link(drama_href(drama)));
     });
   }
 });
