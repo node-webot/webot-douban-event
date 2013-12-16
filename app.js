@@ -66,6 +66,9 @@ webot.afterReply(function reply_output(info, next) {
     //res.statusCode = (typeof err === 'number' ? err : 500);
     info.reply = info.reply || messages[String(info.err)] || messages['503'];
   }
+  if (typeof info.reply === 'string') {
+    info.reply = info.reply.trim();
+  }
 
   if (!info.is_zht) return next();
 

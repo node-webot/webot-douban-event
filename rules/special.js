@@ -9,6 +9,7 @@ webot.set('wechat_event', {
     return info.is('event');
   },
   handler: function(info) {
+    log('#EVENT: ', info.param);
     var event = info.param.event || '';
     event = event.toLowerCase();
     if (event === 'subscribe') {
@@ -19,7 +20,6 @@ webot.set('wechat_event', {
       //log('User [%s] unsubscribed.', info.uid);
       return '再见!';
     }
-    console.log(info.param);
     if (event === 'click') {
       info.type = 'text';
       info.text = info.param.eventKey;
