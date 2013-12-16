@@ -19,6 +19,7 @@ webot.set('wechat_event', {
       //log('User [%s] unsubscribed.', info.uid);
       return '再见!';
     }
+    console.log(info.param);
     if (event === 'click') {
       info.type = 'text';
       info.text = info.param.eventKey;

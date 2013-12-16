@@ -36,7 +36,7 @@ function keyword_filtered(list, keyword) {
   if (!list || !Array.isArray(list)) {
     return [];
   }
-  keyword = keyword.toLowerCase();
+  keyword = (keyword || '').toLowerCase();
 
   var n = parseInt(keyword, 10);
   if (n) {
