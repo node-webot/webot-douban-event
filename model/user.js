@@ -1,5 +1,4 @@
 var util = require('util');
-var MemObj = require('../lib/memcached').MemObj;
 var utils = require('../lib/utils');
 var mongo = require('../lib/mongo');
 var consts = require('./consts');
@@ -16,14 +15,6 @@ function User(info) {
   var self = this;
 
   extend(self, info);
-
-  self._cache = new MemObj('user', self._id);
-  self._cache.get('loc', function(err, res) {
-    if (res) {
-      self.loc = res;
-      self.update({ loc: res });
-    }
-  });
 }
 
 util.inherits(User, Model);

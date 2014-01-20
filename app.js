@@ -7,7 +7,7 @@ var webot = require('weixin-robot');
 var User = require('./model/user');
 var douban = require('./lib/douban');
 var fanjian = require('./lib/fanjian');
-var memcached = require('./lib/memcached');
+var RedisStore = require('connect-redis')(express);
 
 var messages = require('./data/messages');
 var conf = require('./conf');
@@ -24,7 +24,7 @@ app.set('views', __dirname + '/templates');
 
 app.use(express.bodyParser());
 app.use(express.cookieParser());
-app.use(express.session({ secret: conf.salt, store: new memcached.MemObj('wx_session') }));
+app.use(express.session({ secret: conf.salt, store: new RedisStore(conf.redis) }));
 
 // load rules
 require('./rules')(webot);

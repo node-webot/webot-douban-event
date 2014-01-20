@@ -8,7 +8,7 @@
 后端数据基于：
 
 1. mongodb
-2. memcached
+2. redis
 
 请参考 conf/index.js 指定数据库配置。
 

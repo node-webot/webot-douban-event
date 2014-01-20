@@ -6,11 +6,8 @@ module.exports = {
     secret: ''
   },
   douban_more: [],
-  memcached: {
-    hosts: '127.0.0.1:11211',
-    options: {
-      retries: 2
-    }
+  redis: {
+    prefix: 'wx_event:'
   },
   mongo: {
     host: '127.0.0.1',

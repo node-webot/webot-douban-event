@@ -27,7 +27,7 @@
     "passport": "~0.1.15",
     "passport-douban": "~0.0.1",
     "douban-api": "~0.0.3",
-    "memcached": "~0.1.4"
+    "connect-redis": "~1.4.6"
   },
   "devDependencies": {
     "prettyjson": "*",
