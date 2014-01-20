@@ -14,7 +14,7 @@
     "request": "~2.12",
     "oauth": "~0.9.10",
     "hashids": "~0.1.4",
-    "opencc": "~0.4.1",
+    "opencc": "~1.0",
     "async": "~0.2.8", 
     "express": "~3.0",
     "xml2js": "~0.2.6",
