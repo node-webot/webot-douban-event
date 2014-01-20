@@ -10,7 +10,7 @@
   "dependencies": {
     "debug": "~0.7.2",
     "co": "~1.4.1",
-    "bcrypt": "~0.7.6",
+    "bcryptjs": "~0.7.10",
     "request": "~2.12",
     "oauth": "~0.9.10",
     "hashids": "~0.1.4",

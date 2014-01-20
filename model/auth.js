@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var crypto = require('crypto');
 var util = require('util');
 var utils = require('../lib/utils');
